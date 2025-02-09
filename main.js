@@ -49,5 +49,23 @@ function buttonsAndLinks() {
     })
 }
 
+function randomBannerImage() {
+    const banners = [
+        "/deltavirtual/dalv/images/banners/a350-forward-port.png",
+        "/deltavirtual/dalv/images/banners/gclp-2-a350-tails.png",
+        "/deltavirtual/dalv/images/banners/gclp-4-a350s.png",
+        "/deltavirtual/dalv/images/banners/luggage-night-727.png",
+        "/deltavirtual/dalv/images/banners/moon-717.png",
+        "/deltavirtual/dalv/images/banners/4-a350-tails-port.png"
+    ]
+
+    const bannerEl = document.querySelector("section.banner");
+    bannerEl.style.backgroundImage = `url(${banners[Math.floor(Math.random() * banners.length)]})`;
+    console.log(`url(${banners[Math.floor(Math.random() * banners.length)]})`);
+    console.log(bannerEl);
+    console.log(banners);
+}
+
 loadingCover();
 buttonsAndLinks();
+randomBannerImage();
