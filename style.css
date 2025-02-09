@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap');
+
+:root {
+    --color-background: #000000;
+    --brand-red: #C01933;
+    --brand-navy: #003366;
+    --brand-green: #94A545;
+    --brand-orange: #EA8A1A;
+    --brand-yellow: #D7C700;
+    --brand-purple: #B090B0;
+    --brand-lightblue: #7799CC;
+    --brand-darkblue: #002A50;
+    /* --- */
+    --color-red: #EB3F56;
+    --color-red-light: #F56A71;
+    --color-red-dark: #CC0621;
+    --color-orange: #FF9757;
+    --color-orange-light: #FFB384;
+    --color-orange-dark: #D2611C;
+    --color-yellow: #FFD357;
+    --color-yellow-light: #FFE292;
+    --color-yellow-dark: #D09D0D;
+    --color-yellowgreen: #A8F809;
+    --color-yellowgreen-light: #CEFC73;
+    --color-yellowgreen-dark: #79AD10;
+    --color-green: #45F936;
+    --color-green-light: #83FC79;
+    --color-green-dark: #16A20A;
+    --color-mint: #18FA94;
+    --color-mint-light: #7FFFC5;
+    --color-mint-dark: #11AC66;
+    --color-teal: #20FED5;
+    --color-teal-light: #8FFAE6;
+    --color-teal-dark: #0DA98D;
+    --color-skyblue: #34AEFF;
+    --color-skyblue-light: #93D1FA;
+    --color-skyblue-dark: #186EA8;
+    --color-blue: #4262EE;
+    --color-blue-light: #9AACFA;
+    --color-blue-dark: #0D28A0;
+    --color-purple: #8A1EF0;
+    --color-purple-light: #C995F8;
+    --color-purple-dark: #6314AD;
+    --color-pink: #EA2FF0;
+    --color-pink-light: #F385F7;
+    --color-pink-dark: #A617AB;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'DM Sans', sans-serif;
+    transition: 0.3s ease;
+    user-select: none;
+    cursor: default;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+}
+
+::selection {
+    background-color: var(--color-primary);
+    color: var(--color-heading);
+}
+
+body {
+    background-color: var(--color-background);
+    min-height: 100vh;
+}
+
+.surface {
+    background-color: var(--color-surface);
+}
+
+.mid {
+    background-color: var(--color-mid);
+}
+
+.tile {
+    background-color: var(--color-tile);
+}
+
+.raised {
+    background-color: var(--color-raised);
+}
+
+body#home {
+    section.banner {
+        height: 100vh;
+        width: 100vw;
+        background: url(/dalv/images/gclp-a350s.png);
+        background-size: cover;
+        overflow: hidden;
+
+        div.content {
+            display: flex;
+            flex-direction: column;
+            width: 70vw;
+            padding: 100px 50px 100px 50px;
+
+            div.branding {
+                display: flex;
+                flex-direction: row;
+                gap: 20px;
+
+                img {
+                    height: 100px;
+                }
+
+                p {
+                    font-size: 70px;
+                    color: white;
+                    font-weight: bold;
+                    text-shadow: 0px 0px 20px black;
+                }
+            }
+
+            p.welcome {
+                color: white;
+                font-size: 20px;
+                text-shadow: 0px 0px 10px black;
+                padding-left: 10px;
+            }
+
+            div.buttons {
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+                margin-top: 15px;
+                padding-left: 10px;
+
+                button {
+                    border-radius: 10px;
+                    font-size: 20px;
+                    padding: 8px 10px;
+                    border: none;
+                    outline: none;
+                    color: white;
+                    cursor: pointer;
+                    box-shadow: 0px 0px 10px -5px black;
+
+                    &:hover {
+                        box-shadow: 0px 0px 15px -5px black;
+                    }
+
+                    &:active {
+                        transition: transform 0s ease;
+                        box-shadow: 0px 0px 8px -5px black;
+                    }
+                }
+                
+                button.join-discord {
+                    background: var(--brand-red);
+                }
+
+                button.learn-more {
+                    background: rgba(0, 0, 0, 0.5);
+                }
+            }
+        }
+    }
+}
+
+div#loading {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: var(--brand-navy);
+    width: 100vw;
+    height: 100vh;
+    gap: 10px;
+    transition: transform 0.4s ease;
+
+    h1 {
+        color: white;
+        font-size: 35px;
+    }
+}
