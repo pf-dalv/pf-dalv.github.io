@@ -51,12 +51,12 @@ function buttonsAndLinks() {
 
 function randomBannerImage() {
     const banners = [
-        "/deltavirtual/dalv/images/banners/a350-forward-port.png",
-        "/deltavirtual/dalv/images/banners/gclp-2-a350-tails.png",
-        "/deltavirtual/dalv/images/banners/gclp-4-a350s.png",
-        "/deltavirtual/dalv/images/banners/luggage-night-727.png",
-        "/deltavirtual/dalv/images/banners/moon-717.png",
-        "/deltavirtual/dalv/images/banners/4-a350-tails-port.png"
+        "/dalv/images/banners/a350-forward-port.png",
+        "/dalv/images/banners/gclp-2-a350-tails.png",
+        "/dalv/images/banners/gclp-4-a350s.png",
+        "/dalv/images/banners/luggage-night-727.png",
+        "/dalv/images/banners/moon-717.png",
+        "/dalv/images/banners/4-a350-tails-port.png"
     ]
 
     const bannerEl = document.querySelector("section.banner");
