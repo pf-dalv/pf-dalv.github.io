@@ -85,7 +85,7 @@ body {
     background-color: var(--color-raised);
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 900px) {
     body#home {
         section.banner {
             height: 100vh;
