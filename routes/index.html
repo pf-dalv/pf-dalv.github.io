@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Delta Air Lines Virtual</title>
+    <link rel="icon" href="/dalv/images/logo.png" type="image/png">
+    <link href="/dalv/style.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body id="routes">
+    <div class="loading">
+      <p>There was an error.</p>
+    </div>
+
+    <nav>
+      <img src="/dalv/images/logo.png" class="nav-home">
+      <a class="nav-join direct act-join-discord">Join</a>
+      <div class="dropdown">
+        <a class="nav-info dropper">Info</a>
+        <div class="dropdown-content-wrapper">
+          <div class="dropdown-content">
+            <a class="nav-info-routes">Routes</a>
+            <a class="nav-info-fleet">Fleet</a>
+            <a class="nav-info-staff">Staff</a>
+            <a class="faq">FAQ</a>
+            <a class="nav-info-partnerships">Partnerships</a>
+            <a class="nav-info-boosting-and-donating-perks">Boosting & Donating Perks</a>
+          </div>
+        </div>
+      </div>
+      <div class="dropdown">
+        <a class="nav-resources dropper">Resources</a>
+        <div class="dropdown-content-wrapper">
+          <div class="dropdown-content">
+            <a class="nav-resources-charts">Charts</a>
+            <a class="nav-resources-handbook">Handbook</a>
+            <a class="nav-resources-checklists">Checklists</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="search">
+      <div class="inputs">
+        <div class="departure airport">
+          <p class="label">Departure</p>
+          <input type="text">
+          <button class="randomize"><i class="fa-solid fa-shuffle"></i></button>
+        </div>
+        <i class="fa-solid fa-plane enroute"></i>
+        <div class="arrival airport">
+          <p class="label">Arrival</p>
+          <input type="text">
+          <button class="randomize"><i class="fa-solid fa-shuffle"></i></button>
+        </div>
+      </div>
+      <div class="output">
+        <p class="haul">Long Haul</p>
+        <p class=""></p>
+      </div>
+    </div>
+
+    <div class="long haul">
+      <p class="title">LONG HAUL</p>
+      <div class="mdpc airport">
+
+      </div>
+    </div>
+    
+    <script defer type="text/javascript" src="/dalv/main.js"></script>
+  </body>
+</html>

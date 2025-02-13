@@ -1,5 +1,5 @@
 function loadingCover() {
-    const cover = document.getElementById("loading");
+    const cover = document.querySelector("div.loading");
 
     function doCover() {
         cover.style.display = "flex";
@@ -7,13 +7,15 @@ function loadingCover() {
         setTimeout(() => {
             if (document.readyState === "complete") {
                 cover.style.transform = "translateY(100%)";
+                cover.style.opacity = 0.75;
                 return;
             }
 
             window.onload = function() {
                 cover.style.transform = "translateY(100%)";
+                cover.style.opacity = 0.75;
             }
-        }, 750);
+        }, 850);
 
         const loadingMessages = [
             "Finalizing your flight plan...",
@@ -26,27 +28,38 @@ function loadingCover() {
             "Calculating cruise altitude..."
         ]
 
-        const messageEl = document.querySelector("div#loading h1");
+        const messageEls = document.querySelectorAll("div.loading p");
         const message = loadingMessages[Math.floor(Math.random() * loadingMessages.length)];
-        messageEl.innerHTML = message;
+        messageEls.forEach(msgEl => {
+            msgEl.innerHTML = message;
+        });
     }
 
-    setTimeout(() => {
-        if (document.readyState === "complete") {
-            cover.style.display = "none";
-        } else {
-            doCover();
-        }
-    }, 50);
+    doCover();
 }
 
 function buttonsAndLinks() {
-    const joinDiscordButtons = document.querySelectorAll("button.join-discord");
+    const joinDiscordButtons = document.querySelectorAll(".act-join-discord");
     joinDiscordButtons.forEach(btn => {
         btn.addEventListener("click", () => {
             window.open("https://discord.gg/aS5G7GdP5E", "_blank");
         })
     })
+
+    const logoHomeButtons = document.querySelectorAll("img.nav-home");
+    logoHomeButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            window.location.href = "/dalv";
+        })
+    })
+
+    const routesButtons = document.querySelectorAll("a.nav-info-routes");
+    routesButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            window.location.href = "/dalv/routes";
+        })
+    }) 
+    // TODO (IN CLASS IG): do a forEach for each item in the dropdown
 }
 
 function randomBannerImage() {
@@ -56,16 +69,29 @@ function randomBannerImage() {
         "/dalv/images/banners/gclp-4-a350s.png",
         "/dalv/images/banners/luggage-night-727.png",
         "/dalv/images/banners/moon-717.png",
-        "/dalv/images/banners/4-a350-tails-port.png"
+        "/dalv/images/banners/4-a350-tails-port.png",
+        "/dalv/images/banners/757-approach.png",
     ]
 
     const bannerEl = document.querySelector("section.banner");
-    bannerEl.style.backgroundImage = `url(${banners[Math.floor(Math.random() * banners.length)]})`;
-    console.log(`url(${banners[Math.floor(Math.random() * banners.length)]})`);
-    console.log(bannerEl);
-    console.log(banners);
+    if (bannerEl) {
+        bannerEl.style.backgroundImage = `url(${banners[Math.floor(Math.random() * banners.length)]})`;
+    }
+}
+
+function hideOnScroll() {
+    const hintArrow = document.querySelector("section.banner i.hint-arrow");
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 0) {
+            hintArrow.style.display = "none";
+        } else {
+            hintArrow.style.display = "block";
+        }
+    })
 }
 
 loadingCover();
 buttonsAndLinks();
 randomBannerImage();
+hideOnScroll();

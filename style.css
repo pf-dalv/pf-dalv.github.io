@@ -85,186 +85,310 @@ body {
     background-color: var(--color-raised);
 }
 
-body#home {
-    section.banner {
-        height: 100vh;
-        width: 100vw;
-        background: url(/dalv/images/banners/moon-717.png);
-        background-size: cover;
-        overflow: hidden;
+@media (min-width: 1000px) {
+    body#home {
+        section.banner {
+            height: 100vh;
+            width: 100vw;
+            background: url(/dalv/images/banners/moon-717.png);
+            background-size: cover;
+            overflow: hidden;
 
-        div.content {
+            div.content {
+                display: flex;
+                flex-direction: column;
+                width: 70vw;
+                padding: 120px 50px 100px 50px;
+
+                div.branding {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 20px;
+
+                    img {
+                        height: 100px;
+                    }
+
+                    p {
+                        font-size: 70px;
+                        color: white;
+                        font-weight: bold;
+                        text-shadow: 0px 0px 20px black;
+                    }
+                }
+
+                p.welcome {
+                    color: white;
+                    font-size: 20px;
+                    text-shadow: 0px 0px 10px black;
+                    padding-left: 10px;
+                    max-width: 60em;
+                }
+
+                div.buttons {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 10px;
+                    margin-top: 15px;
+                    padding-left: 10px;
+
+                    button {
+                        border-radius: 10px;
+                        font-size: 20px;
+                        padding: 8px 10px;
+                        border: none;
+                        outline: none;
+                        color: white;
+                        cursor: pointer;
+                        box-shadow: 0px 0px 10px -5px black;
+
+                        &:hover {
+                            box-shadow: 0px 0px 15px -5px black;
+                        }
+
+                        &:active {
+                            transition: box-shadow 0s ease;
+                            box-shadow: 0px 0px 8px -5px black;
+                        }
+                    }
+                    
+                    button.join-discord {
+                        background: var(--brand-red);
+                    }
+
+                    button.learn-more {
+                        background: rgba(0, 0, 0, 0.7);
+                    }
+                }
+            }
+
+            i.hint-arrow {
+                position: fixed;
+                bottom: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 25px;
+                color: rgba(255, 255, 255);
+                text-shadow: 0px 0px 10px black;
+                opacity: 0.75;
+            }
+        }
+    }
+
+    body#routes {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        padding-top: 60px;
+        background: white;
+
+        div.search {
+            background: var(--brand-red);
             display: flex;
             flex-direction: column;
-            width: 70vw;
-            padding: 120px 50px 100px 50px;
+            padding: 30px;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
 
-            div.branding {
+            div.inputs {
                 display: flex;
                 flex-direction: row;
-                gap: 20px;
+                gap: 15px;
+                align-items: center;
+                justify-content: center;
+            }
 
-                img {
-                    height: 100px;
-                }
+            div.airport {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
 
-                p {
-                    font-size: 70px;
+                p.label {
                     color: white;
-                    font-weight: bold;
-                    text-shadow: 0px 0px 20px black;
-                }
-            }
-
-            p.welcome {
-                color: white;
-                font-size: 20px;
-                text-shadow: 0px 0px 10px black;
-                padding-left: 10px;
-                max-width: 60em;
-            }
-
-            div.buttons {
-                display: flex;
-                flex-direction: row;
-                gap: 10px;
-                margin-top: 15px;
-                padding-left: 10px;
-
-                button {
-                    border-radius: 10px;
                     font-size: 20px;
-                    padding: 8px 10px;
-                    border: none;
+                }
+
+                input {
+                    font-size: 100px;
+                    padding: 10px 20px;
+                    border-radius: 20px;
+                    width: calc(3.5em + 40px);
                     outline: none;
+                    height: 140px;
+                    border: 2px solid transparent;
+                    background: rgba(255, 255, 255, 0.2);
                     color: white;
+                    text-align: center;
+                    position: relative;
+                    margin-bottom: 5px;
+    
+                    &:focus {
+                        border: 2px solid white;
+                    }
+
+                    &::selection {
+                        background: black;
+                        color: white;
+                    }
+                }
+
+                button.randomize {
+                    background: white;
+                    outline: none;
+                    border: none;
+                    border-radius: 15px;
+                    width: 100%;
+                    padding: 10px;
                     cursor: pointer;
-                    box-shadow: 0px 0px 10px -5px black;
+                    border: 2px solid transparent;
+                    
+                    i {
+                        color: black;
+                        cursor: pointer;
+                        font-size: 20px;
+                    }
 
                     &:hover {
-                        box-shadow: 0px 0px 15px -5px black;
-                    }
-
-                    &:active {
-                        transition: box-shadow 0s ease;
-                        box-shadow: 0px 0px 8px -5px black;
+                        filter: brightness(0.85);
                     }
                 }
-                
-                button.join-discord {
-                    background: var(--brand-red);
-                }
+            }
 
-                button.learn-more {
-                    background: rgba(0, 0, 0, 0.5);
-                }
+            i.enroute {
+                font-size: 30px;
+                color: white;
+            }
+        }
+
+        div.haul {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+
+            p.title {
+                width: 100%;
+                display: flex;
+                height: 200px;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                background: linear-gradient(to right, var(--brand-red), var(--brand-navy));
+                font-size: 100px;
+                color: white;
             }
         }
     }
-}
 
-div#loading {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: var(--brand-navy);
-    width: 100vw;
-    height: 100vh;
-    gap: 10px;
-    transition: transform 0.4s ease;
-    z-index: 100;
-
-    h1 {
-        color: white;
-        font-size: 35px;
-    }
-}
-
-nav {
-    height: 60px;
-    background: var(--brand-navy);
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
-    padding: 5px 10px;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 5;
-
-    img {
-        height: 40px;
-        cursor: pointer;
-
-        &:hover {
-            filter: brightness(1.2);
-        }
-    }
-
-    a.direct, a.dropper {
-        font-size: 20px;
-        color: white;
-        padding: 5px 10px;
-        border-radius: 10px;
-
-        &:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-    }
-
-    a.direct {
-        cursor: pointer;
-    }
-}
-
-div.dropdown {
-    position: relative;
-    display: inline-block;
-
-    div.dropdown-content-wrapper {
-        top: 100%;
-        height: 35%;
-        width: 100%;
-        position: absolute;
-    }
-
-    div.dropdown-content {
+    div.loading {
         display: none;
-        position: absolute;
-        background-color: var(--brand-navy);
-        min-width: 150px;
-        box-shadow: 0px 0px 15px -5px black;
-        border-radius: 10px;
-        overflow: hidden;
-        top: 10px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
         left: 0;
+        background: var(--brand-navy);
+        width: 100vw;
+        height: 100vh;
+        gap: 10px;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+        z-index: 100;
 
-        & a {
+        p {
             color: white;
-            padding: 10px;
-            display: block;
-            text-decoration: none;
+            font-size: 35px;
+        }
+    }
+
+    nav {
+        height: 60px;
+        background: var(--brand-navy);
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+        padding: 5px 10px;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 5;
+        box-shadow: 0px 0px 20px -10px black;
+
+        img {
+            height: 40px;
             cursor: pointer;
-            text-wrap: nowrap;
+
+            &:hover {
+                filter: brightness(1.2);
+            }
+        }
+
+        a.direct, a.dropper {
+            font-size: 20px;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 10px;
 
             &:hover {
                 background: rgba(255, 255, 255, 0.2);
             }
+        }
 
-            &:active {
-                background: transparent;
-                transition: background 0s ease;
+        a.direct {
+            cursor: pointer;
+        }
+
+        
+        div.dropdown {
+            position: relative;
+            display: inline-block;
+
+            div.dropdown-content-wrapper {
+                top: 100%;
+                height: 50%;
+                width: 100%;
+                position: absolute;
+            }
+
+            div.dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: var(--brand-navy);
+                min-width: 150px;
+                box-shadow: 0px 0px 15px -5px black;
+                border-radius: 10px;
+                overflow: hidden;
+                top: 10px;
+                left: 0;
+
+                & a {
+                    color: white;
+                    padding: 10px;
+                    display: block;
+                    text-decoration: none;
+                    cursor: pointer;
+                    text-wrap: nowrap;
+
+                    &:hover {
+                        background: rgba(255, 255, 255, 0.2);
+                    }
+
+                    &:active {
+                        background: transparent;
+                        transition: background 0s ease;
+                    }
+                }
+            }
+
+            &:hover div.dropdown-content, div.dropdown-content:hover, div.dropdown-content-wrapper:hover {
+                display: block;
             }
         }
     }
-    
-    &:hover div.dropdown-content, div.dropdown-content:hover, div.dropdown-content-wrapper:hover {
-        display: block;
-    }
+
 }
