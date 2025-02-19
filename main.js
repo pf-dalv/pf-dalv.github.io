@@ -1,9 +1,22 @@
+const airports = [
+    { code: "MDPC", name: "Punta Cana" },
+    { code: "MDST", name: "Cibao" },
+    { code: "EGKK", name: "London Gatwick" },
+    { code: "LEMH", name: "Menorca" },
+    { code: "GCLP", name: "Gran Canaria" },
+    { code: "LYTV", name: "Tivat" },
+    { code: "EFKT", name: "Kittilä" }
+]
+
 function loadingCover() {
+    if (!(document.querySelector("div.loading"))) { 
+        return;
+    }
+
     const cover = document.querySelector("div.loading");
+    cover.style.display = "flex";
 
     function doCover() {
-        cover.style.display = "flex";
-
         setTimeout(() => {
             if (document.readyState === "complete") {
                 cover.style.transform = "translateY(100%)";
@@ -15,7 +28,7 @@ function loadingCover() {
                 cover.style.transform = "translateY(100%)";
                 cover.style.opacity = 0.75;
             }
-        }, 850);
+        }, 600);
 
         const loadingMessages = [
             "Finalizing your flight plan...",
@@ -46,32 +59,57 @@ function buttonsAndLinks() {
         })
     })
 
-    const logoHomeButtons = document.querySelectorAll("img.nav-home");
+    const logoHomeButtons = document.querySelectorAll("nav img.nav-home");
     logoHomeButtons.forEach(btn => {
         btn.addEventListener("click", () => {
             window.location.href = "/dalv";
         })
     })
 
-    const routesButtons = document.querySelectorAll("a.nav-info-routes");
-    routesButtons.forEach(btn => {
+    const navInfoButtons = document.querySelectorAll("nav div.dropdown div.dropdown-content.info a");
+    navInfoButtons.forEach(btn => {
+        let urlNeeded = btn.classList[0].substring(9);
+
         btn.addEventListener("click", () => {
-            window.location.href = "/dalv/routes";
+            location.href = `/dalv/${urlNeeded}`;
         })
-    }) 
-    // TODO (IN CLASS IG): do a forEach for each item in the dropdown
+    })
+
+    const navResourceButtons = document.querySelectorAll("nav div.dropdown div.dropdown-content.resources a");
+    navResourceButtons.forEach(btn => {
+        let urlNeeded = btn.classList[0].substring(14);
+
+        btn.addEventListener("click", () => {
+            location.href = `/dalv/${urlNeeded}`;
+        })
+    })
+
+    const chartAirportSelectionButtons = document.querySelectorAll("body#charts section.list div.airport");
+    chartAirportSelectionButtons.forEach(cell => {
+        cell.addEventListener("click", () => {
+            const airportCode = cell.classList[1];
+            location.href = `/dalv/charts/?airport=${airportCode}`;
+        })
+    });
+
+    const chartsAirportBackButton = document.querySelectorAll("section.airport div.nav i.back");
+    chartsAirportBackButton.forEach(btn => {
+        btn.addEventListener("click", () => {
+            location.href = "/dalv/charts";
+        })
+    })
 }
 
 function randomBannerImage() {
     const banners = [
-        "/dalv/images/banners/a350-forward-port.png",
-        "/dalv/images/banners/gclp-2-a350-tails.png",
-        "/dalv/images/banners/gclp-4-a350s.png",
-        "/dalv/images/banners/luggage-night-727.png",
-        "/dalv/images/banners/moon-717.png",
-        "/dalv/images/banners/4-a350-tails-port.png",
-        "/dalv/images/banners/757-approach.png",
-        "/dalv/images/banners/5-delta-dish.png",
+        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/5-delta-dish.png",
+        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/757-approach.png",
+        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/moon-717.png",
+        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/4-a350-tails-port.png",
+        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/luggage-night-727.png",
+        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/gclp-4-a350s.png",
+        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/gclp-2-a350-tails.png",
+        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/a350-forward-port.png",
     ]
 
     const bannerEl = document.querySelector("section.banner");
@@ -97,139 +135,93 @@ function hideOnScroll() {
 }
 
 function routes() {
-    const airports = [
-        { code: "MDPC", name: "Punta Cana", atcDefault: 1 },
-        { code: "MDST", name: "Cibao", atcDefault: 0 },
-        { code: "MDAB", name: "Arroyo Barril", atcDefault: 0 },
-        { code: "EGKK", name: "London Gatwick", atcDefault: 1 },
-        { code: "EGHI", name: "Southampthon", atcDefault: 0 },
-        { code: "LEMH", name: "Menorca", atcDefault: 0 },
-        { code: "GCLP", name: "Gran Canaria", atcDefault: 0 },
-        { code: "LYTV", name: "Tivat", atcDefault: 0 },
-        { code: "EFKT", name: "Kittilä", atcDefault: 0 }
-    ]
-    
+    if (!(location.pathname == "/dalv/routes/")) {
+        return;
+    }
+
     const airportCodeList = airports.map(airport => airport.code);
 
-    // SHORT (UNDER 20)
-    // MEDIUM (20-30)
-    // LONG (OVER 30)
+    // SHORT (UNDER 20NM)
+    // MEDIUM (20-30NM)
+    // LONG (OVER 30NM)
+    // DPC DST DAB DCR
 
     const routes = [
+
         { origin: "MDPC", destination:
             {
-                mdst: { haul: "Short", time: "None" },
-                mdab: { haul: "Short", time: "None" },
-                egkk: { haul: "Long", time: "47m 24s" },
-                eghi: { haul: "Long", time: "None" },
-                lemh: { haul: "Medium", time: "24m 30s" },
-                gclp: { haul: "Short", time: "40m 54s" },
-                lytv: { haul: "Long", time: "37m 40s" },
-                efkt: { haul: "Long", time: "52m 46s" }
+                mdst: { haul: "Short", time: "No Time Data", altitude: "020", route: "No Route Data" },
+                egkk: { haul: "Long", time: "47m 24s", altitude: "090", route: "No Route Data" },
+                lemh: { haul: "Medium", time: "24m 30s", altitude: "070", route: "No Route Data" },
+                gclp: { haul: "Short", time: "40m 54s", altitude: "050", route: "No Route Data" },
+                lytv: { haul: "Long", time: "37m 40s", altitude: "050", route: "No Route Data" },
+                efkt: { haul: "Long", time: "52m 46s", altitude: "110", route: "No Route Data" }
             }
         },
 
         { origin: "MDST", destination:
             {
-                mdpc: { haul: "Short", time: "None" },
-                mdab: { haul: "Short", time: "None" },
-                egkk: { haul: "Long", time: "41m 31s" },
-                eghi: { haul: "Long", time: "None" },
-                lemh: { haul: "Long", time: "None" },
-                gclp: { haul: "Medium", time: "40m 9s" },
-                lytv: { haul: "Long", time: "37m 11s" },
-                efkt: { haul: "Long", time: "44m 33s" }
-            }
-        },
-
-        { origin: "MDAB", destination:
-            {
-                mdpc: { haul: "Short", time: "None" },
-                mdst: { haul: "Short", time: "None" },
-                egkk: { haul: "Long", time: "None" },
-                eghi: { haul: "Long", time: "None" },
-                lemh: { haul: "Medium", time: "None" },
-                gclp: { haul: "Short", time: "None" },
-                lytv: { haul: "Long", time: "None" },
-                efkt: { haul: "Long", time: "None" }
+                mdpc: { haul: "Short", time: "No Time Data", altitude: "020", route: "No Route Data" },
+                egkk: { haul: "Long", time: "36m 33s", altitude: "090", route: "No Route Data" },
+                lemh: { haul: "Long", time: "No Time Data", altitude: "070", route: "No Route Data" },
+                gclp: { haul: "Medium", time: "40m 9s", altitude: "050", route: "No Route Data" },
+                lytv: { haul: "Long", time: "37m 11s", altitude: "050", route: "No Route Data" },
+                efkt: { haul: "Long", time: "44m 33s", altitude: "110", route: "No Route Data" }
             }
         },
 
         { origin: "EGKK", destination:
             {
-                mdpc: { haul: "Long", time: "59m 38s" },
-                mdst: { haul: "Long", time: "None" },
-                mdab: { haul: "Long", time: "None" },
-                eghi: { haul: "Short", time: "None" },
-                lemh: { haul: "Short", time: "None" },
-                gclp: { haul: "Medium", time: "None" },
-                lytv: { haul: "Long", time: "None" },
-                efkt: { haul: "Short", time: "None" }
-            }
-        },
-
-        { origin: "EGHI", destination:
-            {
-                mdpc: { haul: "Long", time: "None" },
-                mdst: { haul: "Long", time: "None" },
-                mdab: { haul: "Long", time: "None" },
-                egkk: { haul: "Short", time: "None" },
-                lemh: { haul: "Short", time: "None" },
-                gclp: { haul: "Medium", time: "None" },
-                lytv: { haul: "Long", time: "None" },
-                efkt: { haul: "Short", time: "None" }
+                mdpc: { haul: "Long", time: "51m 26s", altitude: "080", route: "No Route Data" },
+                mdst: { haul: "Long", time: "No Time Data", altitude: "080", route: "No Route Data" },
+                lemh: { haul: "Short", time: "32m 35s", altitude: "050", route: "No Route Data" },
+                gclp: { haul: "Medium", time: "No Time Data", altitude: "060", route: "No Route Data" },
+                lytv: { haul: "Long", time: "No Time Data", altitude: "090", route: "No Route Data" },
+                efkt: { haul: "Short", time: "42m 7s", altitude: "050", route: "No Route Data" }
             }
         },
 
         { origin: "LEMH", destination:
             {
-                mdpc: { haul: "Medium", time: "None" },
-                mdst: { haul: "Long", time: "None" },
-                mdab: { haul: "Medium", time: "None" },
-                egkk: { haul: "Short", time: "None" },
-                eghi: { haul: "Short", time: "None" },
-                gclp: { haul: "Short", time: "None" },
-                lytv: { haul: "Short", time: "None" },
-                efkt: { haul: "Medium", time: "None" }
+                mdpc: { haul: "Medium", time: "No Time Data", altitude: "060", route: "No Route Data" },
+                mdst: { haul: "Long", time: "38m 29s", altitude: "060", route: "No Route Data" },
+                egkk: { haul: "Short", time: "14m 38s", altitude: "060", route: "No Route Data" },
+                gclp: { haul: "Short", time: "No Time Data", altitude: "060", route: "No Route Data" },
+                lytv: { haul: "Short", time: "25m 5s", altitude: "050", route: "No Route Data" },
+                efkt: { haul: "Medium", time: "30m 24s", altitude: "070", route: "No Route Data" }
             }
         },
 
         { origin: "GCLP", destination:
             {
-                mdpc: { haul: "Short", time: "None" },
-                mdst: { haul: "Medium", time: "None" },
-                mdab: { haul: "Short", time: "None" },
-                egkk: { haul: "Short", time: "None" },
-                eghi: { haul: "Short", time: "None" },
-                lemh: { haul: "Short", time: "None" },
-                lytv: { haul: "Short", time: "None" },
-                efkt: { haul: "Medium", time: "None" }
+                mdpc: { haul: "Short", time: "No Time Data", altitude: "", route: "No Route Data" },
+                mdst: { haul: "Medium", time: "No Time Data", altitude: "No Altitude Data", route: "No Route Data" },
+                egkk: { haul: "Short", time: "39m 44s", altitude: "No Altitude Data", route: "No Route Data" },
+                lemh: { haul: "Short", time: "No Time Data", altitude: "No Altitude Data", route: "No Route Data" },
+                lytv: { haul: "Short", time: "32m 4s", altitude: "No Altitude Data", route: "No Route Data" },
+                efkt: { haul: "Medium", time: "1h 2m 30s", altitude: "No Altitude Data", route: "No Route Data" }
             }
         },
 
         { origin: "LYTV", destination:
             {
-                mdpc: { haul: "Long", time: "None" },
-                mdst: { haul: "Long", time: "None" },
-                mdab: { haul: "Long", time: "None" },
-                egkk: { haul: "Long", time: "None" },
-                eghi: { haul: "Long", time: "None" },
-                lemh: { haul: "Short", time: "None" },
-                gclp: { haul: "Short", time: "None" },
-                efkt: { haul: "Long", time: "None" }
+                mdpc: { haul: "Long", time: "34m 41s", altitude: "No Altitude Data", route: "No Route Data" },
+                mdst: { haul: "Long", time: "No Time Data", altitude: "No Altitude Data", route: "No Route Data" },
+                egkk: { haul: "Long", time: "No Time Data", altitude: "No Altitude Data", route: "No Route Data" },
+                lemh: { haul: "Short", time: "No Time Data", altitude: "No Altitude Data", route: "No Route Data" },
+                gclp: { haul: "Short", time: "No Time Data", altitude: "No Altitude Data", route: "No Route Data" },
+                efkt: { haul: "Long", time: "No Time Data", altitude: "No Altitude Data", route: "No Route Data" }
             }
         },
 
         { origin: "EFKT", destination:
             {
-                mdpc: { haul: "Long", time: "None" },
-                mdst: { haul: "Long", time: "None" },
-                mdab: { haul: "Long", time: "None" },
-                egkk: { haul: "Short", time: "None" },
-                eghi: { haul: "Short", time: "None" },
-                lemh: { haul: "Medium", time: "None" },
-                gclp: { haul: "Medium", time: "None" },
-                efkt: { haul: "Long", time: "None" }
+                mdpc: { haul: "Long", time: "28m 18s", altitude: "No Altitude Data", route: "No Route Data" },
+                mdst: { haul: "Long", time: "No Time Data", altitude: "No Altitude Data", route: "No Route Data" },
+                egkk: { haul: "Short", time: "No Time Data", altitude: "No Altitude Data", route: "No Route Data" },
+                lemh: { haul: "Medium", time: "34m 28s", altitude: "No Altitude Data", route: "No Route Data" },
+                gclp: { haul: "Medium", time: "27m 36s", altitude: "No Altitude Data", route: "No Route Data" },
+                efkt: { haul: "Long", time: "No Time Data", altitude: "No Altitude Data", route: "No Route Data" }
             }
         }
     ]
@@ -244,29 +236,37 @@ function routes() {
         let depAirport;
         let arrAirport;
 
-        console.log("yp");
-
         depInput.addEventListener("input", () => {
             if (airportCodeList.includes(depInput.value.toUpperCase())) {
                 depAirport = depInput.value;
-                console.log(depAirport);
-                determine();
+            } else {
+                depAirport = "";
             }
+            determine();
+
         })
 
         arrInput.addEventListener("input", () => {
             if (airportCodeList.includes(arrInput.value.toUpperCase())) {
                 arrAirport = arrInput.value;
-                console.log(arrAirport);
-                determine();
+            } else {
+                arrAirport = "";
             }
+            determine();
         })
 
         function determine() {
+            const haulEl = document.querySelector("body#routes div.search div.output p.haul");
+            const airplanesEl = document.querySelector("body#routes div.search div.output p.airplanes");
+            const altitudeEl = document.querySelector("body#routes div.search div.output p.altitude");
+            const routeEl = document.querySelector("body#routes div.search div.output p.route");
+
             if (depAirport && arrAirport) {
-                console.log("TRUE!");
                 const time = routes.find(route => route.origin === depAirport.toUpperCase()).destination[arrAirport.toLowerCase()].time;
                 const haul = routes.find(route => route.origin === depAirport.toUpperCase()).destination[arrAirport.toLowerCase()].haul;
+                const altitude = routes.find(route => route.origin === depAirport.toUpperCase()).destination[arrAirport.toLowerCase()].altitude;
+                const route = routes.find(route => route.origin === depAirport.toUpperCase()).destination[arrAirport.toLowerCase()].route;
+
                 let airplanes;
                 if (haul == "Long") {
                     airplanes = "A350, MD11";
@@ -275,11 +275,20 @@ function routes() {
                 } else if (haul == "Short") {
                     airplanes = "B737, B717, B727, A320, A220"
                 }
-                
-                const haulEl = document.querySelector("body#routes div.search div.output p.haul");
-                const airplanesEl = document.querySelector("body#routes div.search div.output p.airplanes");
+
                 haulEl.innerHTML = `${haul} Haul - ${time}`;
-                airplanesEl.innerHTML = `${airplanes}`
+                airplanesEl.innerHTML = airplanes;
+                if (!(altitude == "No Altitude Data")) {
+                    altitudeEl.innerHTML = `FL${altitude}`;
+                } else {
+                    altitudeEl.innerHTML = `${altitude}`;
+                }
+                routeEl.innerHTML = route;
+            } else {
+                haulEl.innerHTML = `Haul - Time`;
+                airplanesEl.innerHTML = `Aircraft`;
+                altitudeEl.innerHTML = `Altitude`;
+                routeEl.innerHTML = `Route`;
             }
         }
     }
@@ -287,8 +296,132 @@ function routes() {
     getRouteInfo();
 }
 
+function charts() {
+    if (!(location.pathname == "/dalv/charts/")) {
+        return;
+    }
+
+    function fillList() {
+        const listSection = document.querySelector("body#charts section.list");
+
+        airports.forEach(airport => {
+            const newCell = document.createElement("div");
+            newCell.classList.add("airport", airport.code);
+            newCell.innerHTML = `
+                <img src="https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/airports/${(airport.code).toLowerCase()}.png">
+                <p class="code">${airport.code}</p>
+                <p class="name">${airport.name}</p>
+            `
+
+            listSection.appendChild(newCell);
+        });
+    }
+
+    function loadAirportCharts() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const paramList = [];
+        const listSect = document.querySelector("body#charts section.list");
+        const mdpcSect = document.querySelector("body#charts section.airport.mdpc");
+        const mdstSect = document.querySelector("body#charts section.airport.mdst");
+        const egkkSect = document.querySelector("body#charts section.airport.egkk");
+        const lemhSect = document.querySelector("body#charts section.airport.lemh");
+        const gclpSect = document.querySelector("body#charts section.airport.gclp");
+        const lytvSect = document.querySelector("body#charts section.airport.lytv");
+        const efktSect = document.querySelector("body#charts section.airport.efkt");
+
+        for (const [key, value] of urlParams) {
+            paramList.push({ key, value });
+        }
+
+        let airportParam;
+        if (paramList.find(param => param.key == "airport")) {
+            airportParam = (paramList.find(param => param.key == "airport").value);
+        } else {
+            return;
+        }
+
+        console.log(airportParam);
+
+        listSect.style.display = "none";
+        let newSection = document.querySelector(`body#charts section.airport.${airportParam.toLowerCase()}`);
+        console.log(newSection);
+        newSection.style.display = "flex";
+    }
+
+    fillList();
+    loadAirportCharts();
+}
+
+function navAndLoadingEls() {
+    if (location.pathname == "/dalv/mobile/") {
+        return;
+    }
+
+    const htmlContent = `
+    <div class="loading">
+        <p>There was an error.</p>
+    </div>
+
+    <nav>
+        <img src="/dalv/images/logo.png" class="nav-home">
+        <a class="nav-join direct act-join-discord">Join</a>
+        <div class="dropdown">
+            <a class="nav-info dropper">Info</a>
+            <div class="dropdown-content-wrapper">
+                <div class="dropdown-content info">
+                    <a class="nav-info-fleet">Fleet</a>
+                    <a class="nav-info-staff">Staff</a>
+                    <a class="nav-info-partnerships">Partnerships</a>
+                </div>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a class="nav-resources dropper">Resources</a>
+            <div class="dropdown-content-wrapper">
+                <div class="dropdown-content resources">
+                    <a class="nav-resources-charts">Charts</a>
+                    <a class="nav-resources-routes">Routes</a>
+                    <a class="nav-resources-checklists">Checklists</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    `;
+
+    // Insert at the beginning of the body
+    document.body.insertAdjacentHTML("afterbegin", htmlContent);    
+}
+
+function checkMobile() {
+    window.addEventListener("resize", () => {
+        toggleMobile();
+    });
+
+    function toggleMobile() {
+        if (innerWidth <= 800) {
+            if (location.pathname.includes("mobile")) {
+                return;
+            }
+
+            location.href = "/dalv/mobile/";
+        } else {
+            if (location.pathname.includes("mobile")) {
+                location.href = "/dalv/";
+            }
+        }
+    }
+
+    toggleMobile();
+}
+
+navAndLoadingEls();
 loadingCover();
-buttonsAndLinks();
+document.addEventListener("DOMContentLoaded", () => {
+    buttonsAndLinks();
+});
 randomBannerImage();
+checkMobile();
 hideOnScroll();
 routes();
+charts();
