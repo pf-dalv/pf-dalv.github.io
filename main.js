@@ -365,7 +365,7 @@ function navAndLoadingEls() {
     </div>
 
     <nav>
-        <img src="/dalv/images/logo.png" class="nav-home">
+        <img src="https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/logo.png" class="nav-home">
         <a class="nav-join direct act-join-discord">Join</a>
         <div class="dropdown">
             <a class="nav-info dropper">Info</a>
