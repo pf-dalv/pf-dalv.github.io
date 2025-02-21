@@ -209,10 +209,10 @@ body#routes {
                     font-size: 20px;
                 }
 
-                input {
+                input.airport {
                     cursor: text;
                     text-transform: uppercase;
-                    font-size: 100px;
+                    font-size: 95px;
                     padding: 10px 20px;
                     border-radius: 20px;
                     width: calc(4em + 40px);
@@ -236,12 +236,40 @@ body#routes {
                         color: white;
                     }
                 }
+
+                input.runway {
+                    cursor: text;
+                    text-transform: uppercase;
+                    opacity: 0;
+                    font-size: 30px;
+                    border-radius: 20px;
+                    width: calc(4em + 40px);
+                    outline: none;
+                    height: 50px;
+                    border: 2px solid transparent;
+                    background: rgba(255, 255, 255, 0.2);
+                    color: white;
+                    text-shadow: 0px 0px 5px black;
+                    text-align: center;
+                    position: relative;
+                    margin-bottom: 5px;
+                    line-height: 1;
+    
+                    &:focus {
+                        border: 2px solid white;
+                    }
+
+                    &::selection {
+                        background: black;
+                        color: white;
+                    }
+                }
             }
 
             i.enroute {
                 font-size: 30px;
                 color: white;
-                transform: translateY(20px);
+                transform: translateY(-15px);
             }
         }
 
