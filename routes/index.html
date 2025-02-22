@@ -9,27 +9,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body id="routes">
-    <div class="search">
-      <div class="inputs">
-        <div class="departure airport">
-          <p class="label">Departure</p>
-          <input type="text" class="airport">
-          <input type="text" class="runway">
+    <div class="form">
+      <section class="f1">
+        <p class="label deparrairports">Departure & Arrival Airports</p>
+        <div class="airports">
+          <input type="text" class="departure" maxlength="4" placeholder="FROM" class="departure">
+          <i class="enroute fa-solid fa-plane"></i>
+          <input type="text" class="arrival" maxlength="4" placeholder="TO" class="arrival">
         </div>
-        <i class="fa-solid fa-plane enroute"></i>
-        <div class="arrival airport">
-          <p class="label">Arrival</p>
-          <input type="text" class="airport">
-          <input type="text" class="runway">
+        <p class="label aircraft">Aircraft</p>
+        <div class="aircraft">
+          <button class="a220">A220</button>
+          <button class="a320">A320</button>
+          <button class="a350">A350</button>
+          <button class="b717">B717</button>
+          <button class="b727">B727</button>
+          <button class="b737">B737</button>
+          <button class="b757">B757</button>
+          <button class="md11">MD11</button>
         </div>
-      </div>
-      <div class="output">
-        <p class="haul">Haul - Time</p>
-        <p class="airplanes">Aircraft</p>
-        <p class="altitude">Altitude</p>
-        <p class="route">Route</p>
-        <p class="standards">SID - STAR</p>
-      </div>
+        <button class="next">Next <i class="fa-solid fa-arrow-right"></i></button>
+      </section>
     </div>
   
     <script defer type="text/javascript" src="/dalv/main.js"></script>

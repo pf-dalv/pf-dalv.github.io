@@ -112,7 +112,16 @@ function randomBannerImage() {
         "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/a350-forward-port.png",
         "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/737-final-egkk.png",
         "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/737-over-egkk-birdseye.png",
-    ]
+        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/737-taxiing.png",
+        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/757-moon-water.png",
+        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/757-snow-moon.png",
+        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/a350-cibao-moon.png",
+        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/a350-gate-port-forward.png",
+        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/behind-right-a350.png",
+        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/city-a350.png",
+        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/moon-tail.png",
+        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/taxi-light-a350.png" 
+    ];
 
     const bannerEl = document.querySelector("section.banner");
     if (bannerEl) {
@@ -152,150 +161,225 @@ function routes() {
 
         { origin: "MDPC", destination:
             {
-                mdst: { haul: "Short", time: "No Time Data", altitude: "020", route: "No Route Data" },
-                egkk: { haul: "Long", time: "47m 24s", altitude: "090", route: "No Route Data" },
-                lemh: { haul: "Medium", time: "24m 30s", altitude: "070", route: "No Route Data" },
-                gclp: { haul: "Short", time: "40m 54s", altitude: "050", route: "No Route Data" },
-                lytv: { haul: "Long", time: "37m 40s", altitude: "050", route: "No Route Data" },
-                efkt: { haul: "Long", time: "52m 46s", altitude: "110", route: "No Route Data" }
+                egkk: { haul: "Long", time: "47m 24s", altitude: "090", sid: "KATOK 2T", route: "KATOK BANZAI COSTI LORPO ISKAL BOGNA MAYFIELD", star: "VECTORS" },
+                lemh: { haul: "Medium", time: "24m 30s", altitude: "070", sid: "KATOK 2T", route: "KATOK VAXRI SYOL4", star: { 1: "NAME UNKNOWN, WAYPOINTS: SYOL4 CARME CAT", 19: "VECTORS"} }, // 
+                gclp: { haul: "Short", time: "40m 54s", altitude: "050", sid: "KATOK 2T", route: "KATOK BANZAI COSTI", star: "COSTI 1C" },
+                lytv: { haul: "Long", time: "37m 40s", altitude: "050", sid: "KATOK 2T", route: "KATOK VAXRI NAPEV", star: {14: "NAPEV 14R", 32: "NAPEV 32D"} },
+                efkt: { haul: "Long", time: "52m 46s", altitude: "110", sid: "KATOK 2T", route: "KATOK BANZAI MUNCHY SENOT MEROS KONAN LIMA", star: "VECTORS" }
             }
         },
 
         { origin: "MDST", destination:
             {
-                mdpc: { haul: "Short", time: "No Time Data", altitude: "020", route: "No Route Data" },
-                egkk: { haul: "Long", time: "36m 33s", altitude: "090", route: "No Route Data" },
-                lemh: { haul: "Long", time: "No Time Data", altitude: "070", route: "No Route Data" },
-                gclp: { haul: "Medium", time: "40m 9s", altitude: "050", route: "No Route Data" },
-                lytv: { haul: "Long", time: "37m 11s", altitude: "050", route: "No Route Data" },
-                efkt: { haul: "Long", time: "44m 33s", altitude: "110", route: "No Route Data" }
+                egkk: { haul: "Long", time: "41m 31s", altitude: "090", sid: "VECTORS", route: "PIXAR KOLBI HDWA BOGNA MAYFIELD", star: "VECTORS" },
+                lemh: { haul: "Long", time: "No Time Data", altitude: "070", sid: "VECTORS", route: "PC113 PC115 PC114 ODEGI VAXRI SYOL4", star: { 1: "NAME UNKNOWN, WAYPOINTS: SYOL4 CARME CAT", 19: "VECTORS"} },
+                gclp: { haul: "Medium", time: "40m 9s", altitude: "050", sid: "VECTORS", route: "PC113 PC115 PC114 GOLVER BETIR LP1O3 COSTI", star: "COSTI 1C" },
+                lytv: { haul: "Long", time: "37m 11s", altitude: "050", sid: "VECTORS", route: "PC113 PC102 ANTEX NAPEV", star: "NAPEV 14R if rw 14, NAPEV 32D if rw 32" },
+                efkt: { haul: "Long", time: "44m 33s", altitude: "110", sid: "VECTORS", route: "PC113 PC115 FAHAZ KOPUD LUNIK KONAN LIMA", star: "VECTORS" }
             }
         },
 
         { origin: "EGKK", destination:
             {
-                mdpc: { haul: "Long", time: "51m 26s", altitude: "080", route: "No Route Data" },
-                mdst: { haul: "Long", time: "No Time Data", altitude: "080", route: "No Route Data" },
-                lemh: { haul: "Short", time: "32m 35s", altitude: "050", route: "No Route Data" },
-                gclp: { haul: "Medium", time: "No Time Data", altitude: "060", route: "No Route Data" },
-                lytv: { haul: "Long", time: "No Time Data", altitude: "090", route: "No Route Data" },
-                efkt: { haul: "Short", time: "42m 7s", altitude: "050", route: "No Route Data" }
+                mdpc: { haul: "Long", time: "59m 38s", altitude: "080", sid: {26: "NOVMA 1X", 8: "VECTORS"}, route: "NOVMA LEDGO FALCON POKEG", star: "POKEG 1W" }, 
+                mdst: { haul: "Long", time: "No Time Data", altitude: "080", sid: {26: "NOVMA 1X", 8: "VECTORS"}, route: "NOVMA LEDGO FALCON POKEG PC113", star: "VECTORS" },
+                lemh: { haul: "Short", time: "32m 35s", altitude: "050", sid: {26: "BOGNA 1X", 8: "VECTORS"}, route: "BOGNA LUNIK SENOT", star: { 1: "SENOT 3C", 19: "VECTORS"} },
+                gclp: { haul: "Medium", time: "No Time Data", altitude: "060", sid: {26: "NOVMA 1X", 8: "VECTORS"}, route: "NOVMA ROGER BRICK", star: { 21: "ORTIS 5C", 3: "KONBA 4D"} }, 
+                efkt: { haul: "Short", time: "42m 7s", altitude: "050", sid: {26: "WIZAD 1X", 8: "VECTORS"}, route: "WIZAD MINTY LIMA", star: "VECTORS" }
             }
         },
 
         { origin: "LEMH", destination:
             {
-                mdpc: { haul: "Medium", time: "No Time Data", altitude: "060", route: "No Route Data" },
-                mdst: { haul: "Long", time: "38m 29s", altitude: "060", route: "No Route Data" },
-                egkk: { haul: "Short", time: "14m 38s", altitude: "060", route: "No Route Data" },
-                gclp: { haul: "Short", time: "No Time Data", altitude: "060", route: "No Route Data" },
-                lytv: { haul: "Short", time: "25m 5s", altitude: "050", route: "No Route Data" },
-                efkt: { haul: "Medium", time: "30m 24s", altitude: "070", route: "No Route Data" }
+                mdpc: { haul: "Medium", time: "No Time Data", altitude: "060", sid: { 1: "ISKAL 1A", 19: "VECTORS"}, route: "ISKAL KOPUD DICEY BETIR", star: "BETIR 1W" },
+                mdst: { haul: "Long", time: "38m 29s", altitude: "060", sid: { 1: "ISKAL 1A", 19: "VECTORS"}, route: "ISKAL KOPUD DICEY BETIR GOLVER PC114 PC115 PC113", star: "VECTORS" },
+                egkk: { haul: "Short", time: "14m 38s", altitude: "060", sid: { 1: "SARGO 2B", 19: "VECTORS"}, route: "SARGO MAYFIELD", star: "VECTORS" },
+                lytv: { haul: "Short", time: "25m 5s", altitude: "050", sid: "VECTORS", route: "MORSS OXY", star: {14: "OXY 14R", 32: "OXY 32D"} },
+                efkt: { haul: "Medium", time: "30m 24s", altitude: "070", sid: { 1: "MEROS 3C", 19: "VECTORS"}, route: "MEROS KONAN LIMA", star: "VECTORS" }
             }
         },
 
         { origin: "GCLP", destination:
             {
-                mdpc: { haul: "Short", time: "No Time Data", altitude: "", route: "No Route Data" },
-                mdst: { haul: "Medium", time: "No Time Data", altitude: "No Altitude Data", route: "No Route Data" },
-                egkk: { haul: "Short", time: "39m 44s", altitude: "No Altitude Data", route: "No Route Data" },
-                lemh: { haul: "Short", time: "No Time Data", altitude: "No Altitude Data", route: "No Route Data" },
-                lytv: { haul: "Short", time: "32m 4s", altitude: "No Altitude Data", route: "No Route Data" },
-                efkt: { haul: "Medium", time: "1h 2m 30s", altitude: "No Altitude Data", route: "No Route Data" }
+                mdpc: { haul: "Short", time: "No Time Data", altitude: "050", sid: { 21: "ODEGI 2B", 3: "ODEGI 2A" }, route: "ODEGI PC112", star: "VECTORS" },
+                mdst: { haul: "Medium", time: "No Time Data", altitude: "060", sid: { 21: "ODEGI 2B", 3: "ODEGI 2A" }, route: "ODEGI PC114 PC115 PC113", star: "VECTORS" },
+                egkk: { haul: "Short", time: "No Time Data", altitude: "050", sid: { 21: "KOPUD 1B", 3: "KOPUD 1A" }, route: "KOPUD ISKAL BOGNA MAYFIELD", star: "VECTORS" },
+                lytv: { haul: "Short", time: "32m 4s", altitude: "065", sid: {21: "COSTI 4B", 3: "COSTI 4A" }, route: "COSTI MUNCHY NAPEV", star: {14: "NAPEV 14R", 32: "NAPEV 32D"} },
+                efkt: { haul: "Medium", time: "1h 2m 30s", altitude: "080", sid: { 21: "KOPUD 1B", 3: "KOPUD 1A" }, route: "KOPUD HARDY KUNAV LIMA", star: "VECTORS" }
             }
         },
 
         { origin: "LYTV", destination:
             {
-                mdpc: { haul: "Long", time: "34m 41s", altitude: "No Altitude Data", route: "No Route Data" },
-                mdst: { haul: "Long", time: "No Time Data", altitude: "No Altitude Data", route: "No Route Data" },
-                egkk: { haul: "Long", time: "No Time Data", altitude: "No Altitude Data", route: "No Route Data" },
-                lemh: { haul: "Short", time: "No Time Data", altitude: "No Altitude Data", route: "No Route Data" },
-                gclp: { haul: "Short", time: "No Time Data", altitude: "No Altitude Data", route: "No Route Data" },
-                efkt: { haul: "Long", time: "No Time Data", altitude: "No Altitude Data", route: "No Route Data" }
+                mdpc: { haul: "Long", time: "34m 41s", altitude: "080", sid: { 32: "NAME UNKNOWN, WAYPOINTS: GOSUT STAR NIK OLIVU", 14: "NAME UNKNOWN, WAYPOINTS: TIVTI DEALT NAPEV"}, route: "OLIVU SYOL4 JELLY BETIR", star: "BETIR 1W" },
+                mdst: { haul: "Long", time: "No Time Data", altitude: "085", sid: { 32: "NAME UNKNOWN, WAYPOINTS: GOSUT STAR NIK OLIVU", 14: "NAME UNKNOWN, WAYPOINTS: TIVTI DEALT NAPEV"}, route: "OLIVU SYOL4 VAXRI ODEGI PC114 PC115 PC113", star: "VECTORS" },
+                lemh: { haul: "Short", time: "No Time Data", altitude: "050", sid: { 32: "NAME UNKNOWN, WAYPOINTS: GOSUT STAR NIK OLIVU", 14: "NAME UNKNOWN, WAYPOINTS: TIVTI DEALT NAPEV"}, route: "OLIVU MNH31", star: "VECTORS" },
+                gclp: { haul: "Short", time: "No Time Data", altitude: "070", sid: { 32: "NAME UNKNOWN, WAYPOINTS: GOSUT STAR NIK OLIVU", 14: "NAME UNKNOWN, WAYPOINTS: TIVTI DEALT NAPEV"}, route: "SYOL4 MUNCHY COSTI", star: "COSTI 1C" },
             }
         },
 
         { origin: "EFKT", destination:
             {
-                mdpc: { haul: "Long", time: "28m 18s", altitude: "No Altitude Data", route: "No Route Data" },
-                mdst: { haul: "Long", time: "No Time Data", altitude: "No Altitude Data", route: "No Route Data" },
-                egkk: { haul: "Short", time: "No Time Data", altitude: "No Altitude Data", route: "No Route Data" },
-                lemh: { haul: "Medium", time: "34m 28s", altitude: "No Altitude Data", route: "No Route Data" },
-                gclp: { haul: "Medium", time: "27m 36s", altitude: "No Altitude Data", route: "No Route Data" },
-                efkt: { haul: "Long", time: "No Time Data", altitude: "No Altitude Data", route: "No Route Data" }
+                mdpc: { haul: "Long", time: "No Time Data", altitude: "090", sid: { 34: "ROSE 3C", 16: "VECTORS"}, route: "ROSE TEBRA LIZAD KOLBI POKEG", star: "POKEG 1W" },
+                mdst: { haul: "Long", time: "No Time Data", altitude: "090", sid: { 34: "ROSE 3C", 16: "VECTORS"}, route: "ROSE TEBRA LIZAD KOLBI POKEG PC113", star: "VECTORS" },
+                egkk: { haul: "Short", time: "No Time Data", altitude: "050", sid: { 34: "ROSE 3C", 16: "VECTORS"}, route: "ROSE FRANE DETLING", star: "VECTORS" },
+                lemh: { haul: "Medium", time: "34m 28s", altitude: "070", sid: { 34: "ROSE 3C", 16: "VECTORS"}, route: "ROSE MINTY KUNAV SENOT", star: "SENOT 3C" },
+                gclp: { haul: "Medium", time: "27m 36s", altitude: "080", sid: { 34: "ROSE 3C", 16: "VECTORS"}, route: "ROSE FRANE MAYFIELD LIZAD BRICK", star: { 21: "ORTIS 5C", 3: "KONBA 4D"} }
             }
         }
     ]
 
     // EXAMPLE
-    // console.log(routes.find(route => route.origin === "MDPC").destination.mdst.time);
+    // console.log(routes.find(route => route.origin === "MDPC").destination.mdst.sid.34);
 
-    function getRouteInfo() {
-        const depInput = document.querySelector("body#routes div.search div.inputs div.departure input");
-        const arrInput = document.querySelector("body#routes div.search div.inputs div.arrival input");
+    function formFirst() {
+        let selAirports = [];
+        let selAircraft;
+        let invalid1 = true;
+        let invalid2 = true;
 
-        let depAirport;
-        let arrAirport;
+        function airportInputValidation() {
+            const depAirport = document.querySelector("body#routes div.form div.airports input.departure");
+            const arrAirport = document.querySelector("body#routes div.form div.airports input.arrival");
+            const bothAirports = document.querySelectorAll("body#routes div.form div.airports input");
 
-        depInput.addEventListener("input", () => {
-            if (airportCodeList.includes(depInput.value.toUpperCase())) {
-                depAirport = depInput.value;
-            } else {
-                depAirport = "";
+            let depAprt;
+            let arrAprt;
+
+            bothAirports.forEach(aport => {
+                aport.addEventListener("change", () => {
+
+                    if (airportCodeList.includes(aport.value.toUpperCase())) {
+                        aport.classList.remove("invalid");
+                        invalid1 = false;
+                    } else {
+                        invalid1 = true;
+                        if (aport.value == "") {
+                        } else {
+                            aport.classList.add("invalid");
+                            aport.classList.add("shake");
+                            setTimeout(() => {
+                                aport.classList.remove("shake");
+                            }, 500);
+                        }
+                    }
+
+                    if (aport.classList.contains("departure")) {
+                        depAprt = aport.value.toUpperCase();
+                    } else if (aport.classList.contains("arrival")) {
+                        arrAprt = aport.value.toUpperCase();
+                    }
+
+                    selAirports = [depAprt, arrAprt];
+                    aircraftSelectValidation();
+                })
+
+                aport.addEventListener("focus", () => {
+                    aport.classList.remove("invalid");
+                })
+            });
+        }
+
+        function aircraftSelect() {
+            const aircraftButtons = document.querySelectorAll("body#routes div.form div.aircraft button");
+
+            aircraftButtons.forEach(btn => {
+                btn.addEventListener("click", () => {
+                    if (btn.classList.contains("unselectable")) {
+                        return;
+                    }
+
+                    const attemptVal = btn.innerHTML;
+                    if (attemptVal == selAircraft) {
+                        btn.classList.remove("selected");
+                        selAircraft = "";
+                        invalid2 = true;
+                    } else {
+                        aircraftButtons.forEach(optButton => {
+                            optButton.classList.remove("selected");
+                        })
+                        btn.classList.add("selected");
+                        selAircraft = attemptVal;
+                        invalid2 = false;
+                    }
+                })
+            });
+        }
+
+        function aircraftSelectValidation() {
+            const restrictions = [
+                { airport: "EFKT", aircraft: ["A350"] },
+                { airport: "LYTV", aircraft: ["A350", "MD11", "B757"] },
+                { airport: "LEMH", aircraft: ["A350"] },
+            ]
+
+            console.log(selAirports[0]);
+
+            if (selAirports[0] == "EFKT" || selAirports[0] == "LYTV" || selAirports[0] == "LEMH") {
+                if (selAircraft == "A350") {
+                    document.querySelector("body#routes div.form div.aircraft button.a350").classList.remove("selected");
+                }
             }
-            determine();
 
-        })
+            if (selAirports[0] == "EFKT") {
+                document.querySelector("body#routes div.form div.aircraft button.a350").classList.add("unselectable");
 
-        arrInput.addEventListener("input", () => {
-            if (airportCodeList.includes(arrInput.value.toUpperCase())) {
-                arrAirport = arrInput.value;
-            } else {
-                arrAirport = "";
-            }
-            determine();
-        })
+            } else if (selAirports[0] == "LYTV") {
+                document.querySelector("body#routes div.form div.aircraft button.md11").classList.add("unselectable");
+                document.querySelector("body#routes div.form div.aircraft button.b757").classList.add("unselectable");
+                document.querySelector("body#routes div.form div.aircraft button.a350").classList.add("unselectable");
 
-        function determine() {
-            const haulEl = document.querySelector("body#routes div.search div.output p.haul");
-            const airplanesEl = document.querySelector("body#routes div.search div.output p.airplanes");
-            const altitudeEl = document.querySelector("body#routes div.search div.output p.altitude");
-            const routeEl = document.querySelector("body#routes div.search div.output p.route");
-
-            if (depAirport && arrAirport) {
-                const time = routes.find(route => route.origin === depAirport.toUpperCase()).destination[arrAirport.toLowerCase()].time;
-                const haul = routes.find(route => route.origin === depAirport.toUpperCase()).destination[arrAirport.toLowerCase()].haul;
-                const altitude = routes.find(route => route.origin === depAirport.toUpperCase()).destination[arrAirport.toLowerCase()].altitude;
-                const route = routes.find(route => route.origin === depAirport.toUpperCase()).destination[arrAirport.toLowerCase()].route;
-
-                let airplanes;
-                if (haul == "Long") {
-                    airplanes = "A350, MD11";
-                } else if (haul == "Medium") {
-                    airplanes = "B757"
-                } else if (haul == "Short") {
-                    airplanes = "B737, B717, B727, A320, A220"
+                if (selAircraft == "B757" || selAircraft == "MD11") {
+                    document.querySelector("body#routes div.form div.aircraft button.md11").classList.remove("selected");
+                    document.querySelector("body#routes div.form div.aircraft button.b757").classList.remove("selected");
                 }
 
-                haulEl.innerHTML = `${haul} Haul - ${time}`;
-                airplanesEl.innerHTML = airplanes;
-                if (!(altitude == "No Altitude Data")) {
-                    altitudeEl.innerHTML = `FL${altitude}`;
-                } else {
-                    altitudeEl.innerHTML = `${altitude}`;
-                }
-                routeEl.innerHTML = route;
+            } else if (selAirports[0] == "LEMH") {
+                document.querySelector("body#routes div.form div.aircraft button.a350").classList.add("unselectable");
+
             } else {
-                haulEl.innerHTML = `Haul - Time`;
-                airplanesEl.innerHTML = `Aircraft`;
-                altitudeEl.innerHTML = `Altitude`;
-                routeEl.innerHTML = `Route`;
+                document.querySelectorAll("body#routes div.form div.aircraft button").forEach(btn => {
+                    btn.classList.remove("unselectable");
+                    
+                })
             }
         }
+
+        function workNextButton() {
+            const nextBtn = document.querySelector("body#routes div.form section.f1 button.next");
+            const firstSect = document.querySelector("body#routes div.form section.f1");
+            const secondSect = document.querySelector("body#routes div.form section.f2");
+            
+            console.log(nextBtn);
+
+            if (!nextBtn) {
+                console.warn("RETURN!");
+                return;
+            }
+
+            nextBtn.addEventListener("click", () => {
+                console.log(invalid1, invalid2);
+
+                if (invalid1 == true || invalid2 == true) {
+                    nextBtn.classList.add("shake");
+                    setTimeout(() => {
+                        nextBtn.classList.remove("shake");
+                    }, 500);
+                } else {
+                    nextBtn.classList.remove("shake");
+                    firstSect.style.display = "none";
+                    secondSect.style.display = "flex";
+                }
+            })
+        }
+
+        airportInputValidation();
+        aircraftSelect();
+        aircraftSelectValidation();
+        workNextButton();
     }
 
-    getRouteInfo();
+    formFirst();
 }
 
 function charts() {
