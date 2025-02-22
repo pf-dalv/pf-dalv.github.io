@@ -313,11 +313,10 @@ function routes() {
                 { airport: "LEMH", aircraft: ["A350"] },
             ]
 
-            console.log(selAirports[0]);
-
             if (selAirports[0] == "EFKT" || selAirports[0] == "LYTV" || selAirports[0] == "LEMH") {
                 if (selAircraft == "A350") {
                     document.querySelector("body#routes div.form div.aircraft button.a350").classList.remove("selected");
+                    selAircraft = "";
                 }
             }
 
@@ -332,6 +331,7 @@ function routes() {
                 if (selAircraft == "B757" || selAircraft == "MD11") {
                     document.querySelector("body#routes div.form div.aircraft button.md11").classList.remove("selected");
                     document.querySelector("body#routes div.form div.aircraft button.b757").classList.remove("selected");
+                    selAircraft = "";
                 }
 
             } else if (selAirports[0] == "LEMH") {
@@ -340,7 +340,6 @@ function routes() {
             } else {
                 document.querySelectorAll("body#routes div.form div.aircraft button").forEach(btn => {
                     btn.classList.remove("unselectable");
-                    
                 })
             }
         }
@@ -350,15 +349,12 @@ function routes() {
             const firstSect = document.querySelector("body#routes div.form section.f1");
             const secondSect = document.querySelector("body#routes div.form section.f2");
             
-            console.log(nextBtn);
 
             if (!nextBtn) {
-                console.warn("RETURN!");
                 return;
             }
 
             nextBtn.addEventListener("click", () => {
-                console.log(invalid1, invalid2);
 
                 if (invalid1 == true || invalid2 == true) {
                     nextBtn.classList.add("shake");
@@ -426,11 +422,8 @@ function charts() {
             return;
         }
 
-        console.log(airportParam);
-
         listSect.style.display = "none";
         let newSection = document.querySelector(`body#charts section.airport.${airportParam.toLowerCase()}`);
-        console.log(newSection);
         newSection.style.display = "flex";
     }
 
