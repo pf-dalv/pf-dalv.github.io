@@ -99,7 +99,7 @@ body#home {
     section.banner {
         height: 100vh;
         width: 100vw;
-        background: url(/dalv/images/banners/moon-717.png);
+        background: linear-gradient(to right, var(--brand-navy), (var(--brand-red)));
         background-size: cover;
         overflow: hidden;
 
@@ -180,6 +180,46 @@ body#home {
             color: rgba(255, 255, 255);
             text-shadow: 0px 0px 10px black;
             opacity: 0.75;
+            transition: opacity 0.25s ease;
+        }
+    }
+
+    footer {
+        padding: 30px;
+        background: var(--brand-navy);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+
+        div {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+
+            p.header {
+                color: white;
+                font-size: 30px;
+                font-weight: bold;
+            }
+
+            p:not(.header) {
+                color: white;
+                font-size: 20px;
+
+                a {
+                    color: white;
+                    text-decoration: underline;
+                    cursor: pointer;
+                    padding: 0px 1px 0px 2px;
+
+                    &:hover {
+                        text-decoration: none;
+                        background: white;
+                        color: var(--brand-navy);
+                    }
+                }
+            }
         }
     }
 }
