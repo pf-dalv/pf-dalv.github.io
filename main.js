@@ -293,7 +293,7 @@ function doRoutes() {
             console.log(sidInfo);
             console.log(sidInfo.displayName);
 
-            if (sidInfo.displayName !== "VECTORS") {
+            if (sidInfo.displayName !== "Vectors") {
                 const page5El = document.querySelector("body#routes section.form div.page.pg5");
                 page5El.innerHTML = `
                     <p class="question">A SID is available. Would you like to use it?</p>
