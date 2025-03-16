@@ -1,11 +1,11 @@
 const airports = [
-    { code: "MDPC", name: "Punta Cana" },
-    { code: "MDST", name: "Cibao" },
-    { code: "EGKK", name: "London Gatwick" },
-    { code: "LEMH", name: "Menorca" },
-    { code: "GCLP", name: "Gran Canaria" },
-    { code: "LYTV", name: "Tivat" },
-    { code: "EFKT", name: "Kittilä" }
+    { code: "MDPC", name: "Punta Cana", runways: ["8", "9", "08", "09", "26", "27"] },
+    { code: "MDST", name: "Cibao", runways: ["11", "29"] },
+    { code: "EGKK", name: "London Gatwick", runways: ["8L", "8R", "08L", "08R", "26L", "26R"] },
+    { code: "LEMH", name: "Menorca", runways: ["1", "01", "19"] },
+    { code: "GCLP", name: "Gran Canaria", runways: ["3L", "3R", "03L", "03R", "21L", "21R"] },
+    { code: "LYTV", name: "Tivat", runways: ["14", "32"] },
+    { code: "EFKT", name: "Kittilä", runways: ["16", "34"] }
 ]
 
 function loadingCover() {
@@ -101,65 +101,9 @@ function buttonsAndLinks() {
 }
 
 function randomBannerImage() {
-    const banners = [
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/5-delta-dish.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/757-approach.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/moon-717.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/4-a350-tails-port.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/luggage-night-727.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/gclp-4-a350s.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/gclp-2-a350-tails.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/a350-forward-port.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/737-final-egkk.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/737-over-egkk-birdseye.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/737-taxiing.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/757-moon-water.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/757-snow-moon.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/a350-cibao-moon.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/a350-gate-port-forward.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/behind-right-a350.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/city-a350.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/moon-tail.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/taxi-light-a350.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/2-a320s-moon.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/717-boeing-bldg-moon.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/737-sun.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/a320-climbing.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/a320-gate.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/a320-hold-short.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/a320-taxi-moon.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/a350-cones.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/a350-departing.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/a350-flaring.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/a350-hsbc-night.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/a350-huge-moon.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/a350-nose-moon-virgin.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/a350-taxi-starboard.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/a350-turning-moon.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/a350-turning-smoke.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/amazing-thirds-lines.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/arrival-huge-moon-rwylights-night.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/bravo-right.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/bulb-moon-14.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/bulb-rotate.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/detached-gate.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/dont-cross-a1pha-a320s.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/even-more-a320s.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/fenced-moon.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/gate-pov-2.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/gate-pov.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/landing-lights.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/md11-forward-slight-starboard.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/md11-gate.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/md11-tail.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/sun-wing-glow.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/tail-moon-greenlight-port.png",
-        "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/tivat-a320-air.png",
-    ];
-
     const bannerEl = document.querySelector("section.banner");
     if (bannerEl) {
-        bannerEl.style.backgroundImage = `url(${banners[Math.floor(Math.random() * banners.length)]})`;
+        bannerEl.style.backgroundImage = `url(${dataBanners[Math.floor(Math.random() * dataBanners.length)]})`;
     }
 }
 
@@ -179,7 +123,7 @@ function hideOnScroll() {
     }
 }
 
-function routes() {
+function doRoutes() {
     if (!(location.pathname == "/dalv/routes/")) {
         return;
     }
@@ -189,230 +133,114 @@ function routes() {
     // SHORT (UNDER 20NM)
     // MEDIUM (20-30NM)
     // LONG (OVER 30NM)
-    // DPC DST DAB DCR
+    // DPC DST DAB! DCR!
 
-    const routes = [
+    function getInformation() {
+        let page = 0;
+        let depAirportCode;
+        let arrAirportCode;
+        let depRunway;
+        let arrRunway;
+        let aircraftType;
 
-        { origin: "MDPC", destination:
-            {
-                egkk: { haul: "Long", time: "47m 24s", altitude: "090", sid: "KATOK 2T", route: "KATOK BANZAI COSTI LORPO ISKAL BOGNA MAYFIELD", star: "VECTORS" },
-                lemh: { haul: "Medium", time: "24m 30s", altitude: "070", sid: "KATOK 2T", route: "KATOK VAXRI SYOL4", star: { 1: "NAME UNKNOWN, WAYPOINTS: SYOL4 CARME CAT", 19: "VECTORS"} }, // 
-                gclp: { haul: "Short", time: "40m 54s", altitude: "050", sid: "KATOK 2T", route: "KATOK BANZAI COSTI", star: "COSTI 1C" },
-                lytv: { haul: "Long", time: "37m 40s", altitude: "050", sid: "KATOK 2T", route: "KATOK VAXRI NAPEV", star: {14: "NAPEV 14R", 32: "NAPEV 32D"} },
-                efkt: { haul: "Long", time: "52m 46s", altitude: "110", sid: "KATOK 2T", route: "KATOK BANZAI MUNCHY SENOT MEROS KONAN LIMA", star: "VECTORS" }
-            }
-        },
+        const depAirportInput = document.querySelector("body#routes section.form div.page.pg1 input.answer");
 
-        { origin: "MDST", destination:
-            {
-                egkk: { haul: "Long", time: "41m 31s", altitude: "090", sid: "VECTORS", route: "PIXAR KOLBI HDWA BOGNA MAYFIELD", star: "VECTORS" },
-                lemh: { haul: "Long", time: "No Time Data", altitude: "070", sid: "VECTORS", route: "PC113 PC115 PC114 ODEGI VAXRI SYOL4", star: { 1: "NAME UNKNOWN, WAYPOINTS: SYOL4 CARME CAT", 19: "VECTORS"} },
-                gclp: { haul: "Medium", time: "40m 9s", altitude: "050", sid: "VECTORS", route: "PC113 PC115 PC114 GOLVER BETIR LP1O3 COSTI", star: "COSTI 1C" },
-                lytv: { haul: "Long", time: "37m 11s", altitude: "050", sid: "VECTORS", route: "PC113 PC102 ANTEX NAPEV", star: "NAPEV 14R if rw 14, NAPEV 32D if rw 32" },
-                efkt: { haul: "Long", time: "44m 33s", altitude: "110", sid: "VECTORS", route: "PC113 PC115 FAHAZ KOPUD LUNIK KONAN LIMA", star: "VECTORS" }
-            }
-        },
-
-        { origin: "EGKK", destination:
-            {
-                mdpc: { haul: "Long", time: "59m 38s", altitude: "080", sid: {26: "NOVMA 1X", 8: "VECTORS"}, route: "NOVMA LEDGO FALCON POKEG", star: "POKEG 1W" }, 
-                mdst: { haul: "Long", time: "No Time Data", altitude: "080", sid: {26: "NOVMA 1X", 8: "VECTORS"}, route: "NOVMA LEDGO FALCON POKEG PC113", star: "VECTORS" },
-                lemh: { haul: "Short", time: "32m 35s", altitude: "050", sid: {26: "BOGNA 1X", 8: "VECTORS"}, route: "BOGNA LUNIK SENOT", star: { 1: "SENOT 3C", 19: "VECTORS"} },
-                gclp: { haul: "Medium", time: "No Time Data", altitude: "060", sid: {26: "NOVMA 1X", 8: "VECTORS"}, route: "NOVMA ROGER BRICK", star: { 21: "ORTIS 5C", 3: "KONBA 4D"} }, 
-                efkt: { haul: "Short", time: "42m 7s", altitude: "050", sid: {26: "WIZAD 1X", 8: "VECTORS"}, route: "WIZAD MINTY LIMA", star: "VECTORS" }
-            }
-        },
-
-        { origin: "LEMH", destination:
-            {
-                mdpc: { haul: "Medium", time: "No Time Data", altitude: "060", sid: { 1: "ISKAL 1A", 19: "VECTORS"}, route: "ISKAL KOPUD DICEY BETIR", star: "BETIR 1W" },
-                mdst: { haul: "Long", time: "38m 29s", altitude: "060", sid: { 1: "ISKAL 1A", 19: "VECTORS"}, route: "ISKAL KOPUD DICEY BETIR GOLVER PC114 PC115 PC113", star: "VECTORS" },
-                egkk: { haul: "Short", time: "14m 38s", altitude: "060", sid: { 1: "SARGO 2B", 19: "VECTORS"}, route: "SARGO MAYFIELD", star: "VECTORS" },
-                lytv: { haul: "Short", time: "25m 5s", altitude: "050", sid: "VECTORS", route: "MORSS OXY", star: {14: "OXY 14R", 32: "OXY 32D"} },
-                efkt: { haul: "Medium", time: "30m 24s", altitude: "070", sid: { 1: "MEROS 3C", 19: "VECTORS"}, route: "MEROS KONAN LIMA", star: "VECTORS" }
-            }
-        },
-
-        { origin: "GCLP", destination:
-            {
-                mdpc: { haul: "Short", time: "No Time Data", altitude: "050", sid: { 21: "ODEGI 2B", 3: "ODEGI 2A" }, route: "ODEGI PC112", star: "VECTORS" },
-                mdst: { haul: "Medium", time: "No Time Data", altitude: "060", sid: { 21: "ODEGI 2B", 3: "ODEGI 2A" }, route: "ODEGI PC114 PC115 PC113", star: "VECTORS" },
-                egkk: { haul: "Short", time: "No Time Data", altitude: "050", sid: { 21: "KOPUD 1B", 3: "KOPUD 1A" }, route: "KOPUD ISKAL BOGNA MAYFIELD", star: "VECTORS" },
-                lytv: { haul: "Short", time: "32m 4s", altitude: "065", sid: {21: "COSTI 4B", 3: "COSTI 4A" }, route: "COSTI MUNCHY NAPEV", star: {14: "NAPEV 14R", 32: "NAPEV 32D"} },
-                efkt: { haul: "Medium", time: "1h 2m 30s", altitude: "080", sid: { 21: "KOPUD 1B", 3: "KOPUD 1A" }, route: "KOPUD HARDY KUNAV LIMA", star: "VECTORS" }
-            }
-        },
-
-        { origin: "LYTV", destination:
-            {
-                mdpc: { haul: "Long", time: "34m 41s", altitude: "080", sid: { 32: "NAME UNKNOWN, WAYPOINTS: GOSUT STAR NIK OLIVU", 14: "NAME UNKNOWN, WAYPOINTS: TIVTI DEALT NAPEV"}, route: "OLIVU SYOL4 JELLY BETIR", star: "BETIR 1W" },
-                mdst: { haul: "Long", time: "No Time Data", altitude: "085", sid: { 32: "NAME UNKNOWN, WAYPOINTS: GOSUT STAR NIK OLIVU", 14: "NAME UNKNOWN, WAYPOINTS: TIVTI DEALT NAPEV"}, route: "OLIVU SYOL4 VAXRI ODEGI PC114 PC115 PC113", star: "VECTORS" },
-                lemh: { haul: "Short", time: "No Time Data", altitude: "050", sid: { 32: "NAME UNKNOWN, WAYPOINTS: GOSUT STAR NIK OLIVU", 14: "NAME UNKNOWN, WAYPOINTS: TIVTI DEALT NAPEV"}, route: "OLIVU MNH31", star: "VECTORS" },
-                gclp: { haul: "Short", time: "No Time Data", altitude: "070", sid: { 32: "NAME UNKNOWN, WAYPOINTS: GOSUT STAR NIK OLIVU", 14: "NAME UNKNOWN, WAYPOINTS: TIVTI DEALT NAPEV"}, route: "SYOL4 MUNCHY COSTI", star: "COSTI 1C" },
-            }
-        },
-
-        { origin: "EFKT", destination:
-            {
-                mdpc: { haul: "Long", time: "No Time Data", altitude: "090", sid: { 34: "ROSE 3C", 16: "VECTORS"}, route: "ROSE TEBRA LIZAD KOLBI POKEG", star: "POKEG 1W" },
-                mdst: { haul: "Long", time: "No Time Data", altitude: "090", sid: { 34: "ROSE 3C", 16: "VECTORS"}, route: "ROSE TEBRA LIZAD KOLBI POKEG PC113", star: "VECTORS" },
-                egkk: { haul: "Short", time: "No Time Data", altitude: "050", sid: { 34: "ROSE 3C", 16: "VECTORS"}, route: "ROSE FRANE DETLING", star: "VECTORS" },
-                lemh: { haul: "Medium", time: "34m 28s", altitude: "070", sid: { 34: "ROSE 3C", 16: "VECTORS"}, route: "ROSE MINTY KUNAV SENOT", star: "SENOT 3C" },
-                gclp: { haul: "Medium", time: "27m 36s", altitude: "080", sid: { 34: "ROSE 3C", 16: "VECTORS"}, route: "ROSE FRANE MAYFIELD LIZAD BRICK", star: { 21: "ORTIS 5C", 3: "KONBA 4D"} }
-            }
+        if (depAirportInput) {
+            page = 1;
+            depAirportInput.focus();
+        } else {
+            console.error("The departure airport input element was not found.");
+            return;
         }
-    ]
 
-    // EXAMPLE
-    // console.log(routes.find(route => route.origin === "MDPC").destination.mdst.sid.34);
+        console.log(page);
 
-    function formFirst() {
-        let selAirports = [];
-        let selAircraft;
-        let invalid1 = true;
-        let invalid2 = true;
+        depAirportInput.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                if (airportCodeList.includes(depAirportInput.value.toUpperCase())) {
+                    depAirportCode = depAirportInput.value.toUpperCase();
+                    nextPage();
+                    getArrAirportCode();
+                    console.log("Departure airport code:", depAirportCode);
+                } else {
+                    depAirportInput.value = "";
+                    console.error("An invalid airport code was entered for the departure airport.");
+                    depAirportInput.classList.add("invalid");
+                    setTimeout(() => {
+                        depAirportInput.classList.remove("invalid");
+                    }, 500);
+                }
+            }
 
-        function airportInputValidation() {
-            const depAirport = document.querySelector("body#routes div.form div.airports input.departure");
-            const arrAirport = document.querySelector("body#routes div.form div.airports input.arrival");
-            const bothAirports = document.querySelectorAll("body#routes div.form div.airports input");
+            console.log(page);
+        });
 
-            let depAprt;
-            let arrAprt;
+        function nextPage() {
+            const form = document.querySelector("body#routes section.form");
+            const pages = form.querySelectorAll("div.page");
 
-            bothAirports.forEach(aport => {
-                aport.addEventListener("change", () => {
+            pages.forEach(page => {
+                page.style.display = "none";
+            });
 
-                    if (airportCodeList.includes(aport.value.toUpperCase())) {
-                        aport.classList.remove("invalid");
-                        invalid1 = false;
-                    } else {
-                        invalid1 = true;
-                        if (aport.value == "") {
+            pages[page].style.display = "flex";
+            page++;
+        }
+
+        function getArrAirportCode() {
+            if (page == 2) {
+                const arrAirportInput = document.querySelector("body#routes section.form div.page.pg2 input.answer");
+                arrAirportInput.focus();
+                arrAirportInput.addEventListener("keydown", (event) => {
+                    if (event.key === "Enter") {
+                        if (airportCodeList.includes(arrAirportInput.value.toUpperCase())) {
+                            arrAirportCode = arrAirportInput.value.toUpperCase();
+                            nextPage();
+                            getDepRunway();
                         } else {
-                            aport.classList.add("invalid");
-                            aport.classList.add("shake");
+                            arrAirportInput.value = "";
+                            console.error("An invalid airport code was entered for the arrival airport.");
+                            arrAirportInput.classList.add("invalid");
                             setTimeout(() => {
-                                aport.classList.remove("shake");
+                                arrAirportInput.classList.remove("invalid");
                             }, 500);
                         }
                     }
-
-                    if (aport.classList.contains("departure")) {
-                        depAprt = aport.value.toUpperCase();
-                    } else if (aport.classList.contains("arrival")) {
-                        arrAprt = aport.value.toUpperCase();
-                    }
-
-                    selAirports = [depAprt, arrAprt];
-                    aircraftSelectValidation();
-                })
-
-                aport.addEventListener("focus", () => {
-                    aport.classList.remove("invalid");
-                })
-            });
-        }
-
-        function aircraftSelect() {
-            const aircraftButtons = document.querySelectorAll("body#routes div.form div.aircraft button");
-
-            aircraftButtons.forEach(btn => {
-                btn.addEventListener("click", () => {
-                    if (btn.classList.contains("unselectable")) {
-                        return;
-                    }
-
-                    const attemptVal = btn.innerHTML;
-                    if (attemptVal == selAircraft) {
-                        btn.classList.remove("selected");
-                        selAircraft = "";
-                        invalid2 = true;
-                    } else {
-                        aircraftButtons.forEach(optButton => {
-                            optButton.classList.remove("selected");
-                        })
-                        btn.classList.add("selected");
-                        selAircraft = attemptVal;
-                        invalid2 = false;
-                    }
-                })
-            });
-        }
-
-        function aircraftSelectValidation() {
-            const restrictions = [
-                { airport: "EFKT", aircraft: ["A350"] },
-                { airport: "LYTV", aircraft: ["A350", "MD11", "B757"] },
-                { airport: "LEMH", aircraft: ["A350"] },
-            ]
-
-            if (selAirports[0] == "EFKT" || selAirports[0] == "LYTV" || selAirports[0] == "LEMH") {
-                if (selAircraft == "A350") {
-                    document.querySelector("body#routes div.form div.aircraft button.a350").classList.remove("selected");
-                    selAircraft = "";
-                }
-            }
-
-            if (selAirports[0] == "EFKT") {
-                document.querySelector("body#routes div.form div.aircraft button.a350").classList.add("unselectable");
-
-            } else if (selAirports[0] == "LYTV") {
-                document.querySelector("body#routes div.form div.aircraft button.md11").classList.add("unselectable");
-                document.querySelector("body#routes div.form div.aircraft button.b757").classList.add("unselectable");
-                document.querySelector("body#routes div.form div.aircraft button.a350").classList.add("unselectable");
-
-                if (selAircraft == "B757" || selAircraft == "MD11") {
-                    document.querySelector("body#routes div.form div.aircraft button.md11").classList.remove("selected");
-                    document.querySelector("body#routes div.form div.aircraft button.b757").classList.remove("selected");
-                    selAircraft = "";
-                }
-
-            } else if (selAirports[0] == "LEMH") {
-                document.querySelector("body#routes div.form div.aircraft button.a350").classList.add("unselectable");
-
-            } else {
-                document.querySelectorAll("body#routes div.form div.aircraft button").forEach(btn => {
-                    btn.classList.remove("unselectable");
-                })
+                });
             }
         }
-
-        function workNextButton() {
-            const nextBtn = document.querySelector("body#routes div.form section.f1 button.next");
-            const firstSect = document.querySelector("body#routes div.form section.f1");
-            const secondSect = document.querySelector("body#routes div.form section.f2");
-            
-
-            if (!nextBtn) {
-                return;
+        
+        function getDepRunway() {
+            if (page == 3) {
+                console.log(depAirportCode);
+                console.log(arrAirportCode);
+                const depRunwayInput = document.querySelector("body#routes section.form div.page.pg3 input.answer");
+                depRunwayInput.focus();
+                depRunwayInput.addEventListener("keydown", (event) => {
+                    if (event.key === "Enter") {
+                        console.log(airports.find(airport => airport.code == depAirportCode).runways);
+                        if ((airports.find(airport => airport.code == depAirportCode).runways).includes(depRunwayInput.value)) {
+                            depRunwayCode = depRunwayInput.value.toUpperCase();
+                            nextPage();
+                            getDepRunway();
+                        } else {
+                            depRunwayInput.value = "";
+                            console.error("An invalid runway was entered for the departure runway.");
+                            depRunwayInput.classList.add("invalid");
+                            setTimeout(() => {
+                                depRunwayInput.classList.remove("invalid");
+                            }, 500);
+                        }
+                    }
+                });
             }
-
-            nextBtn.addEventListener("click", () => {
-
-                if (invalid1 == true || invalid2 == true) {
-                    nextBtn.classList.add("shake");
-                    setTimeout(() => {
-                        nextBtn.classList.remove("shake");
-                    }, 500);
-                } else {
-                    nextBtn.classList.remove("shake");
-                    firstSect.style.display = "none";
-                    // secondSect.style.display = "flex";
-                }
-            })
         }
-
-        airportInputValidation();
-        aircraftSelect();
-        aircraftSelectValidation();
-        workNextButton();
     }
 
-    formFirst();
+    getInformation();
 }
 
-function charts() {
+function doCharts() {
     if (!(location.pathname == "/dalv/charts/")) {
         return;
     }
@@ -506,36 +334,10 @@ function navAndLoadingEls() {
     document.body.insertAdjacentHTML("afterbegin", htmlContent);    
 }
 
-function checkMobile() {
-    window.addEventListener("resize", () => {
-        toggleMobile();
-    });
-
-    function toggleMobile() {
-        if (innerWidth <= 800) {
-            if (location.pathname.includes("mobile")) {
-                return;
-            }
-
-            location.href = "/dalv/mobile/";
-            console.info("Mobile...")
-        } else {
-            if (location.pathname.includes("mobile")) {
-                location.href = "/dalv/";
-            }
-        }
-    }
-
-    toggleMobile();
-}
-
 navAndLoadingEls();
 loadingCover();
-document.addEventListener("DOMContentLoaded", () => {
-    buttonsAndLinks();
-});
+buttonsAndLinks();
 randomBannerImage();
-checkMobile();
 hideOnScroll();
-routes();
-charts();
+doRoutes();
+doCharts();

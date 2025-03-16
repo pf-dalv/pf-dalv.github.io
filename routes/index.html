@@ -9,29 +9,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body id="routes">
-    <div class="form">
-      <section class="f1">
-        <p class="label deparrairports">Departure & Arrival Airports</p>
-        <div class="airports">
-          <input type="text" class="departure" maxlength="4" placeholder="FROM" class="departure">
-          <i class="enroute fa-solid fa-plane"></i>
-          <input type="text" class="arrival" maxlength="4" placeholder="TO" class="arrival">
-        </div>
-        <p class="label aircraft">Aircraft</p>
-        <div class="aircraft">
-          <button class="a220">A220</button>
-          <button class="a320">A320</button>
-          <button class="a350">A350</button>
-          <button class="b717">B717</button>
-          <button class="b727">B727</button>
-          <button class="b737">B737</button>
-          <button class="b757">B757</button>
-          <button class="md11">MD11</button>
-        </div>
-        <button class="next">Next <i class="fa-solid fa-arrow-right"></i></button>
-      </section>
-    </div>
-  
+    <section class="form">
+      <div class="page pg1 departure-airport">
+        <p class="question">What airport will you be departing from?</p>
+        <input type="text" class="answer" maxlength="4">
+        <p class="enter-hint">Press enter to continue.</p>
+      </div>
+      <div class="page pg2 arrival-airport">
+        <p class="question">What airport will you be arriving at?</p>
+        <input type="text" class="answer" maxlength="4">
+        <p class="enter-hint">Press enter to continue.</p>
+      </div>
+      <div class="page pg3 departure-runway">
+        <p class="question">What runway will you be departing from?</p>
+        <input type="text" class="answer" maxlength="3">
+        <p class="enter-hint">Press enter to continue.</p>
+      </div>
+      <div class="page pg4 arrival-runway">
+        <p class="question">What runway will you be arriving at?</p>
+        <input type="text" class="answer" maxlength="3">
+        <p class="enter-hint">Press enter to continue.</p>
+      </div>
+    </section>
+    <script defer type="text/javascript" src="/dalv/data.js"></script>
     <script defer type="text/javascript" src="/dalv/main.js"></script>
   </body>
 </html>

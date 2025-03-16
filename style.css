@@ -60,8 +60,8 @@
 }
 
 ::selection {
-    background-color: var(--color-primary);
-    color: var(--color-heading);
+    background-color: var(--brand-lightblue);
+    color: black;
 }
 
 body {
@@ -99,7 +99,7 @@ body#home {
     section.banner {
         height: 100vh;
         width: 100vw;
-        background: linear-gradient(to right, var(--brand-navy), (var(--brand-red)));
+        background: url(https://github.com/austinkden/img/blob/main/dalv/banners/moon-717.png?raw=true);
         background-size: cover;
         overflow: hidden;
 
@@ -180,7 +180,7 @@ body#home {
             color: rgba(255, 255, 255);
             text-shadow: 0px 0px 10px black;
             opacity: 0.75;
-            transition: opacity 0.25s ease;
+            transition: opacity 0.3s ease;
         }
     }
 
@@ -231,150 +231,72 @@ body#routes {
     align-items: center;
     justify-content: center;
 
-    div.form {
+    section.form {
+        background: rgba(255, 255, 255, 0.15);
+        padding: 15px 20px;
+        border-radius: 20px;
+        box-shadow: 0px 0px 15px -5px black;;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        max-width: 700px;
-        background: rgba(255, 255, 255, 0.2);
-        border-radius: 15px;
-        padding: 30px;
-        margin-top: 60px;
-        overflow-x: hidden;
 
-        section {
+        div.page {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-        }
 
-        p.label {
-            color: white;
-            font-size: 15px;
-            text-align: left;
-            margin-bottom: 5px;
-        }
-
-        div.airports {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 15px;
-
-            i.enroute {
+            p.question {
+                width: 100%;
+                text-wrap: wrap;
+                font-size: 20px;
                 color: white;
-                font-size: 15px;
-                opacity: 0.75;
+                margin-bottom: 10px;
             }
 
-            input {
-                border-radius: 10px;
-                font-size: 20px;
-                padding: 5px 10px;
-                background: rgba(255, 255, 255, 0.2);
+            input.answer {
+                background: rgba(255, 255, 255, 0.15);
                 outline: none;
-                border: 2px solid transparent;
+                border: 2px solid rgba(255, 255, 255, 0.1);
+                border-radius: 10px;
+                padding: 8px 10px;
+                font-size: 20px;
                 color: white;
                 text-transform: uppercase;
-                width: 5.25em;
-                cursor: text;
                 text-align: center;
+                font-family: 'DM Mono', monospace;
+                letter-spacing: 1px;
+                cursor: text;
 
-                &::selection {
-                    background: var(--brand-navy);
-                    color: white;
+                &:hover {
+                    border: 2px solid rgba(255, 255, 255, 0.3);
                 }
-
 
                 &:focus {
                     border: 2px solid white;
                 }
 
-                &::placeholder {
-                    color: white;
-                    opacity: 0.5;
-                }
-
                 &.invalid {
                     border: 2px solid var(--color-red);
-                    background: rgba(255, 120, 120, 0.2);
+                    animation: shake 0.5s ease;
                 }
+            }
+
+            p.enter-hint {
+                color: white;
+                opacity: 0.5;
+                font-size: 12px;
+                margin-top: 10px;
             }
         }
 
-        div.aircraft {
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-
-            button {
-                width: 250px;
-                border-radius: 2px;
-                background: rgba(255, 255, 255, 0.2);
-                color: rgba(255, 255, 255, 0.8);
-                outline: none;
-                border: 2px solid transparent;
-                padding: 5px;
-                font-size: 20px;
-                cursor: pointer;
-
-                &:nth-child(1) {
-                    border-radius: 10px 10px 0px 0px;
-                }
-
-                &:nth-last-child(1) {
-                    border-radius: 0px 0px 10px 10px;
-                }
-
-                &:hover {
-                    background: rgba(255, 255, 255, 0.25);
-                    color: rgba(255, 255, 255, 1);
-                }
-
-                &.selected {
-                    border: 2px solid white;
-                    background: rgba(255, 255, 255, 0.25);
-                    color: rgba(255, 255, 255, 1);
-
-                    &:hover {
-                        background: rgba(255, 255, 255, 0.2);
-                    }
-                }
-
-                &.unselectable {
-                    cursor: not-allowed;
-                    background: rgba(255, 255, 255, 0.1);
-                    color: rgba(255, 255, 255, 0.5);
-                }
-            }
+        div.page.pg1 input.answer, div.page.pg2 input.answer, div.page.pg3 input.answer, div.page.pg4 input.answer {
+            width: 4em;
         }
 
-        button.next {
-            background: var(--brand-red);
-            border-radius: 10px;
-            font-size: 20px;
-            padding: 10px 15px;
-            width: 250px;
-            border: none;
-            outline: none;
-            color: white;
-            cursor: pointer;
-
-            i {
-                cursor: pointer;
-            }
-
-            &:hover {
-                box-shadow: 0px 0px 10px -5px black;
-                filter: brightness(1.2);;
-            }
+        div.page:not(.pg1) {
+            display: none;
         }
     }
 }
@@ -437,90 +359,6 @@ body#charts {
             }
         }
     }
-
-    section.airport {
-        display: none;
-
-        div.nav {
-            height: 60px;
-            margin-top: 60px;
-            position: fixed;
-            display: flex;
-            flex-direction: row;
-            top: 0;
-            align-items: center;
-            padding: 15px 10px;
-            left: 0;
-            width: 100%;
-            background: var(--brand-green);
-            box-shadow: 0px 0px 20px -10px black;
-            z-index: 4;
-            gap: 5px;
-
-            i {
-                font-size: 25px;
-                padding: 5px;
-                border-radius: 10px;
-                cursor: pointer;
-
-                &:hover {
-                    background: rgba(0, 0, 0, 0.2);
-                    color: white;
-                }
-            }
-
-            a {
-                font-size: 20px;
-                padding: 5px 10px;
-                border-radius: 10px;
-                cursor: pointer;
-        
-                &:hover {
-                    background: rgba(0, 0, 0, 0.2);
-                    color: white;
-                }
-            }
-        }
-    }
-
-    nav {
-        box-shadow: none;
-    }
-}
-
-body#mobile {
-    height: 100lvh;
-    background: black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    div.body {
-        height: 99svh;
-        width: 100vw;
-        background: linear-gradient(to bottom, var(--brand-navy), var(--brand-red));
-
-        div.branding {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            gap: 5px;
-
-            img {
-                height: 45px;
-            }
-
-            p {
-                font-size: 25px;
-                font-weight: bold;
-                color: white;
-                text-shadow: 0px 0px 10px black;
-            }
-        }
-    }
 }
 
 div.loading {
@@ -575,7 +413,7 @@ nav {
         border-radius: 10px;
 
         &:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.15);
         }
     }
 
@@ -615,7 +453,7 @@ nav {
                 text-wrap: nowrap;
 
                 &:hover {
-                    background: rgba(255, 255, 255, 0.2);
+                    background: rgba(255, 255, 255, 0.15);
                 }
 
                 &:active {
@@ -627,46 +465,6 @@ nav {
 
         &:hover div.dropdown-content, div.dropdown-content:hover, div.dropdown-content-wrapper:hover {
             display: block;
-        }
-    }
-}
-
-div.announcement {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 30px 40px 10px 40px;
-    border-radius: 20px;
-    background: var(--brand-orange);
-    border: 3px solid white;
-    box-shadow: 0px 0px 20px -5px black;
-    position: fixed;
-    top: 100px;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 99;
-    cursor: pointer;
-    max-width: 50vw;
-
-    p {
-        text-wrap: wrap;
-        color: white;
-        text-align: left;
-        cursor: pointer;
-
-        &.hint {
-            font-weight: bold;
-            font-size: 40px;
-        }
-
-        &.details {
-            font-size: 20px;
-        }
-
-        &.close {
-            font-size: 15px;
-            margin-top: 25px;
         }
     }
 }
