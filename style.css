@@ -3,6 +3,10 @@
 
 :root {
     --color-background: #000000;
+    --color-surface: #111111;
+    --color-mid: #222222;
+    --color-tile: #333333;
+    --color-raised: #444444;
     --brand-red: #C01933;
     --brand-navy: #003366;
     --brand-green: #94A545;
@@ -95,340 +99,343 @@ body {
     animation: shake 0.5s ease;
 }
 
-body#home {
-    section.banner {
-        height: 100vh;
-        width: 100vw;
-        background: url(https://github.com/austinkden/img/blob/main/dalv/banners/moon-717.png?raw=true);
-        background-size: cover;
-        background-position: center;
-        overflow: hidden;
-
-        div.content {
-            display: flex;
-            flex-direction: column;
-            width: 70vw;
-            padding: 120px 50px 100px 50px;
-
-            div.branding {
-                display: flex;
-                flex-direction: row;
-                gap: 20px;
-
-                img {
-                    height: 100px;
-                }
-
-                p {
-                    font-size: 70px;
-                    color: white;
-                    font-weight: bold;
-                    text-shadow: 0px 0px 20px black;
-                }
-            }
-
-            p.welcome {
-                color: white;
-                font-size: 20px;
-                text-shadow: 0px 0px 10px black;
-                padding-left: 10px;
-                max-width: 60em;
-            }
-
-            div.buttons {
-                display: flex;
-                flex-direction: row;
-                gap: 10px;
-                margin-top: 15px;
-                padding-left: 10px;
-
-                button {
-                    border-radius: 10px;
-                    font-size: 20px;
-                    padding: 8px 10px;
-                    border: none;
-                    outline: none;
-                    color: white;
-                    cursor: pointer;
-                    box-shadow: 0px 0px 10px -5px black;
-
-                    &:hover {
-                        box-shadow: 0px 0px 15px -5px black;
-                    }
-
-                    &:active {
-                        transition: box-shadow 0s ease;
-                        box-shadow: 0px 0px 8px -5px black;
-                    }
-                }
-                
-                button.join-discord {
-                    background: var(--brand-red);
-                }
-
-                button.learn-more {
-                    background: rgba(0, 0, 0, 0.7);
-                }
-            }
-        }
-
-        i.hint-arrow {
-            position: fixed;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 25px;
-            color: rgba(255, 255, 255);
-            text-shadow: 0px 0px 10px black;
-            opacity: 0.75;
-            transition: opacity 0.3s ease;
-        }
-    }
-
-    footer {
-        padding: 30px;
-        background: var(--brand-navy);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 10px;
-
-        div {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-
-            p.header {
-                color: white;
-                font-size: 30px;
-                font-weight: bold;
-            }
-
-            p:not(.header) {
-                color: white;
-                font-size: 20px;
-
-                a {
-                    color: white;
-                    text-decoration: underline;
-                    cursor: pointer;
-                    padding: 0px 1px 0px 2px;
-
-                    &:hover {
-                        text-decoration: none;
-                        background: white;
-                        color: var(--brand-navy);
-                    }
-                }
-            }
-        }
-    }
+/* Home page styles */
+body#home section.banner {
+    height: 100vh;
+    width: 100vw;
+    background: url(https://github.com/austinkden/img/blob/main/dalv/banners/moon-717.png?raw=true);
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
 }
 
+body#home section.banner div.content {
+    display: flex;
+    flex-direction: column;
+    width: 70vw;
+    padding: 120px 50px 100px 50px;
+}
+
+body#home section.banner div.content div.branding {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+body#home section.banner div.content div.branding img {
+    height: 100px;
+}
+
+body#home section.banner div.content div.branding p {
+    font-size: 70px;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0px 0px 20px black;
+}
+
+body#home section.banner div.content p.welcome {
+    color: white;
+    font-size: 20px;
+    text-shadow: 0px 0px 10px black;
+    padding-left: 10px;
+    max-width: 60em;
+}
+
+body#home section.banner div.content div.buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 15px;
+    padding-left: 10px;
+}
+
+body#home section.banner div.content div.buttons button {
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 8px 10px;
+    border: none;
+    outline: none;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px -5px black;
+}
+
+body#home section.banner div.content div.buttons button:hover {
+    box-shadow: 0px 0px 15px -5px black;
+}
+
+body#home section.banner div.content div.buttons button:active {
+    transition: box-shadow 0s ease;
+    box-shadow: 0px 0px 8px -5px black;
+}
+
+body#home section.banner div.content div.buttons button.join-discord {
+    background: var(--brand-red);
+}
+
+body#home section.banner div.content div.buttons button.learn-more {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+body#home section.banner i.hint-arrow {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 25px;
+    color: rgba(255, 255, 255);
+    text-shadow: 0px 0px 10px black;
+    opacity: 0.75;
+    transition: opacity 0.3s ease;
+}
+
+body#home footer {
+    padding: 30px;
+    background: var(--brand-navy);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+body#home footer div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+body#home footer div p.header {
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+body#home footer div p:not(.header) {
+    color: white;
+    font-size: 20px;
+}
+
+body#home footer div p:not(.header) a {
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0px 1px 0px 2px;
+}
+
+body#home footer div p:not(.header) a:hover {
+    text-decoration: none;
+    background: white;
+    color: var(--brand-navy);
+}
+
+/* Routes page styles */
 body#routes {
     display: flex;
     flex-direction: column;
     padding: 20px;
     align-items: center;
     justify-content: center;
-
-    section.background {
-        height: 100%;
-        width: 100%;
-        position: fixed;
-        top: 60px;
-        left: 0;
-        z-index: -1;
-        filter: brightness(0.5);
-        background-size: cover;
-        background-position: center;
-    }
-
-    section.selection {
-        position: fixed;
-        top: 60px;
-        left: 0;
-        padding: 10px;
-        
-        p {
-            font-size: 20px;
-            color: white;
-            text-shadow: 0px 0px 10px black;
-        }
-    }
-
-    section.form {
-        background: rgba(0, 0, 0, 0.85);
-        padding: 15px 20px;
-        border-radius: 20px;
-        box-shadow: 0px 0px 15px -5px black;;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
-        div.page {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-
-            p.question {
-                width: 100%;
-                text-wrap: wrap;
-                font-size: 20px;
-                color: white;
-                margin-bottom: 10px;
-            }
-
-            input.answer {
-                background: rgba(255, 255, 255, 0.15);
-                outline: none;
-                border: 2px solid rgba(255, 255, 255, 0.1);
-                border-radius: 10px;
-                padding: 8px 10px;
-                font-size: 20px;
-                color: white;
-                text-transform: uppercase;
-                text-align: center;
-                font-family: 'DM Mono', monospace;
-                letter-spacing: 1px;
-                cursor: text;
-
-                &:hover {
-                    border: 2px solid rgba(255, 255, 255, 0.3);
-                }
-
-                &:focus {
-                    border: 2px solid white;
-                }
-
-                &.invalid {
-                    border: 2px solid var(--color-red);
-                    animation: shake 0.5s ease;
-                }
-            }
-
-            p.enter-hint {
-                color: white;
-                opacity: 0.5;
-                font-size: 12px;
-                margin-top: 10px;
-            }
-        }
-
-        div.page.pg5 {
-            p.sid-name, p.sid-waypoints {
-                color: white;
-                width: 100%;
-                text-wrap: wrap;
-                text-align: center;
-                font-family: 'DM Mono', monospace;
-            }
-
-            p.sid-name {
-                font-size: 18px;
-                opacity: 0.85;
-            }
-
-            p.sid-waypoints {
-                font-size: 15px;
-                opacity: 0.75;
-                margin-bottom: 10px;
-            }
-
-            button {
-                width: 100%;
-                border-radius: 10px;
-                padding: 8px;
-                outline: none;
-                border: 2px solid rgba(255, 255, 255, 0.1);
-                background: rgba(255, 255, 255, 0.15);
-                cursor: pointer;
-                font-size: 20px;
-                color: white;
-                margin-top: 2px;
-
-                &:hover {
-                    border: 2px solid rgba(255, 255, 255, 0.3);
-                }
-            }
-
-            button.yes {
-                margin-bottom: 5px;
-            }
-        }
-
-        div.page.pg1 input.answer, div.page.pg2 input.answer, div.page.pg3 input.answer, div.page.pg4 input.answer {
-            width: 4em;
-        }
-
-        div.page:not(.pg1) {
-            display: none;
-        }
-    }
 }
 
-body#charts {
-    section.list {
-        padding-top: 60px;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-auto-rows: 1fr;
-
-        div.airport {
-            height: 400px;
-            width: 100%;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-            justify-content: center;
-            cursor: pointer;
-            gap: 0;
-    
-            img, p {
-                cursor: pointer;
-            }
-    
-            img {
-                height: 100%;
-                width: 100%;
-                object-fit: cover;
-                position: absolute;
-                object-position: center;
-                top: 0;
-                left: 0;
-                transform-origin: center;
-                transition: transform 0.4s ease, filter 0.4s ease;
-                filter: brightness(0.6);
-            }
-    
-            &:hover img {
-                transform: scale(1.25);
-                filter: brightness(0.8);
-            }
-    
-            p.code {
-                color: white;
-                font-size: 90px;
-                font-weight: bold;
-                text-shadow: 0px 0px 20px black;
-                z-index: 2;
-            }
-    
-            p.name {
-                color: white;
-                font-size: 20px;
-                text-shadow: 0px 0px 15px black;
-                z-index: 2;
-                margin-top: -15px;
-            }
-        }
-    }
+body#routes section.background {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    z-index: -1;
+    filter: brightness(0.5);
+    background-size: cover;
+    background-position: center;
 }
 
+body#routes section.selection {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    padding: 10px;
+}
+
+body#routes section.selection p {
+    font-size: 20px;
+    color: white;
+    text-shadow: 0px 0px 10px black;
+}
+
+body#routes section.form {
+    background: rgba(0, 0, 0, 0.85);
+    padding: 15px 20px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 15px -5px black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+body#routes section.form div.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+body#routes section.form div.page p.question {
+    width: 100%;
+    text-wrap: wrap;
+    font-size: 20px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+body#routes section.form div.page input.answer {
+    background: rgba(255, 255, 255, 0.15);
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 8px 10px;
+    font-size: 20px;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 1px;
+    cursor: text;
+}
+
+body#routes section.form div.page input.answer:hover {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+body#routes section.form div.page input.answer:focus {
+    border: 2px solid white;
+}
+
+body#routes section.form div.page input.answer.invalid {
+    border: 2px solid var(--color-red);
+    animation: shake 0.5s ease;
+}
+
+body#routes section.form div.page p.enter-hint {
+    color: white;
+    opacity: 0.5;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+body#routes section.form div.page.pg5 p.sid-name,
+body#routes section.form div.page.pg5 p.sid-waypoints {
+    color: white;
+    width: 100%;
+    text-wrap: wrap;
+    text-align: center;
+    font-family: 'DM Mono', monospace;
+}
+
+body#routes section.form div.page.pg5 p.sid-name {
+    font-size: 18px;
+    opacity: 0.85;
+}
+
+body#routes section.form div.page.pg5 p.sid-waypoints {
+    font-size: 15px;
+    opacity: 0.75;
+    margin-bottom: 10px;
+}
+
+body#routes section.form div.page.pg5 button {
+    width: 100%;
+    border-radius: 10px;
+    padding: 8px;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.15);
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
+    margin-top: 2px;
+}
+
+body#routes section.form div.page.pg5 button:hover {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+body#routes section.form div.page.pg5 button.yes {
+    margin-bottom: 5px;
+}
+
+body#routes section.form div.page.pg1 input.answer,
+body#routes section.form div.page.pg2 input.answer,
+body#routes section.form div.page.pg3 input.answer,
+body#routes section.form div.page.pg4 input.answer {
+    width: 4em;
+}
+
+body#routes section.form div.page:not(.pg1) {
+    display: none;
+}
+
+/* Charts page styles */
+body#charts section.list {
+    padding-top: 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 1fr;
+}
+
+body#charts section.list div.airport {
+    height: 400px;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+    cursor: pointer;
+    gap: 0;
+}
+
+body#charts section.list div.airport img,
+body#charts section.list div.airport p {
+    cursor: pointer;
+}
+
+body#charts section.list div.airport img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    position: absolute;
+    object-position: center;
+    top: 0;
+    left: 0;
+    transform-origin: center;
+    transition: transform 0.4s ease, filter 0.4s ease;
+    filter: brightness(0.6);
+}
+
+body#charts section.list div.airport:hover img {
+    transform: scale(1.25);
+    filter: brightness(0.8);
+}
+
+body#charts section.list div.airport p.code {
+    color: white;
+    font-size: 90px;
+    font-weight: bold;
+    text-shadow: 0px 0px 20px black;
+    z-index: 2;
+}
+
+body#charts section.list div.airport p.name {
+    color: white;
+    font-size: 20px;
+    text-shadow: 0px 0px 15px black;
+    z-index: 2;
+    margin-top: -15px;
+}
+
+/* Loading overlay */
 div.loading {
     display: none;
     flex-direction: column;
@@ -443,13 +450,14 @@ div.loading {
     gap: 10px;
     transition: transform 0.4s ease, opacity 0.4s ease;
     z-index: 100;
-
-    p {
-        color: white;
-        font-size: 35px;
-    }
 }
 
+div.loading p {
+    color: white;
+    font-size: 35px;
+}
+
+/* Navigation bar */
 nav {
     height: 60px;
     background: var(--brand-navy);
@@ -464,75 +472,124 @@ nav {
     left: 0;
     z-index: 5;
     box-shadow: 0px 0px 20px -10px black;
+}
 
-    img {
-        height: 40px;
-        cursor: pointer;
+nav img {
+    height: 40px;
+    cursor: pointer;
+}
 
-        &:hover {
-            filter: brightness(1.2);
-        }
+nav img:hover {
+    filter: brightness(1.2);
+}
+
+nav a.direct,
+nav a.dropper {
+    font-size: 20px;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+nav a.direct:hover,
+nav a.dropper:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+nav a.direct {
+    cursor: pointer;
+}
+
+nav div.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+nav div.dropdown div.dropdown-content-wrapper {
+    top: 100%;
+    height: 50%;
+    width: 100%;
+    position: absolute;
+}
+
+nav div.dropdown div.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--brand-navy);
+    min-width: 150px;
+    box-shadow: 0px 0px 15px -5px black;
+    border-radius: 10px;
+    overflow: hidden;
+    top: 10px;
+    left: 0;
+}
+
+nav div.dropdown div.dropdown-content a {
+    color: white;
+    padding: 10px;
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    text-wrap: nowrap;
+}
+
+nav div.dropdown div.dropdown-content a:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+nav div.dropdown div.dropdown-content a:active {
+    background: transparent;
+    transition: background 0s ease;
+}
+
+nav div.dropdown:hover div.dropdown-content,
+nav div.dropdown div.dropdown-content:hover,
+nav div.dropdown div.dropdown-content-wrapper:hover {
+    display: block;
+}
+
+/* Responsive design for mobile devices */
+@media (max-width: 768px) {
+    body#home section.banner div.content {
+        width: 100vw;
+        padding: 100px 20px;
     }
-
-    a.direct, a.dropper {
-        font-size: 20px;
-        color: white;
-        padding: 5px 10px;
-        border-radius: 10px;
-
-        &:hover {
-            background: rgba(255, 255, 255, 0.15);
-        }
-    }
-
-    a.direct {
-        cursor: pointer;
-    }
-
     
-    div.dropdown {
-        position: relative;
-        display: inline-block;
-
-        div.dropdown-content-wrapper {
-            top: 100%;
-            height: 50%;
-            width: 100%;
-            position: absolute;
-        }
-
-        div.dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: var(--brand-navy);
-            min-width: 150px;
-            box-shadow: 0px 0px 15px -5px black;
-            border-radius: 10px;
-            overflow: hidden;
-            top: 10px;
-            left: 0;
-
-            & a {
-                color: white;
-                padding: 10px;
-                display: block;
-                text-decoration: none;
-                cursor: pointer;
-                text-wrap: nowrap;
-
-                &:hover {
-                    background: rgba(255, 255, 255, 0.15);
-                }
-
-                &:active {
-                    background: transparent;
-                    transition: background 0s ease;
-                }
-            }
-        }
-
-        &:hover div.dropdown-content, div.dropdown-content:hover, div.dropdown-content-wrapper:hover {
-            display: block;
-        }
+    body#home section.banner div.content div.branding {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    body#home section.banner div.content div.branding p {
+        font-size: 40px;
+    }
+    
+    body#home section.banner div.content p.welcome {
+        text-align: center;
+        padding-left: 0;
+    }
+    
+    body#home section.banner div.content div.buttons {
+        flex-direction: column;
+        width: 100%;
+        padding-left: 0;
+    }
+    
+    body#charts section.list {
+        grid-template-columns: 1fr;
+    }
+    
+    nav {
+        padding: 5px;
+        justify-content: space-between;
+    }
+    
+    nav a.dropper {
+        display: none;
+    }
+    
+    nav a.direct {
+        font-size: 16px;
     }
 }
