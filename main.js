@@ -165,10 +165,7 @@ function doRoutes() {
                 } else {
                     depAirportInput.value = "";
                     console.error("An invalid airport code was entered for the departure airport.");
-                    depAirportInput.classList.add("invalid");
-                    setTimeout(() => {
-                        depAirportInput.classList.remove("invalid");
-                    }, 500);
+                    showInvalid(depAirportInput);
                 }
             }
 
@@ -194,16 +191,19 @@ function doRoutes() {
                 arrAirportInput.addEventListener("keydown", (event) => {
                     if (event.key === "Enter") {
                         if (airportCodeList.includes(arrAirportInput.value.toUpperCase())) {
-                            arrAirportCode = arrAirportInput.value.toUpperCase();
-                            nextPage();
-                            getDepRunway();
+                            if (depAirportCode !== arrAirportInput.value.toUpperCase()) {
+                                arrAirportCode = arrAirportInput.value.toUpperCase();
+                                nextPage();
+                                getDepRunway();
+                            } else {
+                                arrAirportInput.value = "";
+                                console.error("The arrival airport cannot be the same as the departure airport.");
+                                showInvalid(arrAirportInput);
+                            }
                         } else {
                             arrAirportInput.value = "";
                             console.error("An invalid airport code was entered for the arrival airport.");
-                            arrAirportInput.classList.add("invalid");
-                            setTimeout(() => {
-                                arrAirportInput.classList.remove("invalid");
-                            }, 500);
+                            showInvalid(arrAirportInput);
                         }
                     }
                 });
@@ -226,14 +226,18 @@ function doRoutes() {
                         } else {
                             depRunwayInput.value = "";
                             console.error("An invalid runway was entered for the departure runway.");
-                            depRunwayInput.classList.add("invalid");
-                            setTimeout(() => {
-                                depRunwayInput.classList.remove("invalid");
-                            }, 500);
+                            showInvalid(depRunwayInput);
                         }
                     }
                 });
             }
+        }
+
+        function showInvalid(input) {
+            input.classList.add("invalid");
+            setTimeout(() => {
+                input.classList.remove("invalid");
+            }, 500);
         }
     }
 
