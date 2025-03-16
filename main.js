@@ -390,6 +390,7 @@ function navAndLoadingEls() {
                 <div class="dropdown-content info">
                     <a class="nav-info-fleet">Fleet</a>
                     <a class="nav-info-staff">Staff</a>
+                    <a class="nav-info-partnerships">Partnerships</a>    
                 </div>
             </div>
         </div>
