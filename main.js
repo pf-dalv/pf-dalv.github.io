@@ -419,3 +419,18 @@ randomBannerImage();
 hideOnScroll();
 doRoutes();
 doCharts();
+
+window.addEventListener('load', () => {
+    const sheets = document.styleSheets;
+    for (let sheet of sheets) {
+      console.log('Checking stylesheet:', sheet.href);
+      try {
+        // accessing cssRules will throw if the sheet failed to load or is cross-origin blocked
+        const rules = sheet.cssRules;
+        console.log(`Loaded ${rules.length} CSS rules from ${sheet.href}`);
+      } catch (err) {
+        console.error(`Error reading ${sheet.href}.`, err);
+      }
+    }
+});
+  
