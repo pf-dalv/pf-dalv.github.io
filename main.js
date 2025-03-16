@@ -421,7 +421,6 @@ doRoutes();
 doCharts();
 
 window.addEventListener('load', () => {
-    alert("!!!");
     const sheets = document.styleSheets;
     for (let sheet of sheets) {
       console.log('Checking stylesheet:', sheet.href);
