@@ -93,10 +93,10 @@ const sids = {
     },
     
     mdpc: {
-        KATO2T: { displayName: "KATOK 2T", waypoints: " MAROG PC101 KATOK" },
-        CHUM2T: { displayName: "CHUMA 2T", waypoints: " MAROG PC101 PC102 PC114 CHUMA" },
-        PIXA2T: { displayName: "PIXAR 2T", waypoints: " MAROG PC101 PC102 PC114 PC115 PIXAR" },
-        ETBO2T: { displayName: "ETBOD 2T", waypoints: " MAROG PC100 PC106 MIBNI ETBOD" },
+        KATO2T: { displayName: "KATOK 2T", waypoints: "MAROG PC101 KATOK" },
+        CHUM2T: { displayName: "CHUMA 2T", waypoints: "MAROG PC101 PC102 PC114 CHUMA" },
+        PIXA2T: { displayName: "PIXAR 2T", waypoints: "MAROG PC101 PC102 PC114 PC115 PIXAR" },
+        ETBO2T: { displayName: "ETBOD 2T", waypoints: "MAROG PC100 PC106 MIBNI ETBOD" },
     },    
 };
 
@@ -200,6 +200,18 @@ const routes = {
         gclp: { haul: "Medium", time: "27m 36s", altitude: "080", sid: { 16: sids._vectors, 34: sids.efkt.ROSE3C }, route: "ROSE FRANE MAYFIELD LIZAD BRICK", star: { 21: stars.gclp.ORTI5C, 3: stars.gclp.KONB4D } }
     }
 }
+
+const airports = [
+    { code: "MDPC", name: "Punta Cana", runways: ["8", "9", "08", "09", "26", "27"] },
+    { code: "MDST", name: "Cibao", runways: ["11", "29"] },
+    { code: "EGKK", name: "London Gatwick", runways: ["8L", "8R", "08L", "08R", "26L", "26R"] },
+    { code: "LEMH", name: "Menorca", runways: ["1", "01", "19"] },
+    { code: "GCLP", name: "Gran Canaria", runways: ["3L", "3R", "03L", "03R", "21L", "21R"] },
+    { code: "LYTV", name: "Tivat", runways: ["14", "32"] },
+    { code: "EFKT", name: "Kittilä", runways: ["16", "34"] }
+]
+
+const aircraft = ["A350", "A320", "B737", "B757", "B717", "MD11", "B727"];
 
 //This code was for testing purposes
 

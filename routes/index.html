@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body id="routes">
+    <section class="background"></section>
+    <section class="selection">
+      <p class="route"></p>
+      <p class="aircraft"></p>
+    </section>
     <section class="form">
       <div class="page pg1 departure-airport">
         <p class="question">What airport will you be departing from?</p>
@@ -25,10 +30,17 @@
         <input type="text" class="answer" maxlength="3">
         <p class="enter-hint">Press enter to continue.</p>
       </div>
-      <div class="page pg4 arrival-runway">
-        <p class="question">What runway will you be arriving at?</p>
-        <input type="text" class="answer" maxlength="3">
+      <div class="page pg4 aircraft-type">
+        <p class="question">What aircraft will you be flying?</p>
+        <input type="text" class="answer" maxlength="4">
         <p class="enter-hint">Press enter to continue.</p>
+      </div>
+      <div class="page pg5 sid-decide">
+        <p class="question">A SID is available. Would you like to use it?</p>
+        <p class="sid-name">KATOK2T</p>
+        <p class="sid-waypoints">MAROG PC101 KATOK</p>
+        <button class="yes">Yes</button>
+        <button class="no">No</button>
       </div>
     </section>
     <script defer type="text/javascript" src="/dalv/data.js"></script>

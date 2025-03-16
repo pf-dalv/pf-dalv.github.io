@@ -1,13 +1,3 @@
-const airports = [
-    { code: "MDPC", name: "Punta Cana", runways: ["8", "9", "08", "09", "26", "27"] },
-    { code: "MDST", name: "Cibao", runways: ["11", "29"] },
-    { code: "EGKK", name: "London Gatwick", runways: ["8L", "8R", "08L", "08R", "26L", "26R"] },
-    { code: "LEMH", name: "Menorca", runways: ["1", "01", "19"] },
-    { code: "GCLP", name: "Gran Canaria", runways: ["3L", "3R", "03L", "03R", "21L", "21R"] },
-    { code: "LYTV", name: "Tivat", runways: ["14", "32"] },
-    { code: "EFKT", name: "Kittilä", runways: ["16", "34"] }
-]
-
 function loadingCover() {
     if (!(document.querySelector("div.loading"))) { 
         return;
@@ -135,15 +125,30 @@ function doRoutes() {
     // LONG (OVER 30NM)
     // DPC DST DAB! DCR!
 
+    function randomBackground() {
+        const bannerEl = document.querySelector("section.background");
+        if (bannerEl) {
+            const randomImg = dataBanners[Math.floor(Math.random() * dataBanners.length)];
+            console.log(randomImg);
+            bannerEl.style.backgroundImage = `url(${randomImg})`;
+        }
+    }
+
     function getInformation() {
         let page = 0;
         let depAirportCode;
         let arrAirportCode;
         let depRunway;
-        let arrRunway;
         let aircraftType;
 
+        // These variables are for internalized code
+        let depCode;
+        let arrCode;
+        let depRwy;
+
         const depAirportInput = document.querySelector("body#routes section.form div.page.pg1 input.answer");
+        const selectionRoute = document.querySelector("body#routes section.selection p.route");
+        const selectionAircraft = document.querySelector("body#routes section.selection p.aircraft");
 
         if (depAirportInput) {
             page = 1;
@@ -153,26 +158,25 @@ function doRoutes() {
             return;
         }
 
-        console.log(page);
-
         depAirportInput.addEventListener("keydown", (event) => {
             if (event.key === "Enter") {
                 if (airportCodeList.includes(depAirportInput.value.toUpperCase())) {
                     depAirportCode = depAirportInput.value.toUpperCase();
+                    selectionRoute.innerHTML = `Departing ${depAirportCode}`;
                     nextPage();
                     getArrAirportCode();
-                    console.log("Departure airport code:", depAirportCode);
                 } else {
                     depAirportInput.value = "";
                     console.error("An invalid airport code was entered for the departure airport.");
                     showInvalid(depAirportInput);
                 }
             }
-
-            console.log(page);
         });
 
         function nextPage() {
+            if (page > 3) {
+                return;
+            }
             const form = document.querySelector("body#routes section.form");
             const pages = form.querySelectorAll("div.page");
 
@@ -180,8 +184,31 @@ function doRoutes() {
                 page.style.display = "none";
             });
 
-            pages[page].style.display = "flex";
-            page++;
+            if (pages[page] == undefined) {
+                console.error("The page element was not found. Page: " + (page + 1));
+                alert("An error occurred. Check the console for more information.");
+            } else {
+                pages[page].style.display = "flex";
+                page++;
+            }
+        }
+
+        function goToPage(pageNum) {
+            page = (pageNum - 1);
+            console.log("attempting to load page " + page);
+            const form = document.querySelector("body#routes section.form");
+            const pages = form.querySelectorAll("div.page");
+
+            pages.forEach(page => {
+                page.style.display = "none";
+            });
+
+            if (pages[page] == undefined) {
+                console.error("The page element was not found. Page: " + page);
+                alert("An error occurred. Check the console for more information.");
+            } else {
+                pages[page].style.display = "flex";
+            }
         }
 
         function getArrAirportCode() {
@@ -193,6 +220,7 @@ function doRoutes() {
                         if (airportCodeList.includes(arrAirportInput.value.toUpperCase())) {
                             if (depAirportCode !== arrAirportInput.value.toUpperCase()) {
                                 arrAirportCode = arrAirportInput.value.toUpperCase();
+                                selectionRoute.innerHTML = `${depAirportCode} - ${arrAirportCode}`;
                                 nextPage();
                                 getDepRunway();
                             } else {
@@ -212,17 +240,19 @@ function doRoutes() {
         
         function getDepRunway() {
             if (page == 3) {
-                console.log(depAirportCode);
-                console.log(arrAirportCode);
                 const depRunwayInput = document.querySelector("body#routes section.form div.page.pg3 input.answer");
                 depRunwayInput.focus();
                 depRunwayInput.addEventListener("keydown", (event) => {
                     if (event.key === "Enter") {
-                        console.log(airports.find(airport => airport.code == depAirportCode).runways);
-                        if ((airports.find(airport => airport.code == depAirportCode).runways).includes(depRunwayInput.value)) {
-                            depRunwayCode = depRunwayInput.value.toUpperCase();
+                        if ((airports.find(airport => airport.code == depAirportCode).runways).includes(depRunwayInput.value.toUpperCase())) {
+                            depRunway = depRunwayInput.value.toUpperCase();
+                            let depRunwayNumberLength = (depRunway.replace(/\D/g, '').length);
+                            if (depRunwayNumberLength == 1) {
+                                depRunway = "0" + depRunway;
+                            }
+                            selectionRoute.innerHTML = `${depAirportCode} (${depRunway}) - ${arrAirportCode}`;
                             nextPage();
-                            getDepRunway();
+                            getAircraftType();
                         } else {
                             depRunwayInput.value = "";
                             console.error("An invalid runway was entered for the departure runway.");
@@ -230,6 +260,49 @@ function doRoutes() {
                         }
                     }
                 });
+            }
+        }
+
+        function getAircraftType() {
+            if (page == 4) {
+                const aircraftInput = document.querySelector("body#routes section.form div.page.pg4 input.answer");
+                aircraftInput.focus();
+                aircraftInput.addEventListener("keydown", (event) => {
+                    if (event.key === "Enter") {
+                        if (aircraftInput.value.length > 0) {
+                            aircraftType = aircraftInput.value.toUpperCase();
+                            selectionAircraft.innerHTML = aircraftType;
+                            nextPage();
+                            determineSID();
+                        } else {
+                            aircraftInput.value = "";
+                            console.error("An invalid aircraft type was entered.");
+                            showInvalid(aircraftInput);
+                        }
+                    }
+                });
+            }
+        }
+
+        function determineSID() {
+            depCode = depAirportCode.toLowerCase();
+            arrCode = arrAirportCode.toLowerCase();
+            depRwy = depRunway.replace(/\D/g, '');
+            console.log(depRwy);
+            let sidInfo = routes[depCode][arrCode].sid[depRwy];
+            console.log(sidInfo);
+            console.log(sidInfo.displayName);
+
+            if (sidInfo.displayName !== "VECTORS") {
+                const page5El = document.querySelector("body#routes section.form div.page.pg5");
+                page5El.innerHTML = `
+                    <p class="question">A SID is available. Would you like to use it?</p>
+                    <p class="sid-name">${sidInfo.displayName}</p>
+                    <p class="sid-waypoints">${sidInfo.waypoints}</p>
+                    <button class="yes">Yes</button>
+                    <button class="no">No</button>
+                `;
+                goToPage(5);
             }
         }
 
@@ -242,6 +315,7 @@ function doRoutes() {
     }
 
     getInformation();
+    randomBackground();
 }
 
 function doCharts() {
