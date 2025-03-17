@@ -40,7 +40,7 @@ const dataBanners = [
     "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/bulb-moon-14.png",
     "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/bulb-rotate.png",
     "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/detached-gate.png",
-    "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/dont-cross-a1pha-a320s.png",
+    "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/dont-cross-alpha-a320s.png",
     "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/even-more-a320s.png",
     "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/fenced-moon.png",
     "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/gate-pov-2.png",
