@@ -129,7 +129,6 @@ function doRoutes() {
         const bannerEl = document.querySelector("section.background");
         if (bannerEl) {
             const randomImg = dataBanners[Math.floor(Math.random() * dataBanners.length)];
-            console.log(randomImg);
             bannerEl.style.backgroundImage = `url(${randomImg})`;
         }
     }
@@ -139,12 +138,18 @@ function doRoutes() {
         let depAirportCode;
         let arrAirportCode;
         let depRunway;
+        let arrRunway;
         let aircraftType;
 
         // These variables are for internalized code
         let depCode;
         let arrCode;
         let depRwy;
+        let fPlan;
+        let inSid;
+
+        let sid; // Example: egkk[BOGNA 1X]
+        let star;
 
         const depAirportInput = document.querySelector("body#routes section.form div.page.pg1 input.answer");
         const selectionRoute = document.querySelector("body#routes section.selection p.route");
@@ -174,7 +179,7 @@ function doRoutes() {
         });
 
         function nextPage() {
-            if (page > 3) {
+            if (page > 4) {
                 return;
             }
             const form = document.querySelector("body#routes section.form");
@@ -194,8 +199,8 @@ function doRoutes() {
         }
 
         function goToPage(pageNum) {
-            page = (pageNum - 1);
-            console.log("attempting to load page " + page);
+            page = pageNum;
+            lclPage = pageNum - 1;
             const form = document.querySelector("body#routes section.form");
             const pages = form.querySelectorAll("div.page");
 
@@ -203,11 +208,11 @@ function doRoutes() {
                 page.style.display = "none";
             });
 
-            if (pages[page] == undefined) {
+            if (pages[lclPage] == undefined) {
                 console.error("The page element was not found. Page: " + page);
                 alert("An error occurred. Check the console for more information.");
             } else {
-                pages[page].style.display = "flex";
+                pages[lclPage].style.display = "flex";
             }
         }
 
@@ -253,6 +258,17 @@ function doRoutes() {
                             selectionRoute.innerHTML = `${depAirportCode} (${depRunway}) - ${arrAirportCode}`;
                             nextPage();
                             getAircraftType();
+
+                            depCode = depAirportCode.toLowerCase();
+                            arrCode = arrAirportCode.toLowerCase();
+                            depRwy = depRunway.replace("0", '');
+                            fPlan = routes[depCode][arrCode];
+                            console.log(fPlan);
+                            console.log(depRwy);
+                            console.log(fPlan.sid);
+                            let sidInfo = fPlan.sid[depRwy];
+                            console.log(sidInfo);
+                            inSid = sidInfo.displayName;
                         } else {
                             depRunwayInput.value = "";
                             console.error("An invalid runway was entered for the departure runway.");
@@ -269,11 +285,11 @@ function doRoutes() {
                 aircraftInput.focus();
                 aircraftInput.addEventListener("keydown", (event) => {
                     if (event.key === "Enter") {
-                        if (aircraftInput.value.length > 0) {
+                        if (aircraft.includes(aircraftInput.value.toUpperCase())) {
                             aircraftType = aircraftInput.value.toUpperCase();
                             selectionAircraft.innerHTML = aircraftType;
                             nextPage();
-                            determineSID();
+                            getArrivalRunwayDecide();
                         } else {
                             aircraftInput.value = "";
                             console.error("An invalid aircraft type was entered.");
@@ -284,25 +300,64 @@ function doRoutes() {
             }
         }
 
-        function determineSID() {
-            depCode = depAirportCode.toLowerCase();
-            arrCode = arrAirportCode.toLowerCase();
-            depRwy = depRunway.replace(/\D/g, '');
-            console.log(depRwy);
-            let sidInfo = routes[depCode][arrCode].sid[depRwy];
-            console.log(sidInfo);
-            console.log(sidInfo.displayName);
+        function getArrivalRunwayDecide() {
+            if (page == 5) {
+                const yesButton = document.querySelector("body#routes section.form div.page.pg5 button.yes");
+                const noButton = document.querySelector("body#routes section.form div.page.pg5 button.no");
+                
+                yesButton.addEventListener("click", () => {
+                    goToPage(6);
+                    getArrRunway();
+                });
 
-            if (sidInfo.displayName !== "Vectors") {
-                const page5El = document.querySelector("body#routes section.form div.page.pg5");
-                page5El.innerHTML = `
-                    <p class="question">A SID is available. Would you like to use it?</p>
-                    <p class="sid-name">${sidInfo.displayName}</p>
-                    <p class="sid-waypoints">${sidInfo.waypoints}</p>
-                    <button class="yes">Yes</button>
-                    <button class="no">No</button>
-                `;
-                goToPage(5);
+                noButton.addEventListener("click", () => {
+                    goToPage(7);
+                    getSidDecide();
+                });
+            }
+        }
+
+        function getArrRunway() {
+            if (page == 6) {
+                const arrRunwayInput = document.querySelector("body#routes section.form div.page.pg6 input.answer");
+                arrRunwayInput.focus();
+                arrRunwayInput.addEventListener("keydown", (event) => {
+                    if (event.key === "Enter") {
+                        if ((airports.find(airport => airport.code == arrAirportCode).runways).includes(arrRunwayInput.value.toUpperCase())) {
+                            arrRunway = arrRunwayInput.value.toUpperCase();
+                            let arrRunwayNumberLength = (arrRunway.replace(/\D/g, '').length);
+                            if (arrRunwayNumberLength == 1) {
+                                arrRunway = "0" + arrRunway;
+                            }
+                            selectionRoute.innerHTML = `${depAirportCode} (${depRunway}) - ${arrAirportCode} (${arrRunway})`;
+                            goToPage(7);
+                            getSidDecide();
+                        } else {
+                            arrRunwayInput.value = "";
+                            console.error("An invalid runway was entered for the departure runway.");
+                            showInvalid(arrRunwayInput);
+                        }
+                    }
+                });
+            }
+        }
+
+        function getSidDecide() {
+            if (page == 7) {
+                document.querySelector("body#routes section.form div.page.pg7 p.name").innerHTML = inSid;
+                document.querySelector("body#routes section.form div.page.pg7 p.waypoints").innerHTML = sids[depCode][inSid.replace(/\s/g, '')].waypoints;
+
+                const yesButton = document.querySelector("body#routes section.form div.page.pg7 button.yes");
+                const noButton = document.querySelector("body#routes section.form div.page.pg7 button.no");
+               
+                yesButton.addEventListener("click", () => {
+                    sid = inSid;
+                    alert("Sorry, but this feature is not yet available.");
+                });
+              
+                noButton.addEventListener("click", () => {
+                    alert("Sorry, but this feature is not yet available.");
+                });
             }
         }
 
@@ -390,7 +445,6 @@ function navAndLoadingEls() {
                 <div class="dropdown-content info">
                     <a class="nav-info-fleet">Fleet</a>
                     <a class="nav-info-staff">Staff</a>
-                    <a class="nav-info-partnerships">Partnerships</a>    
                 </div>
             </div>
         </div>

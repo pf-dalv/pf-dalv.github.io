@@ -13,6 +13,7 @@
     <section class="selection">
       <p class="route"></p>
       <p class="aircraft"></p>
+      <p class="sid"></p>
     </section>
     <section class="form">
       <div class="page pg1 departure-airport">
@@ -35,12 +36,29 @@
         <input type="text" class="answer" maxlength="4">
         <p class="enter-hint">Press enter to continue.</p>
       </div>
-      <div class="page pg5 sid-decide">
+      <div class="page pg5 arrival-runway-decide">
+        <p class="question">Do you know which runway you will be arriving on?</p>
+        <button class="yes">Yes <span class="keyboard">Y</span></button>
+        <button class="no">No <span class="keyboard">N</span></button>
+      </div>
+      <div class="page pg6 arrival-runway">
+        <p class="question">What runway will you be arriving on?</p>
+        <input type="text" class="answer" maxlength="3">
+        <p class="enter-hint">Press enter to continue.</p>
+      </div>
+      <div class="page pg7 sid-decide">
         <p class="question">A SID is available. Would you like to use it?</p>
-        <p class="sid-name">KATOK2T</p>
-        <p class="sid-waypoints">MAROG PC101 KATOK</p>
-        <button class="yes">Yes</button>
-        <button class="no">No</button>
+        <p class="name">SID</p>
+        <p class="waypoints">AN ERROR OCCURRED</p>
+        <button class="yes">Yes <span class="keyboard">Y</span></button>
+        <button class="no">No <span class="keyboard">N</span></button>
+      </div>
+      <div class="page pg8 star-decide">
+        <p class="question">A STAR is available. Would you like to use it?</p>
+        <p class="name">STAR</p>
+        <p class="waypoints">AN ERROR OCCURRED</p>
+        <button class="yes">Yes <span class="keyboard">Y</span></button>
+        <button class="no">No <span class="keyboard">N</span></button>
       </div>
     </section>
     <script defer type="text/javascript" src="/dalv/data.js"></script>
