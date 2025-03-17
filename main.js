@@ -263,12 +263,8 @@ function doRoutes() {
                             arrCode = arrAirportCode.toLowerCase();
                             depRwy = depRunway.replace("0", '');
                             fPlan = routes[depCode][arrCode];
-                            console.log(fPlan);
-                            console.log(depRwy);
-                            console.log(fPlan.sid);
                             let sidInfo = fPlan.sid[depRwy];
-                            console.log(sidInfo);
-                            inSid = sidInfo.displayName;
+                            inSid = sidInfo;
                         } else {
                             depRunwayInput.value = "";
                             console.error("An invalid runway was entered for the departure runway.");
@@ -311,8 +307,13 @@ function doRoutes() {
                 });
 
                 noButton.addEventListener("click", () => {
-                    goToPage(7);
-                    getSidDecide();
+                    console.log(inSid);
+                    if (inSid.displayName == "Vectors") {
+                        goToPage(8);
+                    } else {
+                        goToPage(7);
+                        getSidDecide();
+                    }
                 });
             }
         }
@@ -330,8 +331,13 @@ function doRoutes() {
                                 arrRunway = "0" + arrRunway;
                             }
                             selectionRoute.innerHTML = `${depAirportCode} (${depRunway}) - ${arrAirportCode} (${arrRunway})`;
-                            goToPage(7);
-                            getSidDecide();
+                            console.log(inSid);
+                            if (inSid.displayName == "Vectors") {
+                                goToPage(8);
+                            } else {
+                                goToPage(7);
+                                getSidDecide();
+                            }
                         } else {
                             arrRunwayInput.value = "";
                             console.error("An invalid runway was entered for the departure runway.");
@@ -345,7 +351,7 @@ function doRoutes() {
         function getSidDecide() {
             if (page == 7) {
                 document.querySelector("body#routes section.form div.page.pg7 p.name").innerHTML = inSid;
-                document.querySelector("body#routes section.form div.page.pg7 p.waypoints").innerHTML = sids[depCode][inSid.replace(/\s/g, '')].waypoints;
+                document.querySelector("body#routes section.form div.page.pg7 p.waypoints").innerHTML = sids[depCode][inSid.replace(" ", "")].waypoints;
 
                 const yesButton = document.querySelector("body#routes section.form div.page.pg7 button.yes");
                 const noButton = document.querySelector("body#routes section.form div.page.pg7 button.no");
