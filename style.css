@@ -289,12 +289,13 @@ body#routes section.form div.page p.question {
 }
 
 body#routes section.form div.page input.answer {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.1);
     outline: none;
     border: 2px solid rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     padding: 8px 10px;
     font-size: 20px;
+    box-shadow: 0px 0px 10px black;
     color: white;
     text-transform: uppercase;
     text-align: center;
@@ -347,9 +348,10 @@ body#routes section.form div.page button {
     width: 100%;
     border-radius: 10px;
     padding: 8px;
+    box-shadow: 0px 0px 10px black;
     outline: none;
     border: 2px solid rgba(255, 255, 255, 0.1);
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.1);
     cursor: pointer;
     font-size: 20px;
     color: white;
@@ -358,6 +360,7 @@ body#routes section.form div.page button {
 
 body#routes section.form div.page button span.keyboard {
     color: rgba(255, 255, 255, 0.75);
+    cursor: pointer;
     font-family: 'DM Mono', monospace;
     background: rgba(255, 255, 255, 0.1);
     padding: 3px;
@@ -377,15 +380,11 @@ body#routes section.form div.page button.yes {
     margin-bottom: 5px;
 }
 
-body#routes section.form div.page.pg1 input.answer,
-body#routes section.form div.page.pg2 input.answer,
-body#routes section.form div.page.pg3 input.answer,
-body#routes section.form div.page.pg4 input.answer,
-body#routes section.form div.page.pg6 input.answer {
+body#routes section.form div.page input.answer {
     width: 4em;
 }
 
-body#routes section.form div.page:not(.pg1) {
+body#routes section.form div.page:not(.pg0) {
     display: none;
 }
 

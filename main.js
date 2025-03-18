@@ -140,230 +140,324 @@ function doRoutes() {
         let depRunway;
         let arrRunway;
         let aircraftType;
+        let sid; // Example: egkk.BOGNA1X
+        let star; // Example: gclp.COSTI1C
+        // console.log(sids.egkk.BOGNA1X);
 
-        // These variables are for internalized code
-        let depCode;
-        let arrCode;
-        let depRwy;
-        let fPlan;
-        let inSid;
-
-        let sid; // Example: egkk[BOGNA 1X]
-        let star;
-
-        const depAirportInput = document.querySelector("body#routes section.form div.page.pg1 input.answer");
         const selectionRoute = document.querySelector("body#routes section.selection p.route");
         const selectionAircraft = document.querySelector("body#routes section.selection p.aircraft");
 
-        if (depAirportInput) {
-            page = 1;
+        const depAirportInput = document.querySelector("body#routes section.form div.page.pg0 input.answer");
+        const arrAirportInput = document.querySelector("body#routes section.form div.page.pg1 input.answer");
+        const depRunwayInput = document.querySelector("body#routes section.form div.page.pg2 input.answer");
+        const aircraftTypeInput = document.querySelector("body#routes section.form div.page.pg3 input.answer");
+        const arrRunwayInput = document.querySelector("body#routes section.form div.page.pg5 input.answer");
+
+        if (depAirportInput && page == 0) {
             depAirportInput.focus();
-        } else {
-            console.error("The departure airport input element was not found.");
-            return;
-        }
-
-        depAirportInput.addEventListener("keydown", (event) => {
-            if (event.key === "Enter") {
-                if (airportCodeList.includes(depAirportInput.value.toUpperCase())) {
-                    depAirportCode = depAirportInput.value.toUpperCase();
-                    selectionRoute.innerHTML = `Departing ${depAirportCode}`;
-                    nextPage();
-                    getArrAirportCode();
-                } else {
-                    depAirportInput.value = "";
-                    console.error("An invalid airport code was entered for the departure airport.");
-                    showInvalid(depAirportInput);
+            depAirportInput.addEventListener("keydown", (ev) => {
+                if (ev.key == "Enter") {
+                    let pKey = depAirportInput.value.toUpperCase();
+                    if (airportCodeList.includes(pKey)) {
+                        depAirportCode = pKey;
+                        depAirportInput.value = "";
+                        page++;
+                        getArrivalAirport();
+                        pageSwitch();
+                        console.log("Successful! Departure Airport: " + depAirportCode);
+                        selectionRoute.innerHTML = `Departing ${depAirportCode}`;
+                    } else {
+                        showInvalid(depAirportInput);
+                    }
                 }
-            }
-        });
-
-        function nextPage() {
-            if (page > 4) {
-                return;
-            }
-            const form = document.querySelector("body#routes section.form");
-            const pages = form.querySelectorAll("div.page");
-
-            pages.forEach(page => {
-                page.style.display = "none";
-            });
-
-            if (pages[page] == undefined) {
-                console.error("The page element was not found. Page: " + (page + 1));
-                alert("An error occurred. Check the console for more information.");
-            } else {
-                pages[page].style.display = "flex";
-                page++;
-            }
+            })
         }
 
-        function goToPage(pageNum) {
-            page = pageNum;
-            lclPage = pageNum - 1;
-            const form = document.querySelector("body#routes section.form");
-            const pages = form.querySelectorAll("div.page");
-
-            pages.forEach(page => {
-                page.style.display = "none";
-            });
-
-            if (pages[lclPage] == undefined) {
-                console.error("The page element was not found. Page: " + page);
-                alert("An error occurred. Check the console for more information.");
-            } else {
-                pages[lclPage].style.display = "flex";
-            }
-        }
-
-        function getArrAirportCode() {
-            if (page == 2) {
-                const arrAirportInput = document.querySelector("body#routes section.form div.page.pg2 input.answer");
+        function getArrivalAirport() {
+            if (arrAirportInput && page == 1) {
                 arrAirportInput.focus();
-                arrAirportInput.addEventListener("keydown", (event) => {
-                    if (event.key === "Enter") {
-                        if (airportCodeList.includes(arrAirportInput.value.toUpperCase())) {
-                            if (depAirportCode !== arrAirportInput.value.toUpperCase()) {
-                                arrAirportCode = arrAirportInput.value.toUpperCase();
-                                selectionRoute.innerHTML = `${depAirportCode} - ${arrAirportCode}`;
-                                nextPage();
-                                getDepRunway();
-                            } else {
-                                arrAirportInput.value = "";
-                                console.error("The arrival airport cannot be the same as the departure airport.");
+                arrAirportInput.addEventListener("keydown", (ev) => {
+                    if (ev.key == "Enter") {
+                        let pKey = arrAirportInput.value.toUpperCase();
+                        if (airportCodeList.includes(pKey)) {
+                            if (pKey == depAirportCode) {
                                 showInvalid(arrAirportInput);
+                                return;
                             }
-                        } else {
+                            arrAirportCode = pKey;
                             arrAirportInput.value = "";
-                            console.error("An invalid airport code was entered for the arrival airport.");
+                            page++;
+                            getDepartureRunway();
+                            pageSwitch();
+                            console.log("Successful! Arrival Airport: " + arrAirportCode);
+                            selectionRoute.innerHTML = `${depAirportCode} - ${arrAirportCode}`;
+                        } else {
                             showInvalid(arrAirportInput);
                         }
                     }
-                });
+                })
             }
         }
-        
-        function getDepRunway() {
-            if (page == 3) {
-                const depRunwayInput = document.querySelector("body#routes section.form div.page.pg3 input.answer");
-                depRunwayInput.focus();
-                depRunwayInput.addEventListener("keydown", (event) => {
-                    if (event.key === "Enter") {
-                        if ((airports.find(airport => airport.code == depAirportCode).runways).includes(depRunwayInput.value.toUpperCase())) {
-                            depRunway = depRunwayInput.value.toUpperCase();
-                            let depRunwayNumberLength = (depRunway.replace(/\D/g, '').length);
-                            if (depRunwayNumberLength == 1) {
-                                depRunway = "0" + depRunway;
-                            }
-                            selectionRoute.innerHTML = `${depAirportCode} (${depRunway}) - ${arrAirportCode}`;
-                            nextPage();
-                            getAircraftType();
 
-                            depCode = depAirportCode.toLowerCase();
-                            arrCode = arrAirportCode.toLowerCase();
-                            depRwy = depRunway.replace("0", '');
-                            fPlan = routes[depCode][arrCode];
-                            let sidInfo = fPlan.sid[depRwy];
-                            inSid = sidInfo;
-                        } else {
+        function getDepartureRunway() {
+            if (depRunwayInput && page == 2) {
+                depRunwayInput.focus();
+                depRunwayInput.addEventListener("keydown", (ev) => {
+                    if (ev.key == "Enter") {
+                        let pKey = depRunwayInput.value.toUpperCase();
+                        if (airports.find(airport => airport.code == depAirportCode).runways.includes(pKey)) {
+                            depRunway = padRunway(pKey);
                             depRunwayInput.value = "";
-                            console.error("An invalid runway was entered for the departure runway.");
+                            page++;
+                            getAircraftType();
+                            pageSwitch();
+                            console.log("Successful! Departure Runway: " + depRunway);
+                            selectionRoute.innerHTML = `${depAirportCode} (${depRunway}) - ${arrAirportCode}`;
+                        } else {
                             showInvalid(depRunwayInput);
                         }
                     }
-                });
+                })
             }
         }
 
         function getAircraftType() {
-            if (page == 4) {
-                const aircraftInput = document.querySelector("body#routes section.form div.page.pg4 input.answer");
-                aircraftInput.focus();
-                aircraftInput.addEventListener("keydown", (event) => {
-                    if (event.key === "Enter") {
-                        if (aircraft.includes(aircraftInput.value.toUpperCase())) {
-                            aircraftType = aircraftInput.value.toUpperCase();
+            if (aircraftTypeInput && page == 3) {
+                aircraftTypeInput.focus();
+                aircraftTypeInput.addEventListener("keydown", (ev) => {
+                    if (ev.key == "Enter") {
+                        let pKey = aircraftTypeInput.value.toUpperCase();
+                        if (aircraftTypes.includes(pKey)) {
+                            aircraftType = pKey;
+                            aircraftTypeInput.value = "";
+                            page++;
+                            pageSwitch();
+                            getArrivalRunwayDecision();
+                            console.log("Successful! Aircraft Type: " + aircraftType);
                             selectionAircraft.innerHTML = aircraftType;
-                            nextPage();
-                            getArrivalRunwayDecide();
                         } else {
-                            aircraftInput.value = "";
-                            console.error("An invalid aircraft type was entered.");
-                            showInvalid(aircraftInput);
+                            showInvalid(aircraftTypeInput);
                         }
                     }
-                });
+                })
             }
         }
 
-        function getArrivalRunwayDecide() {
-            if (page == 5) {
-                const yesButton = document.querySelector("body#routes section.form div.page.pg5 button.yes");
-                const noButton = document.querySelector("body#routes section.form div.page.pg5 button.no");
-                
+        function getArrivalRunwayDecision() {
+            if (page == 4) {
+                openTap = 4;
+                const yesButton = document.querySelector("body#routes section.form div.page.pg4 button.yes");
+                const noButton = document.querySelector("body#routes section.form div.page.pg4 button.no");
+
                 yesButton.addEventListener("click", () => {
-                    goToPage(6);
-                    getArrRunway();
-                });
+                    page = 5;
+                    pageSwitch();
+                    getArrivalRunway();
+                })
 
                 noButton.addEventListener("click", () => {
-                    console.log(inSid);
-                    if (inSid.displayName == "Vectors") {
-                        goToPage(8);
-                    } else {
-                        goToPage(7);
-                        getSidDecide();
-                    }
-                });
+                    determineSidStarOptions();
+                })
             }
         }
 
-        function getArrRunway() {
-            if (page == 6) {
-                const arrRunwayInput = document.querySelector("body#routes section.form div.page.pg6 input.answer");
+        function getArrivalRunway() {
+            if (arrRunwayInput && page == 5) {
                 arrRunwayInput.focus();
-                arrRunwayInput.addEventListener("keydown", (event) => {
-                    if (event.key === "Enter") {
-                        if ((airports.find(airport => airport.code == arrAirportCode).runways).includes(arrRunwayInput.value.toUpperCase())) {
-                            arrRunway = arrRunwayInput.value.toUpperCase();
-                            let arrRunwayNumberLength = (arrRunway.replace(/\D/g, '').length);
-                            if (arrRunwayNumberLength == 1) {
-                                arrRunway = "0" + arrRunway;
-                            }
-                            selectionRoute.innerHTML = `${depAirportCode} (${depRunway}) - ${arrAirportCode} (${arrRunway})`;
-                            console.log(inSid);
-                            if (inSid.displayName == "Vectors") {
-                                goToPage(8);
-                            } else {
-                                goToPage(7);
-                                getSidDecide();
-                            }
-                        } else {
+                arrRunwayInput.addEventListener("keydown", (ev) => {
+                    if (ev.key == "Enter") {
+                        let pKey = arrRunwayInput.value.toUpperCase();
+                        if (airports.find(airport => airport.code == arrAirportCode).runways.includes(pKey)) {
+                            arrRunway = padRunway(pKey);
                             arrRunwayInput.value = "";
-                            console.error("An invalid runway was entered for the departure runway.");
+                            determineSidStarOptions();
+                            console.log("Successful! Arrival Runway: " + arrRunway);
+                            selectionRoute.innerHTML = `${depAirportCode} (${depRunway}) - ${arrAirportCode} (${arrRunway})`;
+                        } else {
                             showInvalid(arrRunwayInput);
                         }
                     }
-                });
+                })
             }
         }
 
-        function getSidDecide() {
-            if (page == 7) {
-                document.querySelector("body#routes section.form div.page.pg7 p.name").innerHTML = inSid;
-                document.querySelector("body#routes section.form div.page.pg7 p.waypoints").innerHTML = sids[depCode][inSid.replace(" ", "")].waypoints;
+        let posSid;
+        let posStar;
 
-                const yesButton = document.querySelector("body#routes section.form div.page.pg7 button.yes");
-                const noButton = document.querySelector("body#routes section.form div.page.pg7 button.no");
-               
+        const sidDecisionName = document.querySelector("body#routes section.form div.page.pg6 p.name");
+        const sidDecisionWaypoints = document.querySelector("body#routes section.form div.page.pg6 p.waypoints");
+        const starDecisionName = document.querySelector("body#routes section.form div.page.pg7 p.name");
+        const starDecisionWaypoints = document.querySelector("body#routes section.form div.page.pg7 p.waypoints");
+        const formEl = document.querySelector("body#routes section.form");
+
+        function determineSidStarOptions(mod) {
+            if (mod == "determineStar") {
+                determineStar();
+                return;
+            }
+
+            let dssDep = depAirportCode.toLowerCase();
+            let dssArr = arrAirportCode.toLowerCase();
+            let depRwy = rawRunway(depRunway);
+            let arrRwy;
+            if (arrRunway) {
+                arrRwy = rawRunway(arrRunway);
+            }
+
+            console.log(dssDep, dssArr, depRwy, arrRwy);
+            posSid = routes[dssDep][dssArr].sid[depRwy];
+            posStar = routes[dssDep][dssArr].star[arrRwy];
+            console.log(posSid, posStar);
+
+            if (!posSid && !posStar) {
+                showFinish();
+                return;
+            }
+
+            if (posSid.displayName && posSid.displayName !== "Vectors") {
+                page = 6;
+                pageSwitch();
+                setTimeout(() => {
+                    openTap = 6;
+                }, 250);
+                console.log("Set 6");
+                sidDecisionName.innerHTML = posSid.displayName;
+                sidDecisionWaypoints.innerHTML = posSid.waypoints;
+
+                const yesButton = document.querySelector("body#routes section.form div.page.pg6 button.yes");
+                const noButton = document.querySelector("body#routes section.form div.page.pg6 button.no");
+
                 yesButton.addEventListener("click", () => {
-                    sid = inSid;
-                    alert("Sorry, but this feature is not yet available.");
-                });
-              
+                    sid = posSid;
+                    openTap = 0;
+                    console.log("Set 0");
+                    determineStar();
+                })
+
                 noButton.addEventListener("click", () => {
-                    alert("Sorry, but this feature is not yet available.");
-                });
+                    openTap = 0;
+                    console.log("Set 0");
+                    determineStar();
+                })
+                
+            } else {
+                determineStar();
+            }
+
+            function determineStar() {
+                if (posStar && posStar.displayName !== "Vectors") {
+                    page = 7;
+                    pageSwitch();
+                    setTimeout(() => {
+                        openTap = 7;
+                    }, 250);
+                    starDecisionName.innerHTML = posStar.displayName;
+                    starDecisionWaypoints.innerHTML = posStar.waypoints;
+
+                    const yesButton = document.querySelector("body#routes section.form div.page.pg7 button.yes");
+                    const noButton = document.querySelector("body#routes section.form div.page.pg7 button.no");
+    
+                    yesButton.addEventListener("click", () => {
+                        star = posStar;
+                        openTap = 0;
+                        console.log("Set 0");
+                        showFinish();
+                    })
+    
+                    noButton.addEventListener("click", () => {
+                        openTap = 0;
+                        console.log("Set 0");
+                        showFinish();
+                    })
+                } else {
+                    showFinish();
+                    return;
+                }
+            }
+        }
+
+        function showFinish() {
+            formEl.style.display = "none";
+            selectionAircraft.style.display = "none";
+            selectionRoute.style.display = "none";
+            return;
+        }
+        
+        let openTap = 0;
+
+        document.addEventListener("keydown", (ev) => {
+            console.log(openTap);
+            if (openTap == 0) {
+                return;
+            } else {
+                ev.preventDefault();
+            }
+
+            if (openTap == 4) {
+                if (ev.key == "Y" || ev.key == "y") {
+                    openTap = 0;
+                    console.log("Set 0");
+                    page = 5;
+                    pageSwitch();
+                    getArrivalRunway();
+                } else if (ev.key == "N" || ev.key == "n") {
+                    openTap = 0;
+                    console.log("Set 0");
+                    determineSidStarOptions();
+                }
+            }
+
+            if (openTap == 6) {
+                if (ev.key == "Y" || ev.key == "y") {
+                    openTap = 0;
+                    console.log("Set 0");
+                    sid = posSid;
+                    determineSidStarOptions("determineStar");
+                } else if (ev.key == "N" || ev.key == "n") {
+                    openTap = 0;
+                    console.log("Set 0");
+                    determineSidStarOptions("determineStar");
+                }
+            }
+
+            if (openTap == 7) {
+                if (ev.key == "Y" || ev.key == "y") {
+                    star = posStar;
+                    openTap = 0;
+                    console.log("Set 0");
+                    showFinish();
+                } else if (ev.key == "N" || ev.key == "n") {
+                    openTap = 0;
+                    console.log("Set 0");
+                    showFinish();
+                }
+            }
+        })
+
+        function padRunway(context) {
+            let rememberThis = "";
+            if (context.endsWith("L") || context.endsWith("R") || context.endsWith("C")) {
+                rememberThis = context.slice(-1);
+            }
+            let noIdentifier = context.replace("L", "").replace("R", "").replace("C", "");
+            let paddedRwy = noIdentifier.toString().padStart(2, "0");
+            return paddedRwy + rememberThis;
+        }
+
+        function rawRunway(context) {
+            return context.replace("L", "").replace("R", "").replace("C", "").replace("0", "");
+        }
+
+        function pageSwitch() {
+            const pages = document.querySelectorAll("body#routes section.form div.page");
+            pages.forEach(pg => pg.style.display = "none");
+            const currentPage = document.querySelector(`body#routes section.form div.page.pg${page}`);
+            if (currentPage) {
+                currentPage.style.display = "flex";
+                const currentPageInput = document.querySelector(`body#routes section.form div.page.pg${page} input.answer`);
+                if (currentPageInput) {
+                    currentPageInput.focus();
+                }
             }
         }
 
