@@ -120,9 +120,9 @@ function doRoutes() {
 
     const airportCodeList = airports.map(airport => airport.code);
 
-    // SHORT (UNDER 20NM)
-    // MEDIUM (20-30NM)
-    // LONG (OVER 30NM)
+        // SHORT (UNDER 20NM)
+        // MEDIUM (20-30NM)
+        // LONG (OVER 30NM)
     // DPC DST DAB! DCR!
 
     function randomBackground() {
@@ -164,7 +164,6 @@ function doRoutes() {
                         page++;
                         getArrivalAirport();
                         pageSwitch();
-                        console.log("Successful! Departure Airport: " + depAirportCode);
                         selectionRoute.innerHTML = `Departing ${depAirportCode}`;
                     } else {
                         showInvalid(depAirportInput);
@@ -189,7 +188,6 @@ function doRoutes() {
                             page++;
                             getDepartureRunway();
                             pageSwitch();
-                            console.log("Successful! Arrival Airport: " + arrAirportCode);
                             selectionRoute.innerHTML = `${depAirportCode} - ${arrAirportCode}`;
                         } else {
                             showInvalid(arrAirportInput);
@@ -211,7 +209,6 @@ function doRoutes() {
                             page++;
                             getAircraftType();
                             pageSwitch();
-                            console.log("Successful! Departure Runway: " + depRunway);
                             selectionRoute.innerHTML = `${depAirportCode} (${depRunway}) - ${arrAirportCode}`;
                         } else {
                             showInvalid(depRunwayInput);
@@ -233,7 +230,6 @@ function doRoutes() {
                             page++;
                             pageSwitch();
                             getArrivalRunwayDecision();
-                            console.log("Successful! Aircraft Type: " + aircraftType);
                             selectionAircraft.innerHTML = aircraftType;
                         } else {
                             showInvalid(aircraftTypeInput);
@@ -271,7 +267,6 @@ function doRoutes() {
                             arrRunway = padRunway(pKey);
                             arrRunwayInput.value = "";
                             determineSidStarOptions();
-                            console.log("Successful! Arrival Runway: " + arrRunway);
                             selectionRoute.innerHTML = `${depAirportCode} (${depRunway}) - ${arrAirportCode} (${arrRunway})`;
                         } else {
                             showInvalid(arrRunwayInput);
@@ -290,24 +285,26 @@ function doRoutes() {
         const starDecisionWaypoints = document.querySelector("body#routes section.form div.page.pg7 p.waypoints");
         const formEl = document.querySelector("body#routes section.form");
 
+        let dssDep;
+        let dssArr;
+        let depRwy;
+        let arrRwy;
+
         function determineSidStarOptions(mod) {
             if (mod == "determineStar") {
                 determineStar();
                 return;
             }
 
-            let dssDep = depAirportCode.toLowerCase();
-            let dssArr = arrAirportCode.toLowerCase();
-            let depRwy = rawRunway(depRunway);
-            let arrRwy;
+            dssDep = depAirportCode.toLowerCase();
+            dssArr = arrAirportCode.toLowerCase();
+            depRwy = rawRunway(depRunway);
             if (arrRunway) {
                 arrRwy = rawRunway(arrRunway);
             }
 
-            console.log(dssDep, dssArr, depRwy, arrRwy);
             posSid = routes[dssDep][dssArr].sid[depRwy];
             posStar = routes[dssDep][dssArr].star[arrRwy];
-            console.log(posSid, posStar);
 
             if (!posSid && !posStar) {
                 showFinish();
@@ -320,7 +317,6 @@ function doRoutes() {
                 setTimeout(() => {
                     openTap = 6;
                 }, 250);
-                console.log("Set 6");
                 sidDecisionName.innerHTML = posSid.displayName;
                 sidDecisionWaypoints.innerHTML = posSid.waypoints;
 
@@ -330,13 +326,11 @@ function doRoutes() {
                 yesButton.addEventListener("click", () => {
                     sid = posSid;
                     openTap = 0;
-                    console.log("Set 0");
                     determineStar();
                 })
 
                 noButton.addEventListener("click", () => {
                     openTap = 0;
-                    console.log("Set 0");
                     determineStar();
                 })
                 
@@ -360,13 +354,11 @@ function doRoutes() {
                     yesButton.addEventListener("click", () => {
                         star = posStar;
                         openTap = 0;
-                        console.log("Set 0");
                         showFinish();
                     })
     
                     noButton.addEventListener("click", () => {
                         openTap = 0;
-                        console.log("Set 0");
                         showFinish();
                     })
                 } else {
@@ -380,13 +372,46 @@ function doRoutes() {
             formEl.style.display = "none";
             selectionAircraft.style.display = "none";
             selectionRoute.style.display = "none";
-            return;
+            const finalEl = document.querySelector("body#routes section.final");
+            finalEl.style.display = "flex";
+            const resultsDepAirport = document.querySelector("body#routes section.results div.information.departure div.content.airport-name p");
+            const resultsDepRunway = document.querySelector("body#routes section.results div.information.departure div.content.runway p");
+            const resultsDepSid = document.querySelector("body#routes section.results div.information.departure div.content.sid p");
+            const resultsArrAirport = document.querySelector("body#routes section.results div.information.arrival div.content.airport-name p");
+            const resultsArrRunway = document.querySelector("body#routes section.results div.information.arrival div.content.runway p");
+            const resultsArrStar = document.querySelector("body#routes section.results div.information.arrival div.content.star p");
+            const resultsEnrouteRoute = document.querySelector("body#routes section.results div.information.enroute div.content.route p");
+
+            resultsDepAirport.innerHTML = airports.find(airport => airport.code == depAirportCode).name;
+            resultsDepRunway.innerHTML = depRunway;
+            resultsArrAirport.innerHTML = airports.find(airport => airport.code == arrAirportCode).name;
+            resultsEnrouteRoute.innerHTML = routes[dssDep][dssArr].route;
+
+            if (sid) {
+                resultsDepSid.innerHTML = sid.displayName;
+                resultsDepSid.classList.add("mono");
+            } else {
+                resultsDepSid.innerHTML = "Vectors";
+            }
+
+            if (star) {
+                resultsArrStar.innerHTML = star.displayName;
+                resultsArrStar.classList.add("mono");
+            } else {
+                resultsArrStar.innerHTML = "Vectors";
+            }
+
+            if (arrRunway) {
+                resultsArrRunway.innerHTML = arrRunway;
+                resultsArrRunway.classList.add("mono");
+            } else {
+                resultsArrRunway.innerHTML = "N/A";
+            }
         }
         
         let openTap = 0;
 
         document.addEventListener("keydown", (ev) => {
-            console.log(openTap);
             if (openTap == 0) {
                 return;
             } else {
@@ -396,13 +421,11 @@ function doRoutes() {
             if (openTap == 4) {
                 if (ev.key == "Y" || ev.key == "y") {
                     openTap = 0;
-                    console.log("Set 0");
                     page = 5;
                     pageSwitch();
                     getArrivalRunway();
                 } else if (ev.key == "N" || ev.key == "n") {
                     openTap = 0;
-                    console.log("Set 0");
                     determineSidStarOptions();
                 }
             }
@@ -410,12 +433,10 @@ function doRoutes() {
             if (openTap == 6) {
                 if (ev.key == "Y" || ev.key == "y") {
                     openTap = 0;
-                    console.log("Set 0");
                     sid = posSid;
                     determineSidStarOptions("determineStar");
                 } else if (ev.key == "N" || ev.key == "n") {
                     openTap = 0;
-                    console.log("Set 0");
                     determineSidStarOptions("determineStar");
                 }
             }
@@ -424,11 +445,9 @@ function doRoutes() {
                 if (ev.key == "Y" || ev.key == "y") {
                     star = posStar;
                     openTap = 0;
-                    console.log("Set 0");
                     showFinish();
                 } else if (ev.key == "N" || ev.key == "n") {
                     openTap = 0;
-                    console.log("Set 0");
                     showFinish();
                 }
             }

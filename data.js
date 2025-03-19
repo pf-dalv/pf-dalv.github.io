@@ -219,7 +219,7 @@ const airports = [
     { code: "EFKT", name: "Kittilä", runways: ["16", "34"] }
 ]
 
-const aircraftTypes = ["A350", "A320", "B737", "B757", "B717", "MD11", "B727"];
+const aircraftTypes = ["A350", "A320", "B737", "B757", "B717", "MD11", "B727", "A220"];
 
 //This code was for testing purposes
 

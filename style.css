@@ -228,7 +228,6 @@ body#home footer div p:not(.header) a:hover {
     color: var(--brand-navy);
 }
 
-/* Routes page styles */
 body#routes {
     display: flex;
     flex-direction: column;
@@ -271,6 +270,7 @@ body#routes section.form {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: 30px;
 }
 
 body#routes section.form div.page {
@@ -388,7 +388,183 @@ body#routes section.form div.page:not(.pg0) {
     display: none;
 }
 
-/* Charts page styles */
+body#routes section.final {
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    height: 100%;
+    width: 100%;
+    margin-top: 30px;
+}
+
+body#routes section.final section.results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.85);
+    border-radius: 20px;
+    box-shadow: 0px 0px 15px -5px black;
+    min-width: 350px;
+    max-width: 500px;
+}
+
+body#routes section.final section.results div.route {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+body#routes section.final section.results > div.route p {
+    color: white;
+    font-size: 30px;
+    font-family: 'DM Mono', monospace;
+}
+
+body#routes section.final section.results div.route i {
+    color: white;
+    opacity: 0.75;
+    font-size: 20px;
+}
+
+body#routes section.final section.results div.aircraft {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: -8px;
+}
+
+body#routes section.final section.results div.aircraft p {
+    color: white;
+    font-size: 20px;
+    font-family: 'DM Mono', monospace;
+}
+
+body#routes section.final section.results div.section-heading {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    gap: 7px;
+}
+
+body#routes section.final section.results div.section-heading i {
+    color: white;
+    opacity: 0.75;
+    font-size: 15px;
+}
+
+body#routes section.final section.results div.section-heading p {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+body#routes section.final section.results div.information {
+    display: flex;
+    flex-direction: column;
+    gap: -2px;
+    margin-top: -8px;
+    width: 100%;
+}
+
+body#routes section.final section.results div.information div.content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    gap: 7px;
+}
+
+body#routes section.final section.results div.information div.content div.icon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 15px;
+}
+
+body#routes section.final section.results div.information div.content i {
+    color: white;
+    opacity: 0.5;
+    font-size: 13px;
+}
+
+body#routes section.final section.results div.information div.content p {
+    color: white;
+    font-size: 16px;
+}
+
+body#routes section.final section.results div.information div.content p.mono {
+    font-family: 'DM Mono', monospace;
+}
+
+body#routes section.final section.results div.information.enroute div.content.route p {
+    text-wrap: wrap;
+    max-width: 20em;
+}
+
+body#routes section.final section.actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.85);
+    border-radius: 20px;
+    box-shadow: 0px 0px 15px -5px black;
+    width: 300px;
+}
+
+body#routes section.final section.actions div.row {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+body#routes section.final section.actions button {
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 8px 10px;
+    outline: none;
+    width: 100%;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px -5px black;
+    border: 2px solid transparent;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+body#routes section.final section.actions button i {
+    cursor: pointer;
+}
+
+body#routes section.final section.actions button p {
+    cursor: pointer;
+}
+
+body#routes section.final section.actions button:hover {
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
 body#charts section.list {
     padding-top: 60px;
     display: grid;
@@ -559,6 +735,27 @@ nav div.dropdown:hover div.dropdown-content,
 nav div.dropdown div.dropdown-content:hover,
 nav div.dropdown div.dropdown-content-wrapper:hover {
     display: block;
+}
+
+div.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
+
+div.overlay div.content {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    box-shadow: 0px 0px 15px -5px black;
+    padding: 20px;
+    min-width: 200px;
+    max-width: 400px;
+    max-height: 95vh;
 }
 
 /* Responsive design for mobile devices */
