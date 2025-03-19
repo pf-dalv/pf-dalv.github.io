@@ -6,7 +6,6 @@ function loadingCover() {
     const cover = document.querySelector("div.loading");
     cover.style.display = "flex";
 
-    function doCover() {
         setTimeout(() => {
             if (document.readyState === "complete") {
                 cover.style.transform = "translateY(100%)";
@@ -36,9 +35,7 @@ function loadingCover() {
         messageEls.forEach(msgEl => {
             msgEl.innerHTML = message;
         });
-    }
 
-    doCover();
 }
 
 function buttonsAndLinks() {
