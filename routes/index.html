@@ -135,19 +135,33 @@
       </section>
 
       <section class="actions">
+        <button class="copy-plan">
+          <i class="fa-solid fa-clipboard"></i>
+          <p>Copy Flight Plan</p>
+        </button>
         <button class="copy-route">
           <i class="fa-solid fa-route"></i>
           <p>Copy Full Route</p>
         </button>
-        <button class="copy-plan">
-          <i class="fa-solid fa-clipboard"></i>
-          <p>Copy Flight Plan</p>
+        <button class="dep-charts">
+          <i class="fa-solid fa-map"></i>
+          <p>Departure Charts</p>
+        </button>
+        <button class="arr-charts">
+          <i class="fa-solid fa-map"></i>
+          <p>Arrival Charts</p>
         </button>
       </section>
     </section>
 
     <div class="overlay">
-      <div class="content"></div>
+      <div class="content">
+        <p class="label">Flight Number</p>
+        <div class="flight-number">
+          <p class="airline">DAL</p>
+          <input type="text">
+        </div>
+      </div>
     </div>
     
     <script defer type="text/javascript" src="/dalv/data.js"></script>
