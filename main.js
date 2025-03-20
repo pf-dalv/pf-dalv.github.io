@@ -6,36 +6,41 @@ function loadingCover() {
     const cover = document.querySelector("div.loading");
     cover.style.display = "flex";
 
-        setTimeout(() => {
-            if (document.readyState === "complete") {
-                cover.style.transform = "translateY(100%)";
-                cover.style.opacity = 0.75;
-                return;
-            }
+    setTimeout(() => {
+        if (document.readyState === "complete") {
+            cover.style.transform = "translateY(100%)";
+            cover.style.opacity = 0.75;
+            setTimeout(() => {
+                cover.style.display = "none";
+            }, 400);
+            return;
+        }
 
-            window.onload = function() {
-                cover.style.transform = "translateY(100%)";
-                cover.style.opacity = 0.75;
-            }
-        }, 600);
+        window.onload = function() {
+            cover.style.transform = "translateY(100%)";
+            cover.style.opacity = 0.75;
+            setTimeout(() => {
+                cover.style.display = "none";
+            }, 400);
+        }
+    }, 600);
 
-        const loadingMessages = [
-            "Finalizing your flight plan...",
-            "Spooling up the engines...",
-            "Fueling up...",
-            "Aligning with the runway...",
-            "Waiting for takeoff clearance...",
-            "Waiting for IFR clearance...",
-            "Adjusting seatbacks and tray tables...",
-            "Calculating cruise altitude..."
-        ]
+    const loadingMessages = [
+        "Finalizing your flight plan...",
+        "Spooling up the engines...",
+        "Fueling up...",
+        "Aligning with the runway...",
+        "Waiting for takeoff clearance...",
+        "Waiting for IFR clearance...",
+        "Adjusting seatbacks and tray tables...",
+        "Calculating cruise altitude..."
+    ]
 
-        const messageEls = document.querySelectorAll("div.loading p");
-        const message = loadingMessages[Math.floor(Math.random() * loadingMessages.length)];
-        messageEls.forEach(msgEl => {
-            msgEl.innerHTML = message;
-        });
-
+    const messageEls = document.querySelectorAll("div.loading p");
+    const message = loadingMessages[Math.floor(Math.random() * loadingMessages.length)];
+    messageEls.forEach(msgEl => {
+        msgEl.innerHTML = message;
+    });
 }
 
 function buttonsAndLinks() {
@@ -130,16 +135,20 @@ function doRoutes() {
         }
     }
 
+    let dssDep;
+    let dssArr;
+    let depRwy;
+    let arrRwy;
+    let depAirportCode;
+    let arrAirportCode;
+    let depRunway;
+    let arrRunway;
+    let aircraftType;
+    let sid; // Example: egkk.BOGNA1X
+    let star; // Example: gclp.COSTI1C
+
     function getInformation() {
         let page = 0;
-        let depAirportCode;
-        let arrAirportCode;
-        let depRunway;
-        let arrRunway;
-        let aircraftType;
-        let sid; // Example: egkk.BOGNA1X
-        let star; // Example: gclp.COSTI1C
-        // console.log(sids.egkk.BOGNA1X);
 
         const selectionRoute = document.querySelector("body#routes section.selection p.route");
         const selectionAircraft = document.querySelector("body#routes section.selection p.aircraft");
@@ -243,12 +252,14 @@ function doRoutes() {
                 const noButton = document.querySelector("body#routes section.form div.page.pg4 button.no");
 
                 yesButton.addEventListener("click", () => {
+                    openTap = 0;
                     page = 5;
                     pageSwitch();
                     getArrivalRunway();
                 })
 
                 noButton.addEventListener("click", () => {
+                    openTap = 0;
                     determineSidStarOptions();
                 })
             }
@@ -281,11 +292,6 @@ function doRoutes() {
         const starDecisionName = document.querySelector("body#routes section.form div.page.pg7 p.name");
         const starDecisionWaypoints = document.querySelector("body#routes section.form div.page.pg7 p.waypoints");
         const formEl = document.querySelector("body#routes section.form");
-
-        let dssDep;
-        let dssArr;
-        let depRwy;
-        let arrRwy;
 
         function determineSidStarOptions(mod) {
             if (mod == "determineStar") {
@@ -404,6 +410,8 @@ function doRoutes() {
             } else {
                 resultsArrRunway.innerHTML = "N/A";
             }
+
+            informationInteraction();
         }
         
         let openTap = 0;
@@ -483,6 +491,25 @@ function doRoutes() {
                 input.classList.remove("invalid");
             }, 500);
         }
+    }
+
+    function informationInteraction() {
+        const copyFlightPlanButton = document.querySelector("body#routes section.final section.actions button.copy-plan");
+        const copyRouteButton = document.querySelector("body#routes section.final section.actions button.copy-route");
+        const depChartsButton = document.querySelector("body#routes section.final section.actions button.dep-charts");
+        const arrChartsButton = document.querySelector("body#routes section.final section.actions button.arr-charts");
+
+        copyFlightPlanButton.addEventListener("click", () => {
+            let x = 1;
+        })
+
+        depChartsButton.addEventListener("click", () => {
+            location.href = `/dalv/charts/?airport=${depAirportCode}`;
+        });
+
+        arrChartsButton.addEventListener("click", () => {
+            location.href = `/dalv/charts/?airport=${arrAirportCode}`;
+        });
     }
 
     getInformation();
