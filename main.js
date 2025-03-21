@@ -120,12 +120,19 @@ function doRoutes() {
         return;
     }
 
+    function showInvalid(input) {
+        input.classList.add("invalid");
+        setTimeout(() => {
+            input.classList.remove("invalid");
+        }, 500);
+    }
+
     const airportCodeList = airports.map(airport => airport.code);
 
         // SHORT (UNDER 20NM)
         // MEDIUM (20-30NM)
         // LONG (OVER 30NM)
-    // DPC DST DAB! DCR!
+        // DPC DST DAB! DCR!
 
     function randomBackground() {
         const bannerEl = document.querySelector("section.background");
@@ -144,6 +151,8 @@ function doRoutes() {
     let depRunway;
     let arrRunway;
     let aircraftType;
+    let flightNumber;
+    let cruiseLevel;
     let sid; // Example: egkk.BOGNA1X
     let star; // Example: gclp.COSTI1C
 
@@ -377,6 +386,9 @@ function doRoutes() {
             selectionRoute.style.display = "none";
             const finalEl = document.querySelector("body#routes section.final");
             finalEl.style.display = "flex";
+            const resultsDepHeading = document.querySelector("body#routes section.final section.results div.route p.departure");
+            const resultsArrHeading = document.querySelector("body#routes section.final section.results div.route p.arrival");
+            const resultsAircraftHeading = document.querySelector("body#routes section.final section.results div.aircraft p");
             const resultsDepAirport = document.querySelector("body#routes section.results div.information.departure div.content.airport-name p");
             const resultsDepRunway = document.querySelector("body#routes section.results div.information.departure div.content.runway p");
             const resultsDepSid = document.querySelector("body#routes section.results div.information.departure div.content.sid p");
@@ -385,6 +397,9 @@ function doRoutes() {
             const resultsArrStar = document.querySelector("body#routes section.results div.information.arrival div.content.star p");
             const resultsEnrouteRoute = document.querySelector("body#routes section.results div.information.enroute div.content.route p");
 
+            resultsDepHeading.innerHTML = depAirportCode;
+            resultsArrHeading.innerHTML = arrAirportCode;
+            resultsAircraftHeading.innerHTML = aircraftType;
             resultsDepAirport.innerHTML = airports.find(airport => airport.code == depAirportCode).name;
             resultsDepRunway.innerHTML = depRunway;
             resultsArrAirport.innerHTML = airports.find(airport => airport.code == arrAirportCode).name;
@@ -420,7 +435,9 @@ function doRoutes() {
             if (openTap == 0) {
                 return;
             } else {
-                ev.preventDefault();
+                if (ev.key == "Y" || ev.key == "y" || ev.key == "N" || ev.key == "n") {
+                    ev.preventDefault();
+                }
             }
 
             if (openTap == 4) {
@@ -484,23 +501,99 @@ function doRoutes() {
                 }
             }
         }
-
-        function showInvalid(input) {
-            input.classList.add("invalid");
-            setTimeout(() => {
-                input.classList.remove("invalid");
-            }, 500);
-        }
     }
 
     function informationInteraction() {
         const copyFlightPlanButton = document.querySelector("body#routes section.final section.actions button.copy-plan");
+        const copyFlightPlanIcon = document.querySelector("body#routes section.final section.actions button.copy-plan i");
         const copyRouteButton = document.querySelector("body#routes section.final section.actions button.copy-route");
+        const copyRouteIcon = document.querySelector("body#routes section.final section.actions button.copy-route i");
         const depChartsButton = document.querySelector("body#routes section.final section.actions button.dep-charts");
         const arrChartsButton = document.querySelector("body#routes section.final section.actions button.arr-charts");
 
         copyFlightPlanButton.addEventListener("click", () => {
-            let x = 1;
+            const overlay = document.querySelector("body#routes div.overlay");
+            overlay.style.display = "flex";
+            const overlayFlightNumberInput = document.querySelector("body#routes div.overlay div.flight-number input");
+            overlayFlightNumberInput.focus();
+
+            overlayFlightNumberInput.addEventListener("keydown", (ev) => {
+                if (ev.key == "Enter") {
+                    if (overlayFlightNumberInput.value > 0 && overlayFlightNumberInput.value <= 9999) {
+                        overlay.style.display = "none";
+                        flightNumber = overlayFlightNumberInput.value;
+                        overlayFlightNumberInput.value = "";
+                        let toCopy;
+                        if (!sid) {
+                            toCopy = 
+                            `Callsign: DAL${flightNumber}
+                            Aircraft: ${aircraftType}
+                            IFR/VFR: IFR
+                            Departing: ${depAirportCode}
+                            Arriving: ${arrAirportCode}
+                            CRZ FL: ${cruiseLevel}`
+                        } else {
+                            if (sid.displayName && sid.displayName !== "Vectors") {
+                                toCopy = 
+`Callsign: DAL${flightNumber}
+Aircraft: ${aircraftType}
+IFR/VFR: IFR
+Departing: ${depAirportCode}
+Arriving: ${arrAirportCode}
+CRZ FL: ${cruiseLevel}
+Notes: ${sid.displayName} departure if possible.`;
+                                } else {
+                                    toCopy = 
+`Callsign: DAL${flightNumber}
+Aircraft: ${aircraftType}
+IFR/VFR: IFR
+Departing: ${depAirportCode}
+Arriving: ${arrAirportCode}
+CRZ FL: ${cruiseLevel}`
+                                }
+                        }
+                        navigator.clipboard.writeText(toCopy);
+                        copyFlightPlanIcon.classList = "fa-solid fa-check";
+                        copyFlightPlanButton.classList.add("complete");
+                        setTimeout(() => {
+                            copyFlightPlanIcon.classList = "fa-solid fa-clipboard";
+                            copyFlightPlanButton.classList.remove("complete");
+                        }, 1500);
+                    }
+
+                }
+            });
+        })
+
+        copyRouteButton.addEventListener("click", () => {
+            let crSid;
+            let crRoute;
+            let crStar;
+
+            if (sid) {
+                crSid = sid.waypoints;
+            } else {
+                crSid = "";
+            }
+
+            if (star) {
+                crStar = star.waypoints;
+            } else {
+                crStar = "";
+            }
+
+            if (routes[dssDep][dssArr].route) {
+                crRoute = routes[dssDep][dssArr].route;
+            }
+
+            let toCopy = (crSid, crRoute, crStar);
+            navigator.clipboard.writeText(toCopy);
+            copyRouteIcon.classList = "fa-solid fa-check";
+            copyRouteButton.classList.add("complete");
+            setTimeout(() => {
+                copyRouteIcon.classList = "fa-solid fa-map";
+                copyRouteButton.classList.remove("complete");
+            }, 1500);
         })
 
         depChartsButton.addEventListener("click", () => {

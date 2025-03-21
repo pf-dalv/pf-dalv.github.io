@@ -99,6 +99,9 @@ body {
     animation: shake 0.5s ease;
 }
 
+button, input, select, textarea {
+    outline: none;
+}
 
 body#home section.banner {
     height: 100vh;
@@ -154,7 +157,6 @@ body#home section.banner div.content div.buttons button {
     font-size: 20px;
     padding: 8px 10px;
     border: none;
-    outline: none;
     color: white;
     cursor: pointer;
     box-shadow: 0px 0px 10px -5px black;
@@ -262,11 +264,11 @@ body#routes section.selection p {
 }
 
 body#routes section.form {
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(0, 0, 0, 0.9);
     padding: 15px 20px;
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0px 0px 15px -5px black;
+    box-shadow: 0px 0px 15px black;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -291,7 +293,6 @@ body#routes section.form div.page p.question {
 
 body#routes section.form div.page input.answer {
     background: rgba(255, 255, 255, 0.1);
-    outline: none;
     border: 2px solid rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     padding: 8px 10px;
@@ -350,7 +351,6 @@ body#routes section.form div.page button {
     border-radius: 10px;
     padding: 8px;
     box-shadow: 0px 0px 10px black;
-    outline: none;
     border: 2px solid rgba(255, 255, 255, 0.1);
     background: rgba(255, 255, 255, 0.1);
     cursor: pointer;
@@ -407,9 +407,9 @@ body#routes section.final section.results {
     justify-content: center;
     gap: 10px;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(0, 0, 0, 0.9);
     border-radius: 20px;
-    box-shadow: 0px 0px 15px -5px black;
+    box-shadow: 0px 0px 15px black;
     min-width: 350px;
     max-width: 500px;
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -522,10 +522,10 @@ body#routes section.final section.actions {
     justify-content: center;
     gap: 10px;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(0, 0, 0, 0.9);
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0px 0px 15px -5px black;
+    box-shadow: 0px 0px 15px black;
     width: 300px;
 }
 
@@ -542,7 +542,6 @@ body#routes section.final section.actions button {
     border-radius: 10px;
     font-size: 16px;
     padding: 8px 10px;
-    outline: none;
     width: 100%;
     color: white;
     cursor: pointer;
@@ -560,12 +559,39 @@ body#routes section.final section.actions button i {
     cursor: pointer;
 }
 
+body#routes section.final section.actions button.complete {
+    background: rgba(150, 150, 150, 0.2);
+}
+
+body#routes section.final section.actions button.complete.copy-plan {
+    transform: translateY(-3px);
+}
+
+body#routes section.final section.actions button.complete.copy-route {
+    transform: translateY(3px);
+}
+
+body#routes section.final section.actions button.complete i {
+    color: #94A545 !important;
+}
+
 body#routes section.final section.actions button p {
     cursor: pointer;
 }
 
 body#routes section.final section.actions button:hover {
     border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+body#routes section.final section.actions button:active {
+    transition: 0.05s ease;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: rgba(150, 150, 150, 0.25);
+}
+
+body#routes section.final section.actions button.dep-charts,
+body#routes section.final section.actions button.arr-charts {
+    display: none;
 }
 
 body#charts section.list {
@@ -754,9 +780,9 @@ div.overlay {
 }
 
 div.overlay div.content {
-    background: rgba(0, 0, 0, 0.85);
+    background: black;
     border-radius: 20px;
-    box-shadow: 0px 0px 15px -5px black;
+    box-shadow: 0px 0px 15px black;
     border: 1px solid rgba(255, 255, 255, 0.2); 
     padding: 20px;
     min-width: 200px;
@@ -768,11 +794,72 @@ div.overlay div.content {
     justify-content: center;
 }
 
+div.overlay div.content p.enter-hint,
+div.overlay div.content p.escape-hint {
+    color: white;
+    font-size: 15px;
+    margin-top: 10px;
+    color: white;
+    opacity: 0.5;
+    font-size: 12px;
+}
+
+div.overlay div.content p.enter-hint {
+    margin-top: -6px;
+}
+
+
+div.overlay div.content p.escape-hint {
+    margin-top: -3px;
+}
+
 div.overlay div.content p.label {
     color: white;
     font-size: 15px;
     width: 100%;
-    text-align: left;
+    text-align: center;
+}
+
+div.overlay div.content div.input-duo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 5px;
+}
+
+div.overlay div.content div.input-duo p {
+    color: white;
+    font-size: 20px;
+}
+
+div.overlay div.content div.input-duo input {
+    width: 4em;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 20px;
+    box-shadow: 0px 0px 10px black;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 1px;
+    cursor: text;
+}
+
+div.overlay div.content div.input-duo input:hover {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+div.overlay div.content div.input-duo input:focus {
+    border: 2px solid white;
+}
+
+div.overlay div.content div.flight-number {
+    margin-bottom: 10px;
 }
 
 /* Responsive design for mobile devices */
