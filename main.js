@@ -540,7 +540,7 @@ Aircraft: ${aircraftType}
 IFR/VFR: IFR
 Departing: ${depAirportCode}
 Arriving: ${arrAirportCode}
-CRZ FL: ${cruiseLevel}
+CRZ FL: ${routes[dssDep][dssArr].altitude}
 Notes: ${sid.displayName} departure if possible.`;
                                 } else {
                                     planCopy = 
@@ -549,7 +549,7 @@ Aircraft: ${aircraftType}
 IFR/VFR: IFR
 Departing: ${depAirportCode}
 Arriving: ${arrAirportCode}
-CRZ FL: ${cruiseLevel}`
+CRZ FL: ${routes[dssDep][dssArr].altitude}`
                                 }
                         }
                         navigator.clipboard.writeText(planCopy);
@@ -586,7 +586,8 @@ CRZ FL: ${cruiseLevel}`
                 crRoute = routes[dssDep][dssArr].route;
             }
 
-            let routeCopy = (crSid, crRoute, crStar);
+            let routeCopy = (crSid + " " + crRoute + " " + crStar);
+            console.log(crSid + " " + crRoute + " " + crStar);
             console.log(routeCopy);
             navigator.clipboard.writeText(routeCopy);
             copyRouteIcon.classList = "fa-solid fa-check";
