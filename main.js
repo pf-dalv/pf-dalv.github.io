@@ -523,9 +523,9 @@ function doRoutes() {
                         overlay.style.display = "none";
                         flightNumber = overlayFlightNumberInput.value;
                         overlayFlightNumberInput.value = "";
-                        let toCopy;
+                        let planCopy;
                         if (!sid) {
-                            toCopy = 
+                            planCopy = 
                             `Callsign: DAL${flightNumber}
                             Aircraft: ${aircraftType}
                             IFR/VFR: IFR
@@ -534,7 +534,7 @@ function doRoutes() {
                             CRZ FL: ${cruiseLevel}`
                         } else {
                             if (sid.displayName && sid.displayName !== "Vectors") {
-                                toCopy = 
+                                planCopy = 
 `Callsign: DAL${flightNumber}
 Aircraft: ${aircraftType}
 IFR/VFR: IFR
@@ -543,7 +543,7 @@ Arriving: ${arrAirportCode}
 CRZ FL: ${cruiseLevel}
 Notes: ${sid.displayName} departure if possible.`;
                                 } else {
-                                    toCopy = 
+                                    planCopy = 
 `Callsign: DAL${flightNumber}
 Aircraft: ${aircraftType}
 IFR/VFR: IFR
@@ -552,7 +552,7 @@ Arriving: ${arrAirportCode}
 CRZ FL: ${cruiseLevel}`
                                 }
                         }
-                        navigator.clipboard.writeText(toCopy);
+                        navigator.clipboard.writeText(planCopy);
                         copyFlightPlanIcon.classList = "fa-solid fa-check";
                         copyFlightPlanButton.classList.add("complete");
                         setTimeout(() => {
@@ -586,9 +586,9 @@ CRZ FL: ${cruiseLevel}`
                 crRoute = routes[dssDep][dssArr].route;
             }
 
-            let toCopy = (crSid, crRoute, crStar);
-            console.log(toCopy);
-            navigator.clipboard.writeText(toCopy);
+            let routeCopy = (crSid, crRoute, crStar);
+            console.log(routeCopy);
+            navigator.clipboard.writeText(routeCopy);
             copyRouteIcon.classList = "fa-solid fa-check";
             copyRouteButton.classList.add("complete");
             setTimeout(() => {
