@@ -587,6 +587,7 @@ CRZ FL: ${cruiseLevel}`
             }
 
             let toCopy = (crSid, crRoute, crStar);
+            console.log(toCopy);
             navigator.clipboard.writeText(toCopy);
             copyRouteIcon.classList = "fa-solid fa-check";
             copyRouteButton.classList.add("complete");
