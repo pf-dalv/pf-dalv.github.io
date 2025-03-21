@@ -396,6 +396,7 @@ function doRoutes() {
             const resultsArrRunway = document.querySelector("body#routes section.results div.information.arrival div.content.runway p");
             const resultsArrStar = document.querySelector("body#routes section.results div.information.arrival div.content.star p");
             const resultsEnrouteRoute = document.querySelector("body#routes section.results div.information.enroute div.content.route p");
+            const resultsEnrouteAltitude = document.querySelector("body#routes section.results div.information.enroute div.content.altitude p");
 
             resultsDepHeading.innerHTML = depAirportCode;
             resultsArrHeading.innerHTML = arrAirportCode;
@@ -404,6 +405,7 @@ function doRoutes() {
             resultsDepRunway.innerHTML = depRunway;
             resultsArrAirport.innerHTML = airports.find(airport => airport.code == arrAirportCode).name;
             resultsEnrouteRoute.innerHTML = routes[dssDep][dssArr].route;
+            resultsEnrouteAltitude.innerHTML = routes[dssDep][dssArr].altitude;
 
             if (sid) {
                 resultsDepSid.innerHTML = sid.displayName;
@@ -526,31 +528,42 @@ function doRoutes() {
                         let planCopy;
                         if (!sid) {
                             planCopy = 
-                            `Callsign: DAL${flightNumber}
-                            Aircraft: ${aircraftType}
-                            IFR/VFR: IFR
-                            Departing: ${depAirportCode}
-                            Arriving: ${arrAirportCode}
-                            CRZ FL: ${cruiseLevel}`
-                        } else {
-                            if (sid.displayName && sid.displayName !== "Vectors") {
-                                planCopy = 
-`Callsign: DAL${flightNumber}
-Aircraft: ${aircraftType}
-IFR/VFR: IFR
-Departing: ${depAirportCode}
-Arriving: ${arrAirportCode}
-CRZ FL: ${routes[dssDep][dssArr].altitude}
-Notes: ${sid.displayName} departure if possible.`;
-                                } else {
-                                    planCopy = 
-`Callsign: DAL${flightNumber}
-Aircraft: ${aircraftType}
-IFR/VFR: IFR
-Departing: ${depAirportCode}
-Arriving: ${arrAirportCode}
-CRZ FL: ${routes[dssDep][dssArr].altitude}`
-                                }
+                                `Callsign: DAL${flightNumber}
+                                Aircraft: ${aircraftType}
+                                IFR/VFR: IFR
+                                Departing: ${depAirportCode}
+                                Arriving: ${arrAirportCode}
+                                CRZ FL: ${routes[dssDep][dssArr.altitude]}`;
+                        }
+                        else if (sid.displayName && sid.displayName == "Name Unknown") {
+                            planCopy =
+                                `Callsign: DAL${flightNumber}
+                                Aircraft: ${aircraftType}
+                                IFR/VRF: IFR
+                                Departing: ${depAirportCode}
+                                Arriving: ${arrAirportCode}
+                                CRZ FL: ${routes[dssDep][dssArr].altitude}
+                                Notes: Departure of unknown name consisting of waypoints ${sid.waypoints} if possible.`;
+                        }
+                        else if (sid.displayName && sid.displayName !== "Vectors") {
+                            planCopy = 
+                                `Callsign: DAL${flightNumber}
+                                Aircraft: ${aircraftType}
+                                IFR/VFR: IFR
+                                Departing: ${depAirportCode}
+                                Arriving: ${arrAirportCode}
+                                CRZ FL: ${routes[dssDep][dssArr].altitude}
+                                Notes: ${sid.displayName} departure if possible.`;
+                        }
+                        else {  
+                            planCopy = 
+                                `Callsign: DAL${flightNumber}
+                                Aircraft: ${aircraftType}
+                                IFR/VFR: IFR
+                                Departing: ${depAirportCode}
+                                Arriving: ${arrAirportCode}
+                                CRZ FL: ${routes[dssDep][dssArr].altitude}`;
+                        }
                         }
                         navigator.clipboard.writeText(planCopy);
                         copyFlightPlanIcon.classList = "fa-solid fa-check";
@@ -560,8 +573,6 @@ CRZ FL: ${routes[dssDep][dssArr].altitude}`
                             copyFlightPlanButton.classList.remove("complete");
                         }, 1500);
                     }
-
-                }
             });
         })
 
