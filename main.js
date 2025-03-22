@@ -564,7 +564,7 @@ function doRoutes() {
                                 Arriving: ${arrAirportCode}
                                 CRZ FL: ${routes[dssDep][dssArr].altitude}`;
                         }
-                        }
+                    
                         navigator.clipboard.writeText(planCopy);
                         copyFlightPlanIcon.classList = "fa-solid fa-check";
                         copyFlightPlanButton.classList.add("complete");
@@ -573,6 +573,7 @@ function doRoutes() {
                             copyFlightPlanButton.classList.remove("complete");
                         }, 1500);
                     }
+                }
             });
         })
 
