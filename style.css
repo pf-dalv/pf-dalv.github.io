@@ -621,66 +621,67 @@ body#partners {
 body#partners section.partners {
     display: flex;
     flex-direction: column;
-    position: fixed;
-    width: 70%;
-    height: 90%;
-    margin: 80px 15%;
-    padding: 20px;
+    position: relative;
+    margin: 80px 10%;
+    padding: 1%;
     justify-content: center;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     border-radius: 20px;
     box-shadow: #000000 0px 0px 20px -10px;
 }
 
 body#partners section.partners div.header{
-    display: flex;
+    display: inherit;
     flex-direction: row;
-    position: relative;
-    top: -40px;
     gap: 2%;
     width: 100%;
     font-size: 160%;
-    justify-content: center;
+    justify-content: inherit;
     align-items: center;
-    text-align: center;
     text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 body#partners section.partners div.header i {
+    color: white;
     scale: 1.5;
 }   
 
+body#partners section.partners div.subHeader *{
+    display: flex;
+    justify-content: center;
+    margin-top: 1%;}
+
 body#partners section.partners p {
     font-size: 200%;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.7);
-    top: -40px;
 }
 
 body#partners section.partners hr {
     width: 90%;
-    border: 2px solid rgb(0, 0, 0);
+    border: 2px solid rgb(255, 255, 255);
     border-radius: 3px;
-    opacity: 0.8;
-    position: relative;
-    top: -40px;
+    position: absolute;
+    right: 5%;
+    transform: translateY(-380%);
 }
 
-body#partners section.partners div.airlines {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    width: 70%;
-    column-gap: 11.5%;
-    row-gap: 5%;
+body#partners section.partners div.partnersRow {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 1%;
+    justify-content: center;
     position: relative;
-    top: -30px;
 }
 
-body#partners section.partners a.partnerLink {
+body#partners section.partners div.partnersRow a.partnerLink {
     text-decoration: none;
-    height: 190px;
-    width: 150px;
+    height: auto;
+    width: auto;
+    margin: 10px;
+    padding: 1%;
     font-size: 10px;
     display: flex;
     flex-direction: column;
@@ -703,6 +704,7 @@ body#partners section.partners a.partnerLink:hover {
 body#partners section.partners a.partnerLink img.icon {
     height: auto;
     width: auto;
+    margin: 10px;
     align-items: center;
 }
 
@@ -710,28 +712,6 @@ body#partners section.partners a.partnerLink p.long {
     font-size: 16px;
 }
 
-body#partners section.partners div.others {
-    position: relative;
-    top: 40px;
-    display: flex;
-    width: 60%;
-    gap: 10%;
-    justify-content: center;
-    align-items: center;
-}
-
-body#partners section.partners div.others hr {
-    width: 200%;
-    border: 2px solid rgb(0, 0, 0);
-    border-radius: 3px;
-    opacity: 0.8;
-}
-
-body#partners section.partners div.others div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 body#partners section.background {
     height: 100%;
     width: 100%;
