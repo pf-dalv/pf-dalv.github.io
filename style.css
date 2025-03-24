@@ -594,6 +594,156 @@ body#routes section.final section.actions button.arr-charts {
     display: none;
 }
 
+body#routes {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+body#routes section.background {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    z-index: -1;
+    filter: brightness(0.5);
+    background-size: cover;
+    background-position: center;
+}
+
+body#partners {
+    overflow-y: scroll;
+}
+
+body#partners section.partners {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    width: 70%;
+    height: 90%;
+    margin: 80px 15%;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    box-shadow: #000000 0px 0px 20px -10px;
+}
+
+body#partners section.partners div.header{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    top: -40px;
+    gap: 2%;
+    width: 100%;
+    font-size: 160%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+body#partners section.partners div.header i {
+    scale: 1.5;
+}   
+
+body#partners section.partners p {
+    font-size: 200%;
+    color: rgb(0, 0, 0);
+    text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.7);
+    top: -40px;
+}
+
+body#partners section.partners hr {
+    width: 90%;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 3px;
+    opacity: 0.8;
+    position: relative;
+    top: -40px;
+}
+
+body#partners section.partners div.airlines {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 70%;
+    column-gap: 11.5%;
+    row-gap: 5%;
+    position: relative;
+    top: -30px;
+}
+
+body#partners section.partners a.partnerLink {
+    text-decoration: none;
+    height: 190px;
+    width: 150px;
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+body#partners section.partners a.partnerLink:hover,
+body#partners section.partners a.partnerLink img.icon:hover,
+body#partners section.partners a.partnerLink p:hover {
+    cursor: pointer;
+}
+
+body#partners section.partners a.partnerLink:hover {
+    scale: 1.1;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+body#partners section.partners a.partnerLink img.icon {
+    height: auto;
+    width: auto;
+    align-items: center;
+}
+
+body#partners section.partners a.partnerLink p.long {
+    font-size: 16px;
+}
+
+body#partners section.partners div.others {
+    position: relative;
+    top: 40px;
+    display: flex;
+    width: 60%;
+    gap: 10%;
+    justify-content: center;
+    align-items: center;
+}
+
+body#partners section.partners div.others hr {
+    width: 200%;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 3px;
+    opacity: 0.8;
+}
+
+body#partners section.partners div.others div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+body#partners section.background {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    z-index: -1;
+    filter: brightness(0.5);
+    background-size: cover;
+    background-position: center;
+}
+
 body#charts section.list {
     padding-top: 60px;
     display: grid;

@@ -675,6 +675,20 @@ function doCharts() {
     fillList();
     loadAirportCharts();
 }
+function doPartners() {
+    if (!(location.pathname == "/dalv/partners/")) {
+        return;
+    }
+    
+    function randomBackground() {
+        const bannerEl = document.querySelector("section.background");
+        if (bannerEl) {
+            const randomImg = dataBanners[Math.floor(Math.random() * dataBanners.length)];
+            bannerEl.style.backgroundImage = `url(${randomImg})`;
+        }
+    }
+    randomBackground();
+}
 
 function navAndLoadingEls() {
     if (location.pathname == "/dalv/mobile/") {
@@ -695,6 +709,7 @@ function navAndLoadingEls() {
                 <div class="dropdown-content info">
                     <a class="nav-info-fleet">Fleet</a>
                     <a class="nav-info-staff">Staff</a>
+                    <a class="nav-info-partners">Partners</a>
                 </div>
             </div>
         </div>
@@ -723,3 +738,4 @@ randomBannerImage();
 hideOnScroll();
 doRoutes();
 doCharts();
+doPartners();
