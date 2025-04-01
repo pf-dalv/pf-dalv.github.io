@@ -631,7 +631,7 @@ body#partners section.partners {
     box-shadow: #000000 0px 0px 20px -10px;
 }
 
-body#partners section.partners div.header{
+body#partners section.partners div.header {
     display: inherit;
     flex-direction: row;
     gap: 2%;
@@ -647,7 +647,7 @@ body#partners section.partners div.header i {
     scale: 1.5;
 }   
 
-body#partners section.partners div.subHeader *{
+body#partners section.partners div.subHeader * {
     display: flex;
     justify-content: center;
     margin-top: 1%;}
