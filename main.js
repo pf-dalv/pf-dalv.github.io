@@ -690,6 +690,22 @@ function doPartners() {
     randomBackground();
 }
 
+
+function doFleet() {
+    if (!(location.pathname == "/dalv/fleet/")) {
+        return;
+    }
+    
+    function randomBackground() {
+        const bannerEl = document.querySelector("section.background");
+        if (bannerEl) {
+            const randomImg = dataBanners[Math.floor(Math.random() * dataBanners.length)];
+            bannerEl.style.backgroundImage = `url(${randomImg})`;
+        }
+    }
+    randomBackground();
+}
+
 function navAndLoadingEls() {
     if (location.pathname == "/dalv/mobile/") {
         return;
@@ -739,3 +755,4 @@ hideOnScroll();
 doRoutes();
 doCharts();
 doPartners();
+doFleet();
