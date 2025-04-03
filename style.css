@@ -732,10 +732,10 @@ body#fleet section.fleet {
     height: max-content;
 }
 
-body#fleet section.fleet div.widebody {
+body#fleet section.fleet div.sizeGroup {
     position: relative;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 10px;
     padding: 20px;
     margin: 20px;
@@ -743,11 +743,11 @@ body#fleet section.fleet div.widebody {
     justify-content: center;
 }
 
-body#fleet section.fleet div.wideBody p {
+body#fleet section.fleet div.sizeGroup p {
     padding: 10px;
 }
 
-body#fleet section.fleet div.wideBody p.header {
+body#fleet section.fleet div.sizeGroup p.header {
     color: rgb(255, 255, 255);
     font-size: 80px;
     font-weight: 800;
@@ -755,11 +755,16 @@ body#fleet section.fleet div.wideBody p.header {
     text-align: center;
 }
 
-body#fleet section.fleet div.wideBody p.subHeader {
+body#fleet section.fleet div.sizeGroup p.subHeader {
     color: rgb(255, 255, 255);
     font-size: 40px;
     text-shadow: 0px 0px 10px rgb(0, 0, 0);
     text-align: center;
+    padding: 20px;
+}
+
+body#fleet section.fleet div.sizeGroup img {
+    border-radius: 20px;
 }
 
 body#fleet section.background {
