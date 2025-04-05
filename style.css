@@ -115,7 +115,7 @@ body#home section.banner {
 body#home section.banner div.content {
     display: flex;
     flex-direction: column;
-    width: 70vw;
+    width: 100%;
     padding: 120px 50px 100px 50px;
 }
 
@@ -141,7 +141,7 @@ body#home section.banner div.content p.welcome {
     font-size: 20px;
     text-shadow: 0px 0px 10px black;
     padding-left: 10px;
-    max-width: 60em;
+    max-width: 40em;
 }
 
 body#home section.banner div.content div.buttons {
@@ -614,211 +614,112 @@ body#routes section.background {
     background-position: center;
 }
 
-body#partners {
-    overflow-y: scroll;
+body#partners section.list {
+    padding-top: 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 1fr;
 }
 
-body#partners section.partners {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    margin: 80px 10%;
-    padding: 1%;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 20px;
-    box-shadow: #000000 0px 0px 20px -10px;
-}
-
-body#partners section.partners div.header {
-    display: inherit;
-    flex-direction: row;
-    gap: 2%;
+body#partners section.list div.partner {
+    height: 400px;
     width: 100%;
-    font-size: 160%;
-    justify-content: inherit;
-    align-items: center;
-    text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-}
-
-body#partners section.partners div.header i {
-    color: white;
-    scale: 1.5;
-}   
-
-body#partners section.partners div.subHeader * {
-    display: flex;
-    justify-content: center;
-    margin-top: 1%;}
-
-body#partners section.partners p {
-    font-size: 200%;
-    color: rgb(255, 255, 255);
-    text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.7);
-}
-
-body#partners section.partners hr {
-    width: 90%;
-    border: 2px solid rgb(255, 255, 255);
-    border-radius: 3px;
-    position: relative;
-}
-
-body#partners section.partners div.partnersRow {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    padding: 1%;
-    justify-content: center;
-    position: relative;
-}
-
-body#partners section.partners div.partnersRow a.partnerLink {
-    text-decoration: none;
-    height: auto;
-    width: auto;
-    margin: 1%;
-    margin-top: 0.2%;
-    margin-bottom: 0.8%;
-    padding: 1%;
-    font-size: 10px;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
     justify-content: center;
-    border-radius: 10px;
+    cursor: pointer;
+    gap: 0;
 }
 
-body#partners section.partners a.partnerLink:hover,
-body#partners section.partners a.partnerLink img.icon:hover,
-body#partners section.partners a.partnerLink p:hover {
+body#fleet section.list {
+    padding-top: 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 1fr;
+}
+
+body#fleet section.list div.aircraft {
+    height: 400px;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+    cursor: pointer;
+    gap: 0;
+}
+
+body#fleet section.list div.aircraft img,
+body#fleet section.list div.aircraft > p {
     cursor: pointer;
 }
 
-body#partners section.partners a.partnerLink:hover {
-    scale: 1.1;
-    background: rgba(255, 255, 255, 0.5);
-}
-
-body#partners section.partners a.partnerLink img.icon {
-    height: auto;
-    width: auto;
-    margin: 10px;
-    align-items: center;
-}
-
-body#partners section.partners a.partnerLink p.long {
-    font-size: 16px;
-}
-
-body#partners section.background {
+body#fleet section.list div.aircraft img {
     height: 100%;
     width: 100%;
-    position: fixed;
-    top: 60px;
-    left: 0;
-    z-index: -1;
-    filter: brightness(0.5);
-    background-size: cover;
-    background-position: center;
-}
-
-body#fleet section.fleet {
-    position: relative;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 20px;
-    margin: 80px 10%;
-    height: max-content;
-}
-
-body#fleet section.fleet div.sizeGroup {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 20px;
-    margin: 20px;
-    align-items: center;
-    justify-content: center;
-}
-
-body#fleet section.fleet div.sizeGroup hr {
-    width: 90%;
-    border: 1px solid white;
-    border-radius: 2px;
-}
-
-body#fleet section.fleet div.sizeGroup p {
-    color: white;
-    font-size: 70px;
-    font-weight: 800;
-    position: relative;
-}
-
-body#fleet section.fleet div.sizeGroup div.plane {
-    width: 100%;
-}
-
-body#fleet section.fleet div.sizeGroup div.plane p.header {
-    color: white;
-    font-size: 80px;
-    font-weight: 800;
-    text-shadow: 0px 0px 10px rgb(0, 0, 0);
-    text-align: center;
-}
-
-body#fleet section.fleet div.sizeGroup div.plane p.subHeader {
-    color: white;
-    font-size: 40px;
-    text-shadow: 0px 0px 10px rgb(0, 0, 0);
-    text-align: center;
-    padding: 10px;
-}
-
-body#fleet section.fleet div.sizeGroup div.plane div.picAndStats img {
-    height: auto;
-    width: 60%;
-    border-radius: 20px 0px 0px 20px;
     object-fit: cover;
-    overflow-x: auto;
+    position: absolute;
+    object-position: center;
+    top: 0;
+    left: 0;
+    transform-origin: center;
+    transition: transform 0.4s ease, filter 0.4s ease;
+    filter: brightness(0.6);
 }
 
-body#fleet section.fleet div.sizeGroup div.plane div.picAndStats {
-    display: flex;
-    flex-direction: row;
-    margin-left: 5%; margin-right: 5%;
-    border-radius: 20px;
-    border: rgba(255, 255, 255, 0.5) 1px solid;
-    gap: 4px; 
-}
-body#fleet section.fleet div.sizeGroup div.plane div.picAndStats div.stats {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    width: 40%;
-    border-radius: 0px 20px 20px 0px;
+body#fleet section.list div.aircraft:hover img {
+    transform: scale(1.1);
+    filter: brightness(0.8);
 }
 
-body#fleet section.fleet div.sizeGroup div.plane div.picAndStats div.stats p {
+body#fleet section.list div.aircraft p.code {
+    display: none;
     color: white;
-    font-size: xx-large;
-    font-weight: normal;
-    text-shadow: 0px 0px 10px rgb(0, 0, 0);
+    font-size: 90px;
+    font-weight: bold;
+    text-shadow: 0px 0px 20px black;
+    z-index: 2;
 }
 
-body#fleet section.background {
+body#fleet section.list div.aircraft p.code.shown {
+    display: block;
+}
+
+body#fleet section.list div.aircraft div.stats {
+    cursor: pointer;
     height: 100%;
     width: 100%;
-    position: fixed;
-    z-index: -1;
-    top: 60px;
-    left: 0;
-    filter: brightness(0.5);
-    background-size: cover;
-    background-position: center;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+body#fleet section.list div.aircraft div.stats.shown {
+    display: flex;
+}
+
+body#fleet section.list div.aircraft div.stats p {
+    cursor: pointer;
+    color: white;
+    font-size: 18px;
+    z-index: 2;
+    text-shadow: 0px 0px 10px black;
+}
+
+body#fleet section.list div.aircraft div.stats p.type {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+body#fleet section.list div.aircraft div.stats p > b{
+    color: white;
+    font-size: 20px;
 }
 
 body#charts section.list {
@@ -842,7 +743,7 @@ body#charts section.list div.airport {
 }
 
 body#charts section.list div.airport img,
-body#charts section.list div.airport p {
+body#charts section.list div.airport > p {
     cursor: pointer;
 }
 
@@ -1093,13 +994,17 @@ div.overlay div.content div.flight-number {
 @media (max-width: 768px) {
     body#home section.banner div.content {
         width: 100vw;
-        padding: 100px 20px;
+        padding: 80px 20px 5px;
     }
     
     body#home section.banner div.content div.branding {
         flex-direction: column;
         align-items: center;
         text-align: center;
+    }
+
+    body#home section.banner div.content div.branding img {
+        display: none;
     }
     
     body#home section.banner div.content div.branding p {
@@ -1121,16 +1026,11 @@ div.overlay div.content div.flight-number {
         grid-template-columns: 1fr;
     }
     
-    nav {
-        padding: 5px;
-        justify-content: space-between;
-    }
-    
-    nav a.dropper {
-        display: none;
-    }
-    
-    nav a.direct {
-        font-size: 16px;
+    div.loading p {
+        color: white;
+        font-size: 25px;
+        max-width: 90vw;
+        text-wrap: wrap;
+        text-align: center;
     }
 }
