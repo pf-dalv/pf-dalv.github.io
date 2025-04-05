@@ -215,7 +215,7 @@ const airports = [
     { code: "EGKK", name: "London Gatwick", runways: ["8L", "8R", "08L", "08R", "26L", "26R"] },
     { code: "LEMH", name: "Menorca", runways: ["1", "01", "19"] },
     { code: "GCLP", name: "Gran Canaria", runways: ["3L", "3R", "03L", "03R", "21L", "21R"] },
-    { code: "LCLK", name: "Larnaca", runways: ["04", "22"] },
+    { code: "LCLK", name: "Larnaca", runways: ["4", "04", "22"] },
     { code: "EFKT", name: "Kittilä", runways: ["16", "34"] }
 ]
 
