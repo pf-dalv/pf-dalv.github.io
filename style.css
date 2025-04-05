@@ -690,6 +690,10 @@ body#fleet section.list div.aircraft p.code.shown {
     display: block;
 }
 
+body#fleet section.list div.aircraft:has(div.stats.shown) img {
+    filter: brightness(0.4) !important;
+}
+
 body#fleet section.list div.aircraft div.stats {
     cursor: pointer;
     height: 100%;
@@ -1033,4 +1037,114 @@ div.overlay div.content div.flight-number {
         text-wrap: wrap;
         text-align: center;
     }
+}
+
+body#partners {
+    overflow-y: scroll;
+}
+
+body#partners section.partners {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 80px 10%;
+    padding: 1%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    box-shadow: #000000 0px 0px 20px -10px;
+}
+
+body#partners section.partners div.header {
+    display: inherit;
+    flex-direction: row;
+    gap: 2%;
+    width: 100%;
+    font-size: 160%;
+    justify-content: inherit;
+    align-items: center;
+    text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+body#partners section.partners div.header i {
+    color: white;
+    scale: 1.5;
+}   
+
+body#partners section.partners div.subHeader * {
+    display: flex;
+    justify-content: center;
+    margin-top: 1%;}
+
+body#partners section.partners p {
+    font-size: 200%;
+    color: rgb(255, 255, 255);
+    text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+body#partners section.partners hr {
+    width: 90%;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 3px;
+    position: relative;
+}
+
+body#partners section.partners div.partnersRow {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 1%;
+    justify-content: center;
+    position: relative;
+}
+
+body#partners section.partners div.partnersRow a.partnerLink {
+    text-decoration: none;
+    height: auto;
+    width: auto;
+    margin: 1%;
+    margin-top: 0.2%;
+    margin-bottom: 0.8%;
+    padding: 1%;
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+body#partners section.partners a.partnerLink:hover,
+body#partners section.partners a.partnerLink img.icon:hover,
+body#partners section.partners a.partnerLink p:hover {
+    cursor: pointer;
+}
+
+body#partners section.partners a.partnerLink:hover {
+    scale: 1.1;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+body#partners section.partners a.partnerLink img.icon {
+    height: auto;
+    width: auto;
+    margin: 10px;
+    align-items: center;
+}
+
+body#partners section.partners a.partnerLink p.long {
+    font-size: 16px;
+}
+
+body#partners section.background {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    z-index: -1;
+    filter: brightness(0.5);
+    background-size: cover;
+    background-position: center;
 }
