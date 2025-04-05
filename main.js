@@ -239,7 +239,7 @@ function doRoutes() {
                 aircraftTypeInput.addEventListener("keydown", (ev) => {
                     if (ev.key == "Enter") {
                         let pKey = aircraftTypeInput.value.toUpperCase();
-                        if (aircraftTypes.includes(pKey)) {
+                        if (aircraftCodes.includes(pKey)) {
                             aircraftType = pKey;
                             aircraftTypeInput.value = "";
                             page++;
@@ -653,7 +653,7 @@ function doCharts() {
         const egkkSect = document.querySelector("body#charts section.airport.egkk");
         const lemhSect = document.querySelector("body#charts section.airport.lemh");
         const gclpSect = document.querySelector("body#charts section.airport.gclp");
-        const lytvSect = document.querySelector("body#charts section.airport.lytv");
+        const lclkSect = document.querySelector("body#charts section.airport.lclk");
         const efktSect = document.querySelector("body#charts section.airport.efkt");
 
         for (const [key, value] of urlParams) {
@@ -675,6 +675,7 @@ function doCharts() {
     fillList();
     loadAirportCharts();
 }
+
 function doPartners() {
     if (!(location.pathname == "/dalv/partners/")) {
         return;
@@ -695,15 +696,49 @@ function doFleet() {
     if (!(location.pathname == "/dalv/fleet/")) {
         return;
     }
-    
-    function randomBackground() {
-        const bannerEl = document.querySelector("section.background");
-        if (bannerEl) {
-            const randomImg = dataBanners[Math.floor(Math.random() * dataBanners.length)];
-            bannerEl.style.backgroundImage = `url(${randomImg})`;
-        }
+
+    function fillList() {
+        const listSection = document.querySelector("body#fleet section.list");
+
+        aircraftTypes.forEach(acft => {
+            const newCell = document.createElement("div");
+            newCell.classList.add("aircraft", acft.code.toLowerCase());
+            newCell.innerHTML = `
+                <img src="https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/fleet/${(acft.code).toLowerCase()}.png">
+                <p class="code shown">${acft.code}</p>
+                <div class="stats">
+                    <p class="type">${acft.code}</p>
+                    <p class="length"><b>Length:</b> 66.8 m (219.2 ft)</p>
+                    <p class="wingspan"><b>Wingspan:</b> 64.8 m (212.6 ft)</p>
+                    <p class="range"><b>Range:</b> 8300 nm</p>
+                    <p class="seats"><b>Seats:</b> 306</p>
+                </div>
+            `
+
+            listSection.appendChild(newCell);
+        });
     }
-    randomBackground();
+
+    function aircraftClicks() {
+        const aircraftCards = document.querySelectorAll("body#fleet section.list div.aircraft");
+        aircraftCards.forEach(card => {
+            card.addEventListener("click", () => {
+                console.log(card.classList[1]);
+                let statsDiv = document.querySelector(`body#fleet section.list div.aircraft.${card.classList[1].toLowerCase()} div.stats`);
+                let acCode = document.querySelector(`body#fleet section.list div.aircraft.${card.classList[1].toLowerCase()} p`);
+                if (statsDiv.classList.contains("shown")) {
+                    statsDiv.classList.remove("shown");
+                    acCode.classList.add("shown");
+                } else {
+                    statsDiv.classList.add("shown");
+                    acCode.classList.remove("shown");
+                }
+            })
+        })
+    }
+
+    fillList();
+    aircraftClicks();
 }
 
 function navAndLoadingEls() {
