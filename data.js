@@ -173,11 +173,11 @@ const routes = {
     },
 
     lemh: {
-        mdpc: { haul: "Medium", altitude: "060", sid: { 1: sids.lemh.ISKAL1A, 19: sids._vectors }, route: "ISKAL KOPUD DICEY BETIR", star: { 8: stars.mdpc.BETIR1W, 9: stars.mdpc.BETIR1W, 26: stars._vectors, 27: stars._vectors } },
-        mdst: { haul: "Long", altitude: "060", sid: { 1: sids.lemh.ISKAL1A, 19: sids._vectors }, route: "ISKAL KOPUD DICEY BETIR GOLVER PC114 PC115 PC113", star: { 11: stars._vectors, 29: stars._vectors } },
-        egkk: { haul: "Short", altitude: "060", sid: { 1: sids.lemh.SARGO2B, 19: sids._vectors }, route: "SARGO MAYFIELD", star: { 8: stars._vectors, 26: stars._vectors } },
+        mdpc: { haul: "Medium", altitude: "060", sid: { 1: sids.lemh.ISKAL1A, 19: sids._vectors }, route: "KOPUD DICEY", star: { 8: stars.mdpc.BETIR1W, 9: stars.mdpc.BETIR1W, 26: stars._vectors, 27: stars._vectors } },
+        mdst: { haul: "Long", altitude: "060", sid: { 1: sids.lemh.ISKAL1A, 19: sids._vectors }, route: "KOPUD DICEY BETIR GOLVER PC114 PC115 PC113", star: { 11: stars._vectors, 29: stars._vectors } },
+        egkk: { haul: "Short", altitude: "060", sid: { 1: sids.lemh.SARGO2B, 19: sids._vectors }, route: "MAYFIELD", star: { 8: stars._vectors, 26: stars._vectors } },
         // lytv: { haul: "Short", altitude: "050", sid: { 1: sids._vectors, 19: sids._vectors }, route: "MORSS OXY", star: { 14: stars.lytv.OXY14R, 32: stars.lytv.OXY32D } },
-        efkt: { haul: "Medium", altitude: "070", sid: { 1: sids.lemh.MEROS3C, 19: sids._vectors }, route: "MEROS KONAN LIMA", star: { 16: stars._vectors, 34: stars._vectors } },
+        efkt: { haul: "Medium", altitude: "070", sid: { 1: sids.lemh.MEROS3C, 19: sids._vectors }, route: "KONAN LIMA", star: { 16: stars._vectors, 34: stars._vectors } },
         gclp: { haul: "Short", altitude: "050", sid: { 1: sids.lemh.ISKAL1A, 19: sids._vectors }, route: "KOPUD BRICK", star: { 3: stars.gclp.KONBA4D, 21: stars.gclp.ORTIS5C } }
     },
 
