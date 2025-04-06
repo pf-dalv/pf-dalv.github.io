@@ -185,12 +185,12 @@ const routes = {
     },
 
     gclp: {
-        mdpc: { altitude: "060", sid: { 21: sids.gclp.ODEGI2B, 3: sids.gclp.ODEGI2A }, route: "", star: { 8: stars._vectors, 9: stars._vectors, 26: stars._vectors, 27: stars._vectors } },
-        mdst: { altitude: "060", sid: { 21: sids.gclp.ODEGI2B, 3: sids.gclp.ODEGI2A }, route: "", star: { 11: stars._vectors, 29: stars._vectors } },
-        egkk: { altitude: "050", sid: { 21: sids.gclp.KOPUD1B, 3: sids.gclp.KOPUD1A }, route: "", star: { 8: stars._vectors, 26: stars._vectors } },
-        efkt: { altitude: "070", sid: { 21: sids.gclp.KOPUD1B, 3: sids.gclp.KOPUD1A }, route: "", star: { 16: stars._vectors, 34: stars._vectors } },
-        lemh: { altitude: "050", sid: { 21: sids.gclp.COSTI4B, 3: sids.gclp.COSTI4A }, route: "", star: { 1: stars._vectors, 19: stars._vectors } },
-        lclk: { altitude: "090", sid: { 21: sids.gclp.COSTI4B, 3: sids.gclp.COSTI4A }, route: "", star: { 4: stars.lclk.LUBES1R, 22: stars._vectors } }
+        mdpc: { altitude: "060", sid: { 21: sids.gclp.ODEGI2B, 3: sids.gclp.ODEGI2A }, route: "PC112", star: { 8: stars._vectors, 9: stars._vectors, 26: stars._vectors, 27: stars._vectors } },
+        mdst: { altitude: "060", sid: { 21: sids.gclp.ODEGI2B, 3: sids.gclp.ODEGI2A }, route: "PC114 PC115", star: { 11: stars._vectors, 29: stars._vectors } },
+        egkk: { altitude: "050", sid: { 21: sids.gclp.KOPUD1B, 3: sids.gclp.KOPUD1A }, route: "ISKAL BOGNA", star: { 8: stars._vectors, 26: stars._vectors } },
+        efkt: { altitude: "070", sid: { 21: sids.gclp.KOPUD1B, 3: sids.gclp.KOPUD1A }, route: "HARDY KUNAV LIMA", star: { 16: stars._vectors, 34: stars._vectors } },
+        lemh: { altitude: "050", sid: { 21: sids.gclp.COSTI4B, 3: sids.gclp.COSTI4A }, route: "HEAT", star: { 1: stars._vectors, 19: stars._vectors } },
+        lclk: { altitude: "090", sid: { 21: sids.gclp.COSTI4B, 3: sids.gclp.COSTI4A }, route: "CARME", star: { 4: stars.lclk.LUBES1R, 22: stars._vectors } }
     },
 
     efkt: {
@@ -200,6 +200,10 @@ const routes = {
         lemh: { altitude: "060", sid: { 16: sids._vectors, 34: sids.efkt.ROSE3C }, route: "", star: { 1: stars.lemh.SENOT3C, 19: stars._vectors } },
         gclp: { altitude: "080", sid: { 16: sids._vectors, 34: sids.efkt.ROSE3C }, route: "", star: { 21: stars.gclp.ORTIS5C, 3: stars.gclp.KONBA4D } },
         lclk: { altitude: "080", sid: { 16: sids._vectors, 34: sids.efkt.ROSE3C }, route: "", star: { 4: stars.lclk.LUBES1R, 22: stars._vectors } }
+    },
+
+    lclk: {
+
     }
 }
 
