@@ -1127,8 +1127,9 @@ body#partners section.partners a.partnerLink:hover {
 }
 
 body#partners section.partners a.partnerLink img.icon {
-    height: auto;
-    width: auto;
+    height: 128px;
+    width: 128px;
+    border-radius: 64px;
     margin: 10px;
     align-items: center;
 }

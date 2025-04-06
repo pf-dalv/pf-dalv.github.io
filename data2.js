@@ -157,10 +157,7 @@ const routes = {
     //     // lytv: { haul: "Long", altitude: "050", sid: { 8: sids.mdpc.KATOK2T, 9: sids.mdpc.KATOK2T, 26: sids._vectors, 27: sids._vectors }, route: "KATOK VAXRI NAPEV", star: { 14: stars.lytv.NAPEV14R, 32: stars.lytv.NAPEV32D } },
     //     efkt: { haul: "Long", altitude: "110", sid: { 8: sids.mdpc.KATOK2T, 9: sids.mdpc.KATOK2T, 26: sids._vectors, 27: sids._vectors }, route: "KATOK BANZAI MUNCHY SENOT MEROS KONAN LIMA", star: { 16: stars._vectors, 34: stars._vectors } }
     // },
-    
-    mdpc: {
-        egkk: { haul: ""}
-    }
+
 }
 
 const airports = [
