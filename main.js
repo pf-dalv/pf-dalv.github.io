@@ -770,7 +770,6 @@ function navAndLoadingEls() {
                 <div class="dropdown-content resources">
                     <a class="nav-resources-charts">Charts</a>
                     <a class="nav-resources-routes">Routes</a>
-                    <a class="nav-resources-checklists">Checklists</a>
                 </div>
             </div>
         </div>
