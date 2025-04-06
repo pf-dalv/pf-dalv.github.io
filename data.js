@@ -149,7 +149,7 @@ const routes = {
 
     mdpc: {
         egkk: { haul: "Long", altitude: "090", sid: { 8: sids.mdpc.KATOK2T, 9: sids.mdpc.KATOK2T, 26: sids._vectors, 27: sids._vectors }, route: "KATOK BANZAI COSTI LORPO ISKAL BOGNA MAYFIELD", star: { 8: stars._vectors, 26: stars._vectors } },
-        lemh: { haul: "Medium", altitude: "070", sid: { 8: sids.mdpc.KATOK2T, 9: sids.mdpc.KATOK2T, 26: sids._vectors, 27: sids._vectors }, route: "KATOK VAXRI SYOL4", star: { 1: stars.lemh.SYOL1A, 19: stars._vectors } },
+        lemh: { haul: "Medium", altitude: "050", sid: { 8: sids.mdpc.KATOK2T, 9: sids.mdpc.KATOK2T, 26: sids._vectors, 27: sids._vectors }, route: "KATOK VAXRI SYOL4", star: { 1: stars.lemh.SYOL1A, 19: stars._vectors } },
         gclp: { haul: "Short", altitude: "050", sid: { 8: sids.mdpc.KATOK2T, 9: sids.mdpc.KATOK2T, 26: sids._vectors, 27: sids._vectors }, route: "KATOK BANZAI COSTI", star: { 3: stars.gclp.COSTI1C, 21: stars.gclp.COSTI1C } },
         // lytv: { haul: "Long", altitude: "050", sid: { 8: sids.mdpc.KATOK2T, 9: sids.mdpc.KATOK2T, 26: sids._vectors, 27: sids._vectors }, route: "KATOK VAXRI NAPEV", star: { 14: stars.lytv.NAPEV14R, 32: stars.lytv.NAPEV32D } },
         efkt: { haul: "Long", altitude: "110", sid: { 8: sids.mdpc.KATOK2T, 9: sids.mdpc.KATOK2T, 26: sids._vectors, 27: sids._vectors }, route: "KATOK BANZAI MUNCHY SENOT MEROS KONAN LIMA", star: { 16: stars._vectors, 34: stars._vectors } }
