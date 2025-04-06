@@ -1,3 +1,7 @@
+// SHORT (UNDER 20NM)
+// MEDIUM (20-30NM)
+// LONG (OVER 30NM)
+
 const dataBanners = [
     "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/5-delta-dish.png",
     "https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/banners/757-approach.png",
@@ -66,7 +70,8 @@ const sids = {
     lemh: {
         ISKAL1A: { displayName: "ISKAL 1A", waypoints: "TIMOR LUNIK ISKAL" },
         SARGO2B: { displayName: "SARGO 2B", waypoints: "TIMOR SARGO" },
-        MEROS3C: { displayName: "MEROS 3C", waypoints: "TIMOR MEROS" }
+        MEROS3C: { displayName: "MEROS 3C", waypoints: "TIMOR MEROS" },
+        AVI4D: { displayName: "AVI 4D" , waypoints: "TIMOR MORSS AVI" },
     },
 
     gclp: {
@@ -78,13 +83,16 @@ const sids = {
         COSTI4B: { displayName: "COSTI 4B", waypoints: "LP1O1 COSTI" }
     },
 
-    // lytv: {
-    //     NAPEV14: { displayName: "Name Unknown", waypoints: "TIVTI DEALT NAPEV" },
-    //     DESOL14: { displayName: "Name Unknown", waypoints: "TIVTI OKLA MAMOL DESOL" },
-    //     OLIVU14: { displayName: "Name Unknown", waypoints: "TIVTI OKLA NEROX GANTU EBOVA STAR NIK OLIVU" },
-    //     OLIVU32: { displayName: "Name Unknown", waypoints: "GOSUT STAR NIK OLIVU" },
-    //     DESOL32: { displayName: "Name Unknown", waypoints: "GOSUT STAR EBOVA VEDUR MOON DESOL" }
-    // },
+    lclk: {
+        BONEK2W: { displayName: "BONEK 2W", waypoints: "LK400 OTESA ADLAS DAROS BONEK" },
+        NORDI1W: { displayName: "NORDI 1W", waypoints: "LK400 OTESA ADLAS NORDI" },
+        RUDER1W: { displayName: "RUDER 1W", waypoints: "LK400 SOBOS RUDER" },
+        EMEDA1W: { displayName: "EMEDA 1W", waypoints: "LK400 REXAL EMEDA" },
+        LUBES1W: { displayName: "LUBES 1W", waypoints: "LK601 RIMEX PEEKO NORDI LUBES" },
+        KURSA1W: { displayName: "KURSA 1W", waypoints: "LK601 RIMEX GIPRO KURSA" },
+        EMEDA1D: { displayName: "EMEDA 1D", waypoints: "LK601 BOSIS EMEDA" },
+        RUDER1D: { displayName: "RUDER 1D", waypoints: "LK601 BOSIS KOBER RUDER" }
+    },
 
     efkt: {
         ROSE3C: { displayName: "ROSE 3C", waypoints: "KITTL DELTA ROSE" },
@@ -109,9 +117,7 @@ const stars = {
     },
 
     lemh: {
-        SENOT3C: { displayName: "SENOT 3C", waypoints: "SENOT MORSS MNH61 MNH76 MNH31 CARME CAT" },
-        OPER2B: { displayName: "Name Unknown", waypoints: "OPERA CDP63 CDP75 CARME CAT" },
-        SYOL1A: { displayName: "Name Unknown", waypoints: "SYOL4 CARME CAT" }
+        SENOT3C: { displayName: "SENOT 3C", waypoints: "SENOT MORSS MNH61 MNH76 MNH31 CARME CAT" }
     },
 
     gclp: {
@@ -122,14 +128,13 @@ const stars = {
         COSTI1C: { displayName: "COSTI 1C", waypoints: "COSTI CANIS" }
     },
 
-    // lytv: {
-    //     NAPEV14R: { displayName: "NAPEV 14R", waypoints: "NAPEV ULTRA BABY GOSUT" },
-    //     NAPEV32D: { displayName: "NAPEV 32D", waypoints: "NAPEV DEALT AGEN TIVTI" },
-    //     DESOL14R: { displayName: "DESOL 14R", waypoints: "DESOL MOON ROMEO EROVA BABY GOSUT" },
-    //     DESOL32D: { displayName: "DESOL 32D", waypoints: "DESOL COD MAMOL OKLA TIVTI" },
-    //     OXY14R: { displayName: "OXY 14R", waypoints: "OXY NEON EROVA BABY GOSUT" },
-    //     OXY32D: { displayName: "OXY 32D", waypoints: "OXY UBER MOON COD MAMOL OKLA TIVTI" }
-    // },
+    lclk: {
+        LUBES1R: { displayName: "LUBES 1R", waypoints: "LUBES NORDI PEEKO RIEMX" },
+        KURSA1R: { displayName: "KURSA 1R", waypoints: "KURSA GIPRO RIMEX" },
+        BONEK1R: { displayName: "BONEK 1R", waypoints: "BONEK ADLAS AMAKO SOBOS ROKIK" },
+        NIMSI1R: { displayName: "NIMSI 1R", waypoints: "NIMSI ESERI BETID BOSIS AMAKO SOBOS ROKIK" },
+        KRASI1V: { displayName: "KRASI 1V", waypoints: "KRASI MURAT ROKIK" }
+    },
 
     efkt: {
         KRDSH1A: { displayName: "KRDSH 1A", waypoints: "KRDSH DELTA LIMA SUDIP" },
@@ -148,64 +153,64 @@ const routes = {
     _vectors: { displayName: "Vectors", waypoints: "VECTORS" },
 
     mdpc: {
-        egkk: { haul: "Long", altitude: "090", sid: { 8: sids.mdpc.KATOK2T, 9: sids.mdpc.KATOK2T, 26: sids._vectors, 27: sids._vectors }, route: "KATOK BANZAI COSTI LORPO ISKAL BOGNA MAYFIELD", star: { 8: stars._vectors, 26: stars._vectors } },
-        lemh: { haul: "Medium", altitude: "050", sid: { 8: sids.mdpc.KATOK2T, 9: sids.mdpc.KATOK2T, 26: sids._vectors, 27: sids._vectors }, route: "KATOK VAXRI SYOL4", star: { 1: stars.lemh.SYOL1A, 19: stars._vectors } },
-        gclp: { haul: "Short", altitude: "050", sid: { 8: sids.mdpc.KATOK2T, 9: sids.mdpc.KATOK2T, 26: sids._vectors, 27: sids._vectors }, route: "KATOK BANZAI COSTI", star: { 3: stars.gclp.COSTI1C, 21: stars.gclp.COSTI1C } },
-        // lytv: { haul: "Long", altitude: "050", sid: { 8: sids.mdpc.KATOK2T, 9: sids.mdpc.KATOK2T, 26: sids._vectors, 27: sids._vectors }, route: "KATOK VAXRI NAPEV", star: { 14: stars.lytv.NAPEV14R, 32: stars.lytv.NAPEV32D } },
-        efkt: { haul: "Long", altitude: "110", sid: { 8: sids.mdpc.KATOK2T, 9: sids.mdpc.KATOK2T, 26: sids._vectors, 27: sids._vectors }, route: "KATOK BANZAI MUNCHY SENOT MEROS KONAN LIMA", star: { 16: stars._vectors, 34: stars._vectors } }
+        egkk: { altitude: "090", sid: { 8: sids.mdpc.KATOK2T, 9: sids.mdpc.KATOK2T, 26: sids._vectors, 27: sids._vectors }, route: "BANZAI COSTI LORPO ISKAL BOGNA MAYFIELD", star: { 8: stars._vectors, 26: stars._vectors } },
+        lemh: { altitude: "050", sid: { 8: sids.mdpc.KATOK2T, 9: sids.mdpc.KATOK2T, 26: sids._vectors, 27: sids._vectors }, route: "VAXRI SYOL4", star: { 1: stars._vectors, 19: stars._vectors } },
+        gclp: { altitude: "050", sid: { 8: sids.mdpc.KATOK2T, 9: sids.mdpc.KATOK2T, 26: sids._vectors, 27: sids._vectors }, route: "BANZAI COSTI", star: { 3: stars.gclp.COSTI1C, 21: stars.gclp.COSTI1C } },
+        efkt: { altitude: "110", sid: { 8: sids.mdpc.KATOK2T, 9: sids.mdpc.KATOK2T, 26: sids._vectors, 27: sids._vectors }, route: "BANZAI MUNCHY SENOT MEROS KONAN LIMA", star: { 16: stars._vectors, 34: stars._vectors } },
+        lclk: { altitude: "090", sid: { 8: sids.mdpc.KATOK2T, 9: sids.mdpc.KATOK2T, 26: sids._vectors, 27: sids._vectors }, route: "JELLY", star: { 4: stars.lclk.KURSA1R, 22: stars.lclk.NIMSI1R } }
     },
-    
+
     mdst: {
-        egkk: { haul: "Long", altitude: "090", sid: { 11: sids._vectors, 29: sids._vectors }, route: "PIXAR KOLBI HDWA BOGNA MAYFIELD", star: { 8: stars._vectors, 26: stars._vectors } },
-        lemh: { haul: "Long", altitude: "070", sid: { 11: sids._vectors, 29: sids._vectors }, route: "PC113 PC115 PC114 ODEGI VAXRI SYOL4", star: { 1: stars.lemh.SYOL1A, 19: stars._vectors} },
-        gclp: { haul: "Medium", altitude: "050", sid: { 11: sids._vectors, 29: sids._vectors }, route: "PC113 PC115 PC114 GOLVER BETIR LP1O3 COSTI", star: stars.gclp.COSTI1C },
-        // lytv: { haul: "Long", altitude: "050", sid: { 11: sids._vectors, 29: sids._vectors }, route: "PC113 PC102 ANTEX NAPEV", star: {14: stars.lytv.NAPEV14R, 32: stars.lytv.NAPEV32D} },
-        efkt: { haul: "Long", altitude: "110", sid: { 11: sids._vectors, 29: sids._vectors }, route: "PC113 PC115 FAHAZ KOPUD LUNIK KONAN LIMA", star: { 16: stars._vectors, 34: stars._vectors } }
+        egkk: { altitude: "090", sid: { 11: sids._vectors, 29: sids._vectors }, route: "PIXAR KOLBI HDWA BOGNA MAYFIELD", star: { 8: stars._vectors, 26: stars._vectors } },
+        lemh: { altitude: "070", sid: { 11: sids._vectors, 29: sids._vectors }, route: "PC113 PC115 PC114 ODEGI VAXRI SYOL4", star: { 1: stars._vectors, 19: stars._vectors } },
+        gclp: { altitude: "050", sid: { 11: sids._vectors, 29: sids._vectors }, route: "PC113 PC115 PC114 GOLVER BETIR LP1O3", star: stars.gclp.COSTI1C },
+        efkt: { altitude: "110", sid: { 11: sids._vectors, 29: sids._vectors }, route: "PC113 PC115 FAHAZ KOPUD LUNIK KONAN LIMA", star: { 16: stars._vectors, 34: stars._vectors } },
+        lclk: { altitude: "090", sid: { 11: sids._vectors, 29: sids._vectors }, route: "PC113 PC102 ANTEX NAPEV", star: { 4: stars.lclk.KURSA1R, 22: stars._vectors } }
     },
-    
+
     egkk: {
-        mdpc: { haul: "Long", altitude: "080", sid: { 26: sids.egkk.NOVMA1X, 8: sids._vectors }, route: "NOVMA LEDGO FALCON POKEG", star: { 8: stars.mdpc.POKEG1W, 9: stars.mdpc.POKEG1W, 26: stars._vectors, 27: stars._vectors } }, 
-        mdst: { haul: "Long", altitude: "080", sid: { 26: sids.egkk.NOVMA1X, 8: sids._vectors }, route: "NOVMA LEDGO FALCON POKEG PC113", star: { 11: stars._vectors, 29: stars._vectors } },
-        lemh: { haul: "Short", altitude: "050", sid: { 26: sids.egkk.BOGNA1X, 8: sids._vectors }, route: "BOGNA LUNIK SENOT", star: { 1: stars.lemh.SENOT3C, 19: stars._vectors} },
-        gclp: { haul: "Medium", altitude: "060", sid: { 26: sids.egkk.NOVMA1X, 8: sids._vectors }, route: "NOVMA ROGER BRICK", star: { 21: stars.gclp.ORTIS5C, 3: stars.gclp.KONBA4D} }, 
-        efkt: { haul: "Short", altitude: "050", sid: { 26: sids.egkk.WIZAD1X, 8: sids._vectors }, route: "WIZAD MINTY LIMA", star: { 16: stars._vectors, 34: stars._vectors } },
-        // lytv: { haul: "Long", altitude: "080", sid: { 26: sids.egkk.BOGNA1X, 8: sids._vectors }, route: "BOGNA SARGO MEROS OXY", star: { 14: stars.lytv.OXY14R, 32: stars.lytv.OXY32D}}
+        mdpc: { altitude: "080", sid: { 26: sids.egkk.NOVMA1X, 8: sids._vectors }, route: "LEDGO FALCON", star: { 8: stars.mdpc.POKEG1W, 9: stars.mdpc.POKEG1W, 26: stars._vectors, 27: stars._vectors } },
+        mdst: { altitude: "080", sid: { 26: sids.egkk.NOVMA1X, 8: sids._vectors }, route: "LEDGO FALCON POKEG PC113", star: { 11: stars._vectors, 29: stars._vectors } },
+        lemh: { altitude: "060", sid: { 26: sids.egkk.BOGNA1X, 8: sids._vectors }, route: "LUNIK", star: { 1: stars.lemh.SENOT3C, 19: stars._vectors } },
+        gclp: { altitude: "060", sid: { 26: sids.egkk.NOVMA1X, 8: sids._vectors }, route: "ROGER", star: { 21: stars.gclp.ORTIS5C, 3: stars.gclp.KONBA4D } },
+        efkt: { altitude: "050", sid: { 26: sids.egkk.WIZAD1X, 8: sids._vectors }, route: "MINTY LIMA", star: { 16: stars._vectors, 34: stars._vectors } },
+        lclk: { altitude: "090", sid: { 26: sids.egkk.BOGNA1X, 8: sids._vectors }, route: "LUNIK TIMOR", star: { 4: stars.lclk.LUBES1R, 22: stars._vectors } }
     },
 
     lemh: {
-        mdpc: { haul: "Medium", altitude: "060", sid: { 1: sids.lemh.ISKAL1A, 19: sids._vectors }, route: "KOPUD DICEY", star: { 8: stars.mdpc.BETIR1W, 9: stars.mdpc.BETIR1W, 26: stars._vectors, 27: stars._vectors } },
-        mdst: { haul: "Long", altitude: "060", sid: { 1: sids.lemh.ISKAL1A, 19: sids._vectors }, route: "KOPUD DICEY BETIR GOLVER PC114 PC115 PC113", star: { 11: stars._vectors, 29: stars._vectors } },
-        egkk: { haul: "Short", altitude: "060", sid: { 1: sids.lemh.SARGO2B, 19: sids._vectors }, route: "MAYFIELD", star: { 8: stars._vectors, 26: stars._vectors } },
-        // lytv: { haul: "Short", altitude: "050", sid: { 1: sids._vectors, 19: sids._vectors }, route: "MORSS OXY", star: { 14: stars.lytv.OXY14R, 32: stars.lytv.OXY32D } },
-        efkt: { haul: "Medium", altitude: "070", sid: { 1: sids.lemh.MEROS3C, 19: sids._vectors }, route: "KONAN LIMA", star: { 16: stars._vectors, 34: stars._vectors } },
-        gclp: { haul: "Short", altitude: "050", sid: { 1: sids.lemh.ISKAL1A, 19: sids._vectors }, route: "KOPUD BRICK", star: { 3: stars.gclp.KONBA4D, 21: stars.gclp.ORTIS5C } }
+        mdpc: { altitude: "060", sid: { 1: sids.lemh.ISKAL1A, 19: sids._vectors }, route: "KOPUD DICEY", star: { 8: stars.mdpc.BETIR1W, 9: stars.mdpc.BETIR1W, 26: stars._vectors, 27: stars._vectors } },
+        mdst: { altitude: "060", sid: { 1: sids.lemh.ISKAL1A, 19: sids._vectors }, route: "KOPUD DICEY BETIR GOLVER PC114 PC115", star: { 11: stars._vectors, 29: stars._vectors } },
+        egkk: { altitude: "060", sid: { 1: sids.lemh.SARGO2B, 19: sids._vectors }, route: "MAYFIELD", star: { 8: stars._vectors, 26: stars._vectors } },
+        efkt: { altitude: "070", sid: { 1: sids.lemh.MEROS3C, 19: sids._vectors }, route: "KONAN LIMA", star: { 16: stars._vectors, 34: stars._vectors } },
+        gclp: { altitude: "060", sid: { 1: sids.lemh.ISKAL1A, 19: sids._vectors }, route: "KOPUD", star: { 3: stars.gclp.KONBA4D, 21: stars.gclp.ORTIS5C } },
+        lclk: { altitude: "050", sid: { 1: sids.lemh.MEROS3C, 19: sids._vectors }, route: "MORSS", star: { 4: stars.lclk.LUBES1R, 22: stars._vectors } }
     },
 
     gclp: {
-        mdpc: { haul: "Short", altitude: "050", sid: { 21: sids.gclp.ODEGI2B, 3: sids.gclp.ODEGI2A }, route: "ODEGI PC112", star: { 8: stars._vectors, 9: stars._vectors, 26: stars._vectors, 27: stars._vectors } },
-        mdst: { haul: "Medium", altitude: "060", sid: { 21: sids.gclp.ODEGI2B, 3: sids.gclp.ODEGI2A }, route: "ODEGI PC114 PC115 PC113", star: { 11: stars._vectors, 29: stars._vectors } },
-        egkk: { haul: "Short", altitude: "050", sid: { 21: sids.gclp.KOPUD1B, 3: sids.gclp.KOPUD1A }, route: "KOPUD ISKAL BOGNA MAYFIELD", star: { 8: stars._vectors, 26: stars._vectors } },
-        // lytv: { haul: "Short", altitude: "065", sid: { 21: sids.gclp.COSTI4B, 3: sids.gclp.COSTI4A }, route: "COSTI MUNCHY NAPEV", star: { 14: stars.lytv.NAPEV14R, 32: stars.lytv.NAPEV32D } },
-        efkt: { haul: "Medium", altitude: "080", sid: { 21: sids.gclp.KOPUD1B, 3: sids.gclp.KOPUD1A }, route: "KOPUD HARDY KUNAV LIMA", star: { 16: stars._vectors, 34: stars._vectors } },
-        lemh: { haul: "Short", altitude: "050", sid: { 21: sids.gclp.COSTI4B, 3: sids.gclp.COSTI4A }, route: "COSTI HEAT", star: { 1: stars.lemh.SYOL1A, 19: stars._vectors } }
+        mdpc: { altitude: "060", sid: { 21: sids.gclp.ODEGI2B, 3: sids.gclp.ODEGI2A }, route: "PC112", star: { 8: stars._vectors, 9: stars._vectors, 26: stars._vectors, 27: stars._vectors } },
+        mdst: { altitude: "060", sid: { 21: sids.gclp.ODEGI2B, 3: sids.gclp.ODEGI2A }, route: "PC114 PC115", star: { 11: stars._vectors, 29: stars._vectors } },
+        egkk: { altitude: "050", sid: { 21: sids.gclp.KOPUD1B, 3: sids.gclp.KOPUD1A }, route: "ISKAL BOGNA", star: { 8: stars._vectors, 26: stars._vectors } },
+        efkt: { altitude: "070", sid: { 21: sids.gclp.KOPUD1B, 3: sids.gclp.KOPUD1A }, route: "HARDY KUNAV LIMA", star: { 16: stars._vectors, 34: stars._vectors } },
+        lemh: { altitude: "050", sid: { 21: sids.gclp.COSTI4B, 3: sids.gclp.COSTI4A }, route: "HEAT", star: { 1: stars._vectors, 19: stars._vectors } },
+        lclk: { altitude: "090", sid: { 21: sids.gclp.COSTI4B, 3: sids.gclp.COSTI4A }, route: "CARME", star: { 4: stars.lclk.LUBES1R, 22: stars._vectors } }
     },
 
-    // lytv: {
-    //     mdpc: { haul: "Long", altitude: "080", sid: { 32: sids.lytv.OLIVU32, 14: sids.lytv.NAPEV14 }, route: "OLIVU SYOL4 JELLY BETIR", star: { 8: stars.mdpc.BETIR1W, 9: stars.mdpc.BETIR1W, 26: stars._vectors, 27: stars._vectors } },
-    //     mdst: { haul: "Long", altitude: "085", sid: { 32: sids.lytv.OLIVU32, 14: sids.lytv.NAPEV14 }, route: "OLIVU SYOL4 VAXRI ODEGI PC114 PC115 PC113", star: { 11: stars._vectors, 29: stars._vectors } },
-    //     lemh: { haul: "Short", altitude: "050", sid: { 32: sids.lytv.OLIVU32, 14: sids.lytv.NAPEV14 }, route: "OLIVU MNH31", star: { 1: stars._vectors, 19: stars._vectors} },
-    //     gclp: { haul: "Short", altitude: "070", sid: { 32: sids.lytv.OLIVU32, 14: sids.lytv.NAPEV14 }, route: "SYOL4 MUNCHY COSTI", star: { 3: stars.gclp.COSTI1C, 21: stars.gclp.COSTI1C} },
-    //     egkk: { haul: "Long", altitude: "080", sid: { 32: sids.lytv.OLIVU32, 14: sids.lytv.OLIVU14 }, route: "OLIVU TIMOR LUNIK MAYFIELD", star: { 8: stars._vectors, 26: stars._vectors } },
-    //     efkt: { haul: "Long", altitude: "080", sid: { 32: sids.lytv.DESOL32, 14: sids.lytv.DESOL14 }, route: "DESOL EFLA", star: { 16: stars._vectors, 34: stars.efkt.KEFLA3C } }
-    // },
-
     efkt: {
-        mdpc: { haul: "Long", altitude: "090", sid: { 16: sids._vectors, 34: sids.efkt.ROSE3C }, route: "TEBRA LIZAD KOLBI POKEG", star: { 8: stars.mdpc.POKEG1W, 9: stars.mdpc.POKEG1W, 26: stars._vectors, 27: stars._vectors } },
-        mdst: { haul: "Long", altitude: "090", sid: { 16: sids._vectors, 34: sids.efkt.ROSE3C }, route: "TEBRA LIZAD KOLBI POKEG PC113", star: { 11: stars._vectors, 29: stars._vectors } },
-        egkk: { haul: "Short", altitude: "050", sid: { 16: sids._vectors, 34: sids.efkt.ROSE3C }, route: "FRANE DETLING", star: { 8: stars._vectors, 26: stars._vectors } },
-        lemh: { haul: "Medium", altitude: "070", sid: { 16: sids._vectors, 34: sids.efkt.ROSE3C }, route: "MINTY KUNAV SENOT", star: { 1: stars.lemh.SENOT3C, 19: stars._vectors } },
-        gclp: { haul: "Medium", altitude: "080", sid: { 16: sids._vectors, 34: sids.efkt.ROSE3C }, route: "FRANE MAYFIELD LIZAD BRICK", star: { 21: stars.gclp.ORTIS5C, 3: stars.gclp.KONBA4D } },
-        // lytv: { haul: "Long", altitude: "080", sid: { 16: sids._vectors, 34: sids. efkt.ROSE3C }, route: "KONAN OXY", star: { 14: stars.lytv.OXY14R, 32: stars.lytv.OXY32D } }
+        mdpc: { altitude: "100", sid: { 16: sids._vectors, 34: sids.efkt.ROSE3C }, route: "TEBRA LIZAD KOLBI", star: { 8: stars.mdpc.POKEG1W, 9: stars.mdpc.POKEG1W, 26: stars._vectors, 27: stars._vectors } },
+        mdst: { altitude: "100", sid: { 16: sids._vectors, 34: sids.efkt.ROSE3C }, route: "TEBRA LIZAD KOLBI", star: { 11: stars._vectors, 29: stars._vectors } },
+        egkk: { altitude: "060", sid: { 16: sids._vectors, 34: sids.efkt.ROSE3C }, route: "FRANE DELTING", star: { 8: stars._vectors, 26: stars._vectors } },
+        lemh: { altitude: "060", sid: { 16: sids._vectors, 34: sids.efkt.ROSE3C }, route: "MINTY KUNAV", star: { 1: stars.lemh.SENOT3C, 19: stars._vectors } },
+        gclp: { altitude: "080", sid: { 16: sids._vectors, 34: sids.efkt.ROSE3C }, route: "FRANE KUNAV", star: { 21: stars.gclp.ORTIS5C, 3: stars.gclp.KONBA4D } },
+        lclk: { altitude: "080", sid: { 16: sids._vectors, 34: sids.efkt.ROSE3C }, route: "FRANE MAYFIELD LIZAD", star: { 4: stars.lclk.LUBES1R, 22: stars._vectors } }
+    },
+
+    lclk: {
+        mdpc: { altitude: "080", sid: { 4: sids.lclk.NORDI1W, 22: sids.lclk.KURSA1W }, route: "NAPEV ANTEX", star: { 8: stars.mdpc.BETIR1W, 9: stars.mdpc.BETIR1W, 26: stars._vectors, 27: stars._vectors } },
+        mdst: { altitude: "080", sid: { 4: sids.lclk.NORDI1W, 22: sids.lclk.KURSA1W }, route: "NAPEV ANTEX", star: { 8: stars.mdpc.BETIR1W, 9: stars.mdpc.BETIR1W, 26: stars._vectors, 27: stars._vectors } },
+        egkk: { altitude: "060", sid: { 4: sids.lclk.BONEK2W, 22: sids.lclk.LUBES1W }, route: "MORSS SENOT HARDY", star: { 8: stars._vectors, 26: stars._vectors } },
+        lemh: { altitude: "060", sid: { 4: sids.lclk.BONEK2W, 22: sids.lclk.LUBES1W }, route: "CDP75", star: { 1: stars._vectors, 19: stars._vectors } },
+        gclp: { altitude: "080", sid: {  }, route: "", star: {  } },
+        efkt: { altitude: "050", sid: {  }, route: "", star: {  } }
     }
 }
 
@@ -231,16 +236,3 @@ const aircraftTypes = [
     { code: "MD11", name: "McDonnell Douglas MD-11", length: "61.3", span: "51.7", seats: "285", range: "6,800" },
 ];
   
-
-//This code was for testing purposes
-
-/*
-const departureCode = "gclp";
-const arrivalCode = "egkk";
-
-const departureRunway = 3;
-const arrivalRunway = 26;
-
-const flightPlan = routes[departureCode][arrivalCode];
-console.log(flightPlan.sid[departureRunway].waypoints, flightPlan.route, flightPlan.star[arrivalRunway].waypoints, "\n" + flightPlan.haul, "haul,", "ETA:", flightPlan.time+",", "FL:", flightPlan.altitude)
-*/
