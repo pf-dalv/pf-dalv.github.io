@@ -88,7 +88,10 @@ const sids = {
         NORDI1W: { displayName: "NORDI 1W", waypoints: "LK400 OTESA ADLAS NORDI" },
         RUDER1W: { displayName: "RUDER 1W", waypoints: "LK400 SOBOS RUDER" },
         EMEDA1W: { displayName: "EMEDA 1W", waypoints: "LK400 REXAL EMEDA" },
-
+        LUBES1W: { displayName: "LUBES 1W", waypoints: "LK601 RIMEX PEEKO NORDI LUBES" },
+        KURSA1W: { displayName: "KURSA 1W", waypoints: "LK601 RIMEX GIPRO KURSA" },
+        EMEDA1D: { displayName: "EMEDA 1D", waypoints: "LK601 BOSIS EMEDA" },
+        RUDER1D: { displayName: "RUDER 1D", waypoints: "LK601 BOSIS KOBER RUDER" }
     },
 
     efkt: {
@@ -114,10 +117,7 @@ const stars = {
     },
 
     lemh: {
-        SENOT3C: { displayName: "SENOT 3C", waypoints: "SENOT MORSS MNH61 MNH76 MNH31 CARME CAT" },
-        // continue from here
-        OPER2B: { displayName: "Name Unknown", waypoints: "OPERA CDP63 CDP75 CARME CAT" },
-        SYOL1A: { displayName: "Name Unknown", waypoints: "SYOL4 CARME CAT" }
+        SENOT3C: { displayName: "SENOT 3C", waypoints: "SENOT MORSS MNH61 MNH76 MNH31 CARME CAT" }
     },
 
     gclp: {
@@ -169,7 +169,7 @@ const airports = [
     { code: "EGKK", name: "London Gatwick", runways: ["8L", "8R", "08L", "08R", "26L", "26R"] },
     { code: "LEMH", name: "Menorca", runways: ["1", "01", "19"] },
     { code: "GCLP", name: "Gran Canaria", runways: ["3L", "3R", "03L", "03R", "21L", "21R"] },
-    // { code: "LCLK", name: "Larnaca", runways: ["4", "04", "22"] }, COMING SOON!
+    { code: "LCLK", name: "Larnaca", runways: ["4", "04", "22"] },
     { code: "EFKT", name: "Kittilä", runways: ["16", "34"] }
 ]
 
