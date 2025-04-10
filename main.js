@@ -523,8 +523,8 @@ function doRoutes() {
                 if (ev.key == "Enter") {
                     if (overlayFlightNumberInput.value > 0 && overlayFlightNumberInput.value <= 9999) {
                         overlay.style.display = "none";
-                        flightNumber = overlayFlightNumberInput.value;
                         overlayFlightNumberInput.value = "";
+                        flightNumber = overlayFlightNumberInput.value;
                         let planCopy;
                         if (!sid) {
                             planCopy = 
@@ -573,6 +573,9 @@ CRZ FL: ${routes[dssDep][dssArr].altitude}`;
                             copyFlightPlanButton.classList.remove("complete");
                         }, 1500);
                     }
+                } else if (ev.key == "Escape") {
+                    overlay.style.display = "none";
+                    overlayFlightNumberInput.value = "";
                 }
             });
         })
