@@ -690,10 +690,6 @@ body#fleet section.list div.aircraft p.code.shown {
     display: block;
 }
 
-body#fleet section.list div.aircraft:has(div.stats.shown) img {
-    filter: brightness(0.4) !important;
-}
-
 body#fleet section.list div.aircraft div.stats {
     cursor: pointer;
     height: 100%;
@@ -721,7 +717,7 @@ body#fleet section.list div.aircraft div.stats p.type {
     font-weight: bold;
 }
 
-body#fleet section.list div.aircraft div.stats p > b{
+body#fleet section.list div.aircraft div.stats p > b {
     color: white;
     font-size: 20px;
 }
