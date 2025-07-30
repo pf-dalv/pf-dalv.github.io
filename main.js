@@ -59,7 +59,7 @@ function buttonsAndLinks() {
     const logoHomeButtons = document.querySelectorAll("nav img.nav-home");
     logoHomeButtons.forEach(btn => {
         btn.addEventListener("click", () => {
-            window.location.href = "";
+            window.location.href = "/";
         })
     })
 
@@ -643,7 +643,7 @@ function doCharts() {
             const newCell = document.createElement("div");
             newCell.classList.add("airport", airport.code);
             newCell.innerHTML = `
-                <img src="https://raw.githubusercontent.com/matikson/img/refs/heads/main/airports/${(airport.code).toLowerCase()}.png">
+                <img src="/img/airports/${(airport.code).toLowerCase()}.png">
                 <p class="code">${airport.code}</p>
                 <p class="name">${airport.name}</p>
             `
