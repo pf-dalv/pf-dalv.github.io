@@ -51,10 +51,15 @@ function buttonsAndLinks() {
         })
     })
 
+    const skyMilesButton = document.querySelector("nav .nav-SkyMiles");
+    skyMilesButton.addEventListener("click", () => {
+        window.location.href = "/skymiles";
+    })
+
     const logoHomeButtons = document.querySelectorAll("nav img.nav-home");
     logoHomeButtons.forEach(btn => {
         btn.addEventListener("click", () => {
-            window.location.href = "/dalv";
+            window.location.href = "";
         })
     })
 
@@ -63,7 +68,7 @@ function buttonsAndLinks() {
         let urlNeeded = btn.classList[0].substring(9);
 
         btn.addEventListener("click", () => {
-            location.href = `/dalv/${urlNeeded}`;
+            location.href = `/${urlNeeded}`;
         })
     })
 
@@ -72,7 +77,7 @@ function buttonsAndLinks() {
         let urlNeeded = btn.classList[0].substring(14);
 
         btn.addEventListener("click", () => {
-            location.href = `/dalv/${urlNeeded}`;
+            location.href = `/${urlNeeded}`;
         })
     })
 
@@ -80,14 +85,14 @@ function buttonsAndLinks() {
     chartAirportSelectionButtons.forEach(cell => {
         cell.addEventListener("click", () => {
             const airportCode = cell.classList[1];
-            location.href = `/dalv/charts/?airport=${airportCode}`;
+            location.href = `/charts/?airport=${airportCode}`;
         })
     });
 
     const chartsAirportBackButton = document.querySelectorAll("section.airport div.nav i.back");
     chartsAirportBackButton.forEach(btn => {
         btn.addEventListener("click", () => {
-            location.href = "/dalv/charts";
+            location.href = "/charts";
         })
     })
 }
@@ -116,7 +121,7 @@ function hideOnScroll() {
 }
 
 function doRoutes() {
-    if (!(location.pathname == "/dalv/routes/")) {
+    if (!(location.pathname == "/routes/")) {
         return;
     }
 
@@ -614,11 +619,11 @@ CRZ FL: ${routes[dssDep][dssArr].altitude}`;
         })
 
         depChartsButton.addEventListener("click", () => {
-            location.href = `/dalv/charts/?airport=${depAirportCode}`;
+            location.href = `/charts/?airport=${depAirportCode}`;
         });
 
         arrChartsButton.addEventListener("click", () => {
-            location.href = `/dalv/charts/?airport=${arrAirportCode}`;
+            location.href = `/charts/?airport=${arrAirportCode}`;
         });
     }
 
@@ -627,7 +632,7 @@ CRZ FL: ${routes[dssDep][dssArr].altitude}`;
 }
 
 function doCharts() {
-    if (!(location.pathname == "/dalv/charts/")) {
+    if (!(location.pathname == "/charts/")) {
         return;
     }
 
@@ -638,7 +643,7 @@ function doCharts() {
             const newCell = document.createElement("div");
             newCell.classList.add("airport", airport.code);
             newCell.innerHTML = `
-                <img src="https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/airports/${(airport.code).toLowerCase()}.png">
+                <img src="https://raw.githubusercontent.com/matikson/img/refs/heads/main/airports/${(airport.code).toLowerCase()}.png">
                 <p class="code">${airport.code}</p>
                 <p class="name">${airport.name}</p>
             `
@@ -658,6 +663,7 @@ function doCharts() {
         const gclpSect = document.querySelector("body#charts section.airport.gclp");
         const lclkSect = document.querySelector("body#charts section.airport.lclk");
         const efktSect = document.querySelector("body#charts section.airport.efkt");
+        const lcphSect = document.querySelector("body#charts section.airport.lcph");
 
         for (const [key, value] of urlParams) {
             paramList.push({ key, value });
@@ -680,7 +686,7 @@ function doCharts() {
 }
 
 function doPartners() {
-    if (!(location.pathname == "/dalv/partners/")) {
+    if (!(location.pathname == "/partners/")) {
         return;
     }
     
@@ -696,7 +702,7 @@ function doPartners() {
 
 
 function doFleet() {
-    if (!(location.pathname == "/dalv/fleet/")) {
+    if (!(location.pathname == "/fleet/")) {
         return;
     }
 
@@ -707,7 +713,7 @@ function doFleet() {
             const newCell = document.createElement("div");
             newCell.classList.add("aircraft", acft.code.toLowerCase());
             newCell.innerHTML = `
-                <img src="https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/fleet/${(acft.code).toLowerCase()}.png">
+                <img src="https://raw.githubusercontent.com/austinkden/img/refs/heads/main/fleet/${(acft.code).toLowerCase()}.png">
                 <p class="code shown">${acft.code}</p>
                 <div class="stats">
                     <p class="type">${acft.code}</p>
@@ -745,7 +751,7 @@ function doFleet() {
 }
 
 function navAndLoadingEls() {
-    if (location.pathname == "/dalv/mobile/") {
+    if (location.pathname == "/mobile/") {
         return;
     }
 
@@ -755,7 +761,7 @@ function navAndLoadingEls() {
     </div>
 
     <nav>
-        <img src="https://raw.githubusercontent.com/austinkden/img/refs/heads/main/dalv/logo.png" class="nav-home">
+        <img src="https://github.com/pf-dalv/img/blob/main/dalv/logo.png" class="nav-home">
         <a class="nav-join direct act-join-discord">Join</a>
         <div class="dropdown">
             <a class="nav-info dropper">Info</a>
@@ -776,6 +782,7 @@ function navAndLoadingEls() {
                 </div>
             </div>
         </div>
+        <a class="nav-SkyMiles direct">SkyMiles</a>
     </nav>
     
     `;
