@@ -713,11 +713,11 @@ function doFleet() {
             const newCell = document.createElement("div");
             newCell.classList.add("aircraft", acft.code.toLowerCase());
             newCell.innerHTML = `
-                <img src="https://raw.githubusercontent.com/austinkden/img/refs/heads/main/fleet/${(acft.code).toLowerCase()}.png">
+                <img src="/img/fleet/${(acft.code).toLowerCase()}.png">
                 <p class="code shown">${acft.code}</p>
                 <div class="stats">
                     <p class="type">${acft.code}</p>
-                    <p class="length"><b>Length:</b> 66.8 m (219.2 ft)</p>
+                    <p class="length"><b>Length:</b> ${acft.length} m (${acft.length*3.2808399})</p>
                     <p class="wingspan"><b>Wingspan:</b> 64.8 m (212.6 ft)</p>
                     <p class="range"><b>Range:</b> 8300 nm</p>
                     <p class="seats"><b>Seats:</b> 306</p>
@@ -761,7 +761,7 @@ function navAndLoadingEls() {
     </div>
 
     <nav>
-        <img src="https://github.com/pf-dalv/img/blob/main/dalv/logo.png" class="nav-home">
+        <img src="/img/logo.png" class="nav-home">
         <a class="nav-join direct act-join-discord">Join</a>
         <div class="dropdown">
             <a class="nav-info dropper">Info</a>
