@@ -719,8 +719,8 @@ function doFleet() {
                     <p class="type">${acft.code}</p>
                     <p class="length"><b>Length:</b> ${acft.length} m (${Math.round(acft.length*32.8)/10} ft)</p>
                     <p class="wingspan"><b>Wingspan:</b> ${acft.span} m (${Math.round(acft.span*32.8)/10} ft)</p>
-                    <p class="range"><b>Range:</b> ${acft.range} nm (${acft.range*1.85} km, ${acft})</p>
-                    <p class="seats"><b>Seats:</b> 306</p>
+                    <p class="range"><b>Range:</b> ${acft.range} nm (${acft.range*1.85} km, ${Math.round(acft.range*1.15)} mi)</p>
+                    <p class="seats"><b>Seats:</b> ${acft.seats}</p>
                 </div>
             `
 
