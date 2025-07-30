@@ -227,13 +227,13 @@ const airports = [
 
 const aircraftCodes = ["A350", "A320", "B737", "B757", "B717", "MD11", "B727", "A220"];
 const aircraftTypes = [
-    { code: "A220", name: "Airbus A220-300", length: "38.7", span: "35.1", seats: "130", range: "3,400" },
-    { code: "A320", name: "Airbus A320-200", length: "37.6", span: "34.1", seats: "150", range: "3,300" },
-    { code: "A350", name: "Airbus A350-900", length: "66.8", span: "64.75", seats: "306", range: "8,300" },
-    { code: "B717", name: "Boeing 717", length: "38.1", span: "28.4", seats: "110", range: "2,060" },
-    { code: "B727", name: "Boeing 727-200", length: "46.7", span: "32.9", seats: "150", range: "2,500" },
-    { code: "B737", name: "Boeing 737-800", length: "39.5", span: "35.8", seats: "160", range: "2,935" },
-    { code: "B757", name: "Boeing 757-200", length: "47.3", span: "38.1", seats: "180", range: "3,915" },
-    { code: "MD11", name: "McDonnell Douglas MD-11", length: "61.3", span: "51.7", seats: "285", range: "6,800" },
+    { code: "BCS3", name: "Airbus A220-300", length: "38.7", span: "35.1", seats: "130", range: "3400" },
+    { code: "A320", name: "Airbus A320-200", length: "37.6", span: "34.1", seats: "150", range: "3300" },
+    { code: "A359", name: "Airbus A350-900", length: "66.8", span: "64.75", seats: "306", range: "8300" },
+    { code: "B712", name: "Boeing 717", length: "38.1", span: "28.4", seats: "110", range: "2060" },
+    { code: "B722", name: "Boeing 727-200", length: "46.7", span: "32.9", seats: "150", range: "2500" },
+    { code: "B738", name: "Boeing 737-800", length: "39.5", span: "35.8", seats: "160", range: "2935" },
+    { code: "B752", name: "Boeing 757-200", length: "47.3", span: "38.1", seats: "180", range: "3915" },
+    { code: "MD11", name: "McDonnell Douglas MD-11", length: "61.3", span: "51.7", seats: "285", range: "6800" },
 ];
   
