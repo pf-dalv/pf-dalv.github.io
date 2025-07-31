@@ -740,9 +740,9 @@ function navAndLoadingEls() {
             <a class="navbarDropper">Careers</a>
             <div class="navbarDropdownWrapper">
                 <div class="navbarDropdownContent">
-                    <a class="navbarDropdownButton" href="/carrer/pilot">Pilot</a>
-                    <a class="navbarDropdownButton" href="/carrer/atc">ATC</a>
-                    <a class="navbarDropdownButton" href="/carrer/ground">Ground Crew</a>
+                    <a class="navbarDropdownButton" href="/career/pilot">Pilot</a>
+                    <a class="navbarDropdownButton" href="/career/atc">ATC</a>
+                    <a class="navbarDropdownButton" href="/career/ground">Ground Crew</a>
                 </div>
             </div>
         </div>
