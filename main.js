@@ -33,6 +33,7 @@ function loadingCover() {
 }
 
 function buttonsAndLinks() {
+/*
     const joinDiscordButtons = document.querySelectorAll(".act-join-discord");
     joinDiscordButtons.forEach(btn => {
         btn.addEventListener("click", () => {
@@ -44,14 +45,14 @@ function buttonsAndLinks() {
     skyMilesButton.addEventListener("click", () => {
         window.location.href = "/skymiles";
     })
-
+  
     const logoHomeButtons = document.querySelectorAll("nav img.nav-home");
     logoHomeButtons.forEach(btn => {
         btn.addEventListener("click", () => {
             window.location.href = "/";
         })
     })
-
+  
     const navInfoButtons = document.querySelectorAll("nav div.dropdown div.dropdown-content.info a");
     navInfoButtons.forEach(btn => {
         let urlNeeded = btn.classList[0].substring(9);
@@ -69,7 +70,7 @@ function buttonsAndLinks() {
             location.href = `/${urlNeeded}`;
         })
     })
-
+*/
     const chartAirportSelectionButtons = document.querySelectorAll("body#charts section.list div.airport");
     chartAirportSelectionButtons.forEach(cell => {
         cell.addEventListener("click", () => {
@@ -77,13 +78,13 @@ function buttonsAndLinks() {
             location.href = `/charts/?airport=${airportCode}`;
         })
     });
-
+/*
     const chartsAirportBackButton = document.querySelectorAll("section.airport div.nav i.back");
     chartsAirportBackButton.forEach(btn => {
         btn.addEventListener("click", () => {
             location.href = "/charts";
         })
-    })
+    })*/
 }
 
 function randomBannerImage() {
@@ -684,7 +685,7 @@ function doFleet() {
             newCell.classList.add("aircraft", acft.code.toLowerCase());
             newCell.innerHTML = `
                 <img src="/img/fleet/${(acft.code).toLowerCase()}.png">
-                <p class="code shown" style="text-align: center">${acft.name}</p>
+                <p class="code shown">${acft.name}</p>
                 <div class="stats">
                     <p class="type">${acft.code}</p>
                     <p class="length"><b>Length:</b> ${acft.length} m (${Math.round(acft.length*32.8)/10} ft)</p>
@@ -731,28 +732,40 @@ function navAndLoadingEls() {
     </div>
 
     <nav>
-        <img src="/img/logo.png" class="nav-home">
-        <a class="nav-join direct act-join-discord">Join</a>
-        <div class="dropdown">
-            <a class="nav-info dropper">Info</a>
-            <div class="dropdown-content-wrapper">
-                <div class="dropdown-content info">
-                    <a class="nav-info-fleet">Fleet</a>
-                    <a class="nav-info-staff">Staff</a>
-                    <a class="nav-info-partners">Partners</a>
+        <a href="/">
+            <img src="/img/logo.png" class="nav-home">
+        </a>
+        <a class="direct" href="https://discord.gg/aS5G7GdP5E" target="_blank">Join</a>
+        <div class="navbarDropdown">
+            <a class="navbarDropper">Careers</a>
+            <div class="navbarDropdownWrapper">
+                <div class="navbarDropdownContent">
+                    <a class="navbarDropdownButton" href="/carrer/pilot">Pilot</a>
+                    <a class="navbarDropdownButton" href="/carrer/atc">ATC</a>
+                    <a class="navbarDropdownButton" href="/carrer/ground">Ground Crew</a>
                 </div>
             </div>
         </div>
-        <div class="dropdown">
-            <a class="nav-resources dropper">Resources</a>
-            <div class="dropdown-content-wrapper">
-                <div class="dropdown-content resources">
-                    <a class="nav-resources-charts">Charts</a>
-                    <a class="nav-resources-routes">Routes</a>
+        <div class="navbarDropdown">
+            <a class="navbarDropper">Info</a>
+            <div class="navbarDropdownWrapper">
+                <div class="navbarDropdownContent">
+                    <a class="navbarDropdownButton" href="/fleet">Fleet</a>
+                    <a class="navbarDropdownButton" href="/staff">Staff</a>
+                    <a class="navbarDropdownButton" href="/partners">Partners</a>
                 </div>
             </div>
         </div>
-        <a class="nav-SkyMiles direct">SkyMiles</a>
+        <div class="navbarDropdown">
+            <a class="navbarDropper">Resources</a>
+            <div class="navbarDropdownWrapper">
+                <div class="navbarDropdownContent">
+                    <a class="navbarDropdownButton" href="/charts">Charts</a>
+                    <a class="navbarDropdownButton" href="/routes">Routes</a>
+                </div>
+            </div>
+        </div>
+        <a class="direct" href="/skymiles">SkyMiles</a>
     </nav>
     
     `;
