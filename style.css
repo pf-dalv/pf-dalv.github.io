@@ -602,18 +602,6 @@ body#routes {
     justify-content: center;
 }
 
-body#routes section.background {
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    top: 60px;
-    left: 0;
-    z-index: -1;
-    filter: brightness(0.5);
-    background-size: cover;
-    background-position: center;
-}
-
 body#partners section.list {
     padding-top: 60px;
     display: grid;
@@ -1134,7 +1122,7 @@ body#partners section.partners a.partnerLink p.long {
     font-size: 16px;
 }
 
-body#partners section.background {
+section.background {
     height: 100%;
     width: 100%;
     position: fixed;

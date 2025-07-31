@@ -25,17 +25,6 @@ function loadingCover() {
         }
     }, 600);
 
-    const loadingMessages = [
-        "Finalizing your flight plan...",
-        "Spooling up the engines...",
-        "Fueling up...",
-        "Aligning with the runway...",
-        "Waiting for takeoff clearance...",
-        "Waiting for IFR clearance...",
-        "Adjusting seatbacks and tray tables...",
-        "Calculating cruise altitude..."
-    ]
-
     const messageEls = document.querySelectorAll("div.loading p");
     const message = loadingMessages[Math.floor(Math.random() * loadingMessages.length)];
     messageEls.forEach(msgEl => {
@@ -98,9 +87,15 @@ function buttonsAndLinks() {
 }
 
 function randomBannerImage() {
-    const bannerEl = document.querySelector("section.banner");
+    let bannerEl = document.querySelector("section.banner");
     if (bannerEl) {
         bannerEl.style.backgroundImage = `url(${dataBanners[Math.floor(Math.random() * dataBanners.length)]})`;
+    }
+    else if (bannerEl == null) {
+        let bannerE1 = document.querySelector("section.background");
+        if (bannerE1) {
+            bannerE1.style.backgroundImage = `url(${dataBanners[Math.floor(Math.random() * dataBanners.length)]})`;
+        }
     }
 }
 
@@ -138,14 +133,6 @@ function doRoutes() {
         // MEDIUM (20-30NM)
         // LONG (OVER 30NM)
         // DPC DST DAB! DCR!
-
-    function randomBackground() {
-        const bannerEl = document.querySelector("section.background");
-        if (bannerEl) {
-            const randomImg = dataBanners[Math.floor(Math.random() * dataBanners.length)];
-            bannerEl.style.backgroundImage = `url(${randomImg})`;
-        }
-    }
 
     let dssDep;
     let dssArr;
@@ -628,7 +615,6 @@ CRZ FL: ${routes[dssDep][dssArr].altitude}`;
     }
 
     getInformation();
-    randomBackground();
 }
 
 function doCharts() {
@@ -684,22 +670,6 @@ function doCharts() {
     fillList();
     loadAirportCharts();
 }
-
-function doPartners() {
-    if (!(location.pathname == "/partners/")) {
-        return;
-    }
-    
-    function randomBackground() {
-        const bannerEl = document.querySelector("section.background");
-        if (bannerEl) {
-            const randomImg = dataBanners[Math.floor(Math.random() * dataBanners.length)];
-            bannerEl.style.backgroundImage = `url(${randomImg})`;
-        }
-    }
-    randomBackground();
-}
-
 
 function doFleet() {
     if (!(location.pathname == "/fleet/")) {
@@ -798,5 +768,4 @@ randomBannerImage();
 hideOnScroll();
 doRoutes();
 doCharts();
-doPartners();
 doFleet();

@@ -2,6 +2,17 @@
 // MEDIUM (20-30NM)
 // LONG (OVER 30NM)
 
+const loadingMessages = [
+        "Finalizing your flight plan...",
+        "Spooling up the engines...",
+        "Fueling up...",
+        "Aligning with the runway...",
+        "Waiting for takeoff clearance...",
+        "Waiting for IFR clearance...",
+        "Adjusting seatbacks and tray tables...",
+        "Calculating cruise altitude..."
+    ]
+
 const dataBanners = [
     "/img/banners/5-delta-dish.png",
     "/img/banners/757-approach.png",
@@ -55,7 +66,7 @@ const dataBanners = [
     "/img/banners/md11-tail.png",
     "/img/banners/sun-wing-glow.png",
     "/img/banners/tail-moon-greenlight-port.png",
-    "/img/banners/tivat-a320-air.png",
+    "/img/banners/tivat-a320-air.png"
 ];
 
 const sids = {
