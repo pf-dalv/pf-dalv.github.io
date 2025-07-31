@@ -714,7 +714,7 @@ function doFleet() {
             newCell.classList.add("aircraft", acft.code.toLowerCase());
             newCell.innerHTML = `
                 <img src="/img/fleet/${(acft.code).toLowerCase()}.png">
-                <p class="code shown">${acft.code}</p>
+                <p class="code shown" style="text-align: center">${acft.name}</p>
                 <div class="stats">
                     <p class="type">${acft.code}</p>
                     <p class="length"><b>Length:</b> ${acft.length} m (${Math.round(acft.length*32.8)/10} ft)</p>
