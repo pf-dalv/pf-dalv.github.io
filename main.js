@@ -87,13 +87,25 @@ function buttonsAndLinks() {
     })*/
 }
 
+function wipText() {
+    const wipSection = document.querySelector("section.wip");
+    if (wipSection) {
+        wipSection.innerHTML = `
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; width: 100vw; color: white;">
+            <h1>Work in Progress</h1>
+            <p>This section is currently under development. Please check back later.</p>
+        </div>
+        `;
+    }
+}
+
 function randomBannerImage() {
-    let bannerEl = document.querySelector("section.banner");
+    const bannerEl = document.querySelector("section.banner");
     if (bannerEl) {
         bannerEl.style.backgroundImage = `url(${dataBanners[Math.floor(Math.random() * dataBanners.length)]})`;
     }
     else if (bannerEl == null) {
-        let bannerE1 = document.querySelector("section.background");
+        const bannerE1 = document.querySelector("section.background");
         if (bannerE1) {
             bannerE1.style.backgroundImage = `url(${dataBanners[Math.floor(Math.random() * dataBanners.length)]})`;
         }
@@ -729,49 +741,16 @@ function navAndLoadingEls() {
     const htmlContent = `
     <div class="loading">
         <p>There was an error.</p>
-    </div>
-
-    <nav>
-        <a href="/">
-            <img src="/img/logo.png" class="nav-home">
-        </a>
-        <a class="direct" href="https://discord.gg/aS5G7GdP5E" target="_blank">Join</a>
-        <div class="navbarDropdown">
-            <a class="navbarDropper">Careers</a>
-            <div class="navbarDropdownWrapper">
-                <div class="navbarDropdownContent">
-                    <a class="navbarDropdownButton" href="/career/pilot">Pilot</a>
-                    <a class="navbarDropdownButton" href="/career/atc">ATC</a>
-                    <a class="navbarDropdownButton" href="/career/ground">Ground Crew</a>
-                </div>
-            </div>
-        </div>
-        <div class="navbarDropdown">
-            <a class="navbarDropper">Info</a>
-            <div class="navbarDropdownWrapper">
-                <div class="navbarDropdownContent">
-                    <a class="navbarDropdownButton" href="/fleet">Fleet</a>
-                    <a class="navbarDropdownButton" href="/staff">Staff</a>
-                    <a class="navbarDropdownButton" href="/partners">Partners</a>
-                </div>
-            </div>
-        </div>
-        <div class="navbarDropdown">
-            <a class="navbarDropper">Resources</a>
-            <div class="navbarDropdownWrapper">
-                <div class="navbarDropdownContent">
-                    <a class="navbarDropdownButton" href="/charts">Charts</a>
-                    <a class="navbarDropdownButton" href="/routes">Routes</a>
-                </div>
-            </div>
-        </div>
-        <a class="direct" href="/skymiles">SkyMiles</a>
-    </nav>
-    
+    </div>    
     `;
-
-    // Insert at the beginning of the body
     document.body.insertAdjacentHTML("afterbegin", htmlContent);    
+
+    fetch("/navbar.html")
+        .then(response => response.text())
+        .then(html => {
+            document.body.insertAdjacentHTML("afterbegin", html);
+        });
+    // Insert at the beginning of the body
 }
 
 navAndLoadingEls();
@@ -782,3 +761,4 @@ hideOnScroll();
 doRoutes();
 doCharts();
 doFleet();
+wipText();
