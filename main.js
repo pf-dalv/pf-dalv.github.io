@@ -742,14 +742,67 @@ function navAndLoadingEls() {
     <div class="loading">
         <p>There was an error.</p>
     </div>    
-    `;
-    document.body.insertAdjacentHTML("afterbegin", htmlContent);    
-
-    fetch("/navbar.html")
-        .then(response => response.text())
-        .then(html => {
-            document.body.insertAdjacentHTML("afterbegin", html);
-        });
+    <nav>
+        <a href="/" class="nav-home">
+            <img src="/img/logo.png" class="nav-home">
+        </a>
+        <hr class="navbarButtonUnderline">
+        <div class="navigationWrapper">
+            <div class="navbarDropdown Careers">
+                <a class="navbarDropper">
+                    Careers
+                </a>
+                <div class="navbarDropdownWrapper">
+                    <div class="navbarDropdownContent">
+                        <a class="navbarDropdownButton" href="/career/pilot">Pilot</a>
+                        <a class="navbarDropdownButton" href="/career/atc">ATC</a>
+                        <a class="navbarDropdownButton" href="/career/ground">Ground Crew</a>
+                    </div>
+                </div>
+            </div>
+            <div class="navbarDropdown Info">
+                <a class="navbarDropper">
+                    Info
+                </a>
+                <div class="navbarDropdownWrapper">
+                    <div class="navbarDropdownContent">
+                        <a class="navbarDropdownButton" href="/fleet">Fleet</a>
+                        <a class="navbarDropdownButton" href="/staff">Staff</a>
+                        <a class="navbarDropdownButton" href="/partners">Partners</a>
+                    </div>
+                </div>
+            </div>
+            <div class="navbarDropdown Resources">
+                <a class="navbarDropper">
+                    Resources
+                </a>
+                <div class="navbarDropdownWrapper">
+                    <div class="navbarDropdownContent">
+                        <a class="navbarDropdownButton" href="/charts">Charts</a>
+                        <a class="navbarDropdownButton" href="/routes">Routes</a>
+                    </div>
+                </div>
+            </div>
+            <div class="navbarDropdown Skymiles">
+                <a class="direct" href="/skymiles">
+                    SkyMiles
+                </a>
+            </div>
+        </div>    
+        <a class="direct join" href="https://discord.gg/aS5G7GdP5E" target="_blank">
+            Join us!
+        </a>
+    </nav>`;
+    document.body.insertAdjacentHTML("afterbegin", htmlContent);
+    const operatingWidth = document.querySelector("nav div.navigationWrapper").getBoundingClientRect().width;
+    const navbarUnderline = document.querySelector("nav hr.navbarButtonUnderline");
+    console.log(document.querySelector("nav a img.nav-home").getBoundingClientRect());
+    if (location.pathname == "/" || location.pathname == "") {
+        navbarUnderline.style.width = `${document.querySelector("nav a img.nav-home").getBoundingClientRect().width}px`;
+    }
+    if (location.pathname == "/fleet/" || location.pathname == "/staff/" || location.pathname == "/partners/") {
+        navbarUnderline.style.width = `${operatingWidth}px`;
+    }
     // Insert at the beginning of the body
 }
 

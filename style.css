@@ -1,5 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap'); /*I'm not deleting this one for now*/
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@200;300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400&display=swap');
 
 :root {
     --color-background: #000000;
@@ -55,7 +57,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Albert Sans', sans-serif;
     transition: 0.3s ease;
     user-select: none;
     cursor: default;
@@ -793,37 +795,64 @@ div.loading p {
 }
 
 /* Navigation bar */
+nav * {
+    font-family: 'Gabarito';
+    font-weight: 400;
+}
 nav {
-    height: 60px;
+    height: 80px;
     background: var(--brand-navy);
     width: 100%;
     display: flex;
     flex-direction: row;
-    gap: 5px;
-    padding: 5px 10px;
     align-items: center;
     position: fixed;
-    top: 0;
-    left: 0;
     z-index: 5;
     box-shadow: 0px 0px 20px -10px black;
 }
 
+nav a.nav-home {
+    display: inline-block;
+    height: 100%;;
+}
+
 nav img {
-    height: 40px;
+    height: 60px;
+    position: relative;
+    margin: 10px;
     cursor: pointer;
+    filter: saturate(0) brightness(4);
+    transition: ease-out 100ms;
 }
 
 nav img:hover {
-    filter: brightness(1.2);
+    transition: ease-in 100ms;
+    filter: none;
+}
+
+nav div.navigationWrapper {
+    padding: 0px;
+    margin: 0px;
+    gap: 0px;
+}
+
+nav div.navbarDropdown {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 
 nav a.direct,
 nav a.navbarDropper {
-    font-size: 20px;
+    font-size: 27px;
     color: white;
-    padding: 5px 10px;
-    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 24px 10px;
+    justify-content: center;
+    margin: 0px;
 }
 
 nav a.direct:hover,
@@ -834,6 +863,22 @@ nav a.navbarDropper:hover {
 nav a.direct {
     cursor: pointer;
     text-decoration: none;
+    ;
+}
+
+nav a.direct.join {
+    background: var(--brand-red);;
+    color: white;
+    margin-left: auto;
+    justify-content: center;
+    height: 40px;
+    padding: 10px 20px;
+    margin-right: 20px;
+    border-radius: 7px 7px;
+}
+
+nav a.direct.join:hover {
+    filter: brightness(1.2);
 }
 
 nav div.navbarDropdown {
@@ -856,7 +901,7 @@ nav div.navbarDropdownContent{
     box-shadow: 0px 0px 15px -5px black;
     border-radius: 10px;
     overflow: hidden;
-    top: 10px;
+    top: 5px;
     left: 0;
 }
 
@@ -867,6 +912,15 @@ nav div.navbarDropdownContent a{
     text-decoration: none;
     cursor: pointer;
     text-wrap: nowrap;
+}
+
+nav hr {
+    color: var(--brand-red);
+    background-color: var(--brand-red);
+    height: 4px;
+    position: absolute;
+    /*left: 93px; 93px for the first button, idk how much for later ones */
+    top: 76px;
 }
 
 nav div.navbarDropdownContent a.navbarDropdownButton:hover {
