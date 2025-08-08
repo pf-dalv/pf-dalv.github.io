@@ -793,24 +793,33 @@ function navAndLoadingEls() {
             Join us!
         </a>
     </nav>`;
-    document.body.insertAdjacentHTML("afterbegin", htmlContent);
-    const operatingWidth = document.querySelector("nav div.navigationWrapper").getBoundingClientRect().width;
-    const navbarUnderline = document.querySelector("nav hr.navbarButtonUnderline");
-    console.log(document.querySelector("nav a img.nav-home").getBoundingClientRect());
-    if (location.pathname == "/" || location.pathname == "") {
-        navbarUnderline.style.width = `${document.querySelector("nav a img.nav-home").getBoundingClientRect().width}px`;
-    }
-    if (location.pathname == "/fleet/" || location.pathname == "/staff/" || location.pathname == "/partners/") {
-        navbarUnderline.style.width = `${operatingWidth}px`;
-    }
-    // Insert at the beginning of the body
+    document.body.insertAdjacentHTML("afterbegin", htmlContent); // Insert at the beginning of the body
+    
 }
 
-navAndLoadingEls();
+function navbarUnderlineHandler() {
+//this part is to make the navbar underline 
+    const elementProperties = (query) => document.querySelector(query).getBoundingClientRect(); //this makes this function less cluttered bcuz it's a long ass path (or sum? idk js)
+    const navbarUnderline = document.querySelector("nav hr.navbarButtonUnderline");
+    console.log(elementProperties("nav a img.nav-home"));
+    navbarUnderline.style.transition = "0.1 ease-out";
+    
+    if (location.pathname == "/" || location.pathname == "") {
+        navbarUnderline.style.left = `0px`
+        navbarUnderline.style.width = "100%";
+    }
+    if (location.pathname == "/fleet/" || location.pathname == "/staff/" || location.pathname == "/partners/") {
+        navbarUnderline.style.left = `${elementProperties("div.navbarDropdown.Info").x}px`; //apparently there is a way to make this one line
+        navbarUnderline.style.width = `${elementProperties("div.navbarDropdown.Info").width}px`; //but it seems overly complicated and barely readable
+    }
+}
+
 loadingCover();
+navAndLoadingEls();
 buttonsAndLinks();
 randomBannerImage();
 hideOnScroll();
+window.onload = navbarUnderlineHandler();
 doRoutes();
 doCharts();
 doFleet();

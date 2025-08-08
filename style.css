@@ -244,7 +244,7 @@ body#routes section.background {
     height: 100%;
     width: 100%;
     position: fixed;
-    top: 60px;
+    top: 80px;
     left: 0;
     z-index: -1;
     filter: brightness(0.5);
@@ -605,7 +605,7 @@ body#routes {
 }
 
 body#partners section.list {
-    padding-top: 60px;
+    padding-top: 80px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-auto-rows: 1fr;
@@ -800,6 +800,7 @@ nav * {
     font-weight: 400;
 }
 nav {
+    top: 0px;
     height: 80px;
     background: var(--brand-navy);
     width: 100%;
@@ -917,10 +918,16 @@ nav div.navbarDropdownContent a{
 nav hr {
     color: var(--brand-red);
     background-color: var(--brand-red);
+    border-color: var(--brand-red);
     height: 4px;
     position: absolute;
+    width: 100%;
     /*left: 93px; 93px for the first button, idk how much for later ones */
     top: 76px;
+    transform: translateX(0px);
+    transition: 
+        width 0.3s ease-out,
+        left 0.3s ease-out;
 }
 
 nav div.navbarDropdownContent a.navbarDropdownButton:hover {
@@ -1086,7 +1093,7 @@ body#partners section.partners {
     display: flex;
     flex-direction: column;
     position: relative;
-    margin: 80px 10%;
+    margin: 100px 10%;
     padding: 1%;
     justify-content: center;
     align-items: center;
@@ -1098,7 +1105,7 @@ body#partners section.partners {
 body#partners section.partners div.header {
     display: inherit;
     flex-direction: row;
-    gap: 2%;
+    gap: 2vw;
     width: 100%;
     font-size: 160%;
     justify-content: inherit;
@@ -1181,7 +1188,7 @@ section.background {
     height: 100%;
     width: 100%;
     position: fixed;
-    top: 60px;
+    top: 80px;
     left: 0;
     z-index: -1;
     filter: brightness(0.5);
